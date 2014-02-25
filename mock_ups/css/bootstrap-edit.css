@@ -1,0 +1,81 @@
+.container {
+  width:960px;
+}
+h1, h2, h3, h4, h5, p, a, i, b{
+  font-family: 'Cutive Mono', serif;
+}
+a {
+  color:#000;
+}
+a:hover, a:focus {
+  color:orange;
+  text-decoration:none;
+}
+.carousel-control{
+  top: 50%; 
+}
+
+.nav-tabs {
+  border: none;
+}
+.nav-tabs > li > a {
+  background-color:white;
+  color:#111;
+  display:block;
+  width:62px;
+  height:24px;
+  padding-top:15px;
+  float:left;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 0;
+  margin-right: 1px;
+}
+.nav-tabs > li > a:hover {
+  background-color:#EEE;
+  color:orange;
+  border: 1px solid white;
+}
+.nav-tabs > .active > a {
+  background-color:white;
+  color:orange;
+  border: 1px solid white;
+}
+.nav-tabs > .active > a:hover {
+  background-color:#EEE;
+  color:orange;
+}
+.nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover {
+color: #999;
+background-color: #EEE;
+border-color: #EEE;
+}
+.open > .dropdown-menu > li > a:hover {
+display: block;
+color:orange;
+background-color:#EEE;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  background-color:#EEE;
+}
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+  background-color:#EEE;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #EEE;
+  background-image: -moz-linear-gradient(top, #EEE, #EEE);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eee), to(#EEE));
+  background-image: -webkit-linear-gradient(top, #eee, #EEE);
+  background-image: -o-linear-gradient(top, #eee, #EEE);
+  background-image: linear-gradient(to bottom, #eee, #EEE);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeee', endColorstr='#ffEEE', GradientType=0);
+}

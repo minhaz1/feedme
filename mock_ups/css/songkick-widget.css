@@ -1,0 +1,261 @@
+body {
+  font-family: 'Open Sans', 'Lucida Grande', 'Helvetica', sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+  background-color: #FFFFFF;
+  margin-bottom: 1px;
+  margin-left: 20px;
+  margin-right: 20px;
+  overflow-y: hidden;
+}
+
+body.light {
+  background-color: #FFFFFF;
+  color: #000000;
+  text-shadow: 0 1px white;
+}
+
+body.dark {
+  background-color: #000000;
+  color: #FFFFFF;
+  text-shadow: 0 1px black;
+}
+
+h2 {
+  font-size: 15px;
+  font-weight: normal;
+  padding: 0px 10px 0px 10px;
+}
+
+.loading {
+  text-align: center;
+}
+
+.api-error {
+  text-align: center;
+}
+
+.light .api-error a {
+  color: black;
+}
+
+.dark .api-error a {
+  color: white;
+}
+
+.loading.hide,
+.api-error.hide,
+.hide {
+  display: none;
+}
+
+.loading img {
+  margin: auto;
+}
+
+.event {
+  position: relative;
+}
+
+.light .event-wrap:hover {
+  background-image: url(event-hover-black.png)
+}
+
+.dark .event-wrap:hover {
+  background-image: url(event-hover-white.png)
+}
+
+.event-wrap {
+  padding: 0;
+}
+
+hr.separator {
+  margin: 0;
+  border-width: 0px;
+  height: 2px;
+  background-repeat: repeat-x;
+  background-image: url(divider.png);
+  clear: both;
+}
+
+.event div {
+  vertical-align: top;
+}
+
+.ticket {
+  margin-bottom: 5px;
+  vertical-align: top;
+  position: absolute;
+  top: 28px;
+  right: 0px;
+}
+
+.ticket {
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  padding: 4px 13px 5px 22px;
+  vertical-align: baseline;
+  width: 70px;
+  font-size: inherit;
+}
+
+.link
+{
+  padding: 10px 10px 15px 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.light .link {
+  color: black;
+}
+
+.light .ticket {
+  background-image: url(tickets-black.png);
+}
+
+.dark .link {
+  color: white;
+}
+
+.dark .ticket {
+  background-image: url(tickets-white.png);
+}
+
+.calendar {
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.date-wrap {
+  font-weight: bold;
+  display: inline;
+}
+
+.end.hide,
+.event.hide,
+.no-events.hide,
+.others {
+  display: none;
+}
+
+.location,
+.artists {
+  margin-right: 110px;
+}
+
+.location .venue,
+.location .city,
+.artists span {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+
+.other-artists .location {
+  display: inline-block;
+  margin-right: 0px;
+  width: 35%;
+}
+
+.user-events .artists,
+.user-events .location {
+  display: inline-block;
+  margin-right: 0px;
+  width: 35%;
+}
+
+.user-events .artists span,
+.user-events .location  span {
+  display: block;
+  width: auto;
+}
+
+.other-artists .location .city {
+  display: block;
+}
+
+.other-artists .others {
+  display: inline-block;
+  vertical-align: top;
+  width: 36%;
+}
+
+.other-artists .artists span,
+.other-artists .venue,
+.other-artists .city {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+}
+
+.medium .other-artists .location,
+.medium .other-artists .others {
+  margin-bottom:10px;
+  width: 61%
+}
+
+.narrow .other-artists .location,
+.narrow .other-artists .others {
+  width: auto;
+}
+
+.medium .other-artists .others {
+  display: block;
+}
+
+.cancelled {
+  display: none;
+}
+
+.no-events p {
+  text-align: center;
+}
+
+.powered {
+  padding: 5px;
+  padding-top: 0;
+  margin-top: -2px;
+  height: 20px;
+  background-position: center right;
+  background-repeat: no-repeat;
+  line-height: 20px;
+  vertical-align: middle;
+  text-align: right;
+  width: 200px;
+  float: right;
+}
+
+.powered a {
+  color: black;
+  text-decoration: none;
+}
+
+.powered img {
+  border: none;
+  vertical-align: middle;
+}
+
+body.medium {
+  margin: 0 30px;
+}
+
+.medium .location span {
+  display: block;
+  width: auto;
+}
+
+body.narrow {
+  margin: 0 20px;
+}
+
+.narrow .ticket {
+  margin-top: 5px;
+  position: static;
+  display:block;
+}
+
+.narrow .location {
+  width: auto;
+  margin-right: 0;
+}
