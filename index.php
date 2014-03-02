@@ -9,12 +9,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+  <!-- not sure what this is doing, but it's slowing load times
   <script type="text/javascript">
 //<![CDATA[
     (function() {
     var config = {
       kitId: 'xlf7ili',
-      scriptTimeout: 3000
+      scriptTimeout: 100
     };
     var h = document.getElementsByTagName('html')[0];
     h.className += ' wf-loading';
@@ -39,6 +40,8 @@
     })();
   //]]>
   </script>
+  - end comment-->
+
   <link href="./css/light.10423.css" rel="stylesheet" type="text/css" />
 
   <title></title>
