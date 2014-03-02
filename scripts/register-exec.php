@@ -85,7 +85,7 @@
 	if($errflag) {
 		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 		session_write_close();
-		header("location: register.php");
+		header("location: ../register.php");
 		exit();
 	}
 
@@ -95,7 +95,7 @@
 	
 	//Check whether the query was successful or not
 	if($result) {
-		header("location: index.php");
+		header("location: ../login.php");				
 		exit();
 	}else {
 		die("Query failed");

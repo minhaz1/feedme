@@ -65,7 +65,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 						</div>
 					</div>
 
-					<form action="login-exec.php" data-bind="login-form" id="loginForm" method="post" name="loginForm"
+					<form action="./scripts/login-exec.php" data-bind="login-form" id="loginForm" method="post" name="loginForm"
 					novalidate="novalidate">
 						<div class="control-group text-left">
 							<label class="control-label" for="username">Username</label> 

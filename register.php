@@ -69,7 +69,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 						</div>
 					</div>
 
-					<form action="register-exec.php" id="loginForm" method="post" name="loginForm">
+					<form action="./scripts/register-exec.php" id="loginForm" method="post" name="loginForm">
 						<div class="control-group text-left">
 							<label class="control-label" for="email">Email</label> <input class="input-with-feedback"
 							id="email" name="email" type="text" value="" />
