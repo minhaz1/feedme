@@ -281,7 +281,7 @@
             </div>
           </div>
 
-          <div class="col-span-3" data-hotitem="board,361370">
+          <a href="kfc.html"><div class="col-span-3" data-hotitem="board,361370">
             <div class="shade2 board-preview">
               <div class="img-wrap">
                 <img alt="" src="./images/kfc.jpeg" width="270" />
@@ -313,6 +313,7 @@
               </div>
             </div>
           </div>
+          </a>
 
           <div class="col-span-3" data-hotitem="board,361370">
             <div class="shade2 board-preview">
