@@ -1,0 +1,36 @@
+#headerWrapper {
+	height: 200px;
+	border: 3px solid yellow;
+	width: 100%;
+	top: 0;
+	/*background-image: url("../images/headerWrapper.png");*/
+	text-align: left;
+	display: inline-block;
+}
+
+.global-header .container{
+	width 980px;
+	}
+#headerLeft {
+	height: 100%;
+	width: 30%;
+	border: 1px solid red;
+}
+
+
+#headerRight {
+	height: 100%;
+	width: 30%;
+	border: 1px solid yellow;
+	text-align: rigth;
+	top: 0;
+}
+
+#footerWrapper {
+	height: 50px;
+	border: 1px solid black;
+	bottom: 0;
+	position: fixed;
+	width: 80%;
+	margin-left: 10%;
+}

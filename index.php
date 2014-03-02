@@ -1,5 +1,5 @@
 <?php
-  //Start session
+  //vStart session
   session_start();
 
 ?>
