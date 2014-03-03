@@ -6,6 +6,17 @@
 		header("location: index.php");
 		exit();
 	}
+
+	function getErrs($field){
+		if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){								$ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
+			if(isset($ERRMSG_ARR[$field])){
+				echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
+			}
+		unset($ERRMSG_ARR[$field]);
+		//unset($_SESSION['ERRMSG_ARR']);
+		}
+	}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -32,14 +43,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 		include_once('navbar.php');
 
 		// for errors
-		if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
-			echo '<ul class="err">';
-			foreach($_SESSION['ERRMSG_ARR'] as $msg) {
-				echo '<li>',$msg,'</li>'; 
-			}
-			echo '</ul>';
-			unset($_SESSION['ERRMSG_ARR']);
-		}
+		// if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+		// 	echo '<ul class="err">';
+		// 	foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+		// 		echo '<li>',$msg,'</li>'; 
+		// 	}
+		// 	echo '</ul>';
+		// 	unset($_SESSION['ERRMSG_ARR']);
+		// }
 	?>
 	<div class="clearpage container" id="wrapper">
 		<div class="row clearpage-box">
@@ -71,27 +82,36 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 					<form action="./scripts/register-exec.php" id="loginForm" method="post" name="loginForm">
 						<div class="control-group text-left">
-							<label class="control-label" for="email">Email</label> <input class="input-with-feedback"
+							<label class="control-label" for="email"> Email
+							<?php getErrs('email'); // check for errs?>
+							</label> <input class="input-with-feedback"
 							id="email" name="email" type="text" value="" />
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="username">Username</label> <input class=
-							"input-with-feedback" id="login" name="login" type="text" value="" />
+							<label class="control-label" for="username">Username
+								<?php getErrs('login'); // check for errs?>
+							</label> <input class="input-with-feedback" id="login" name="login" type="text" value="" />
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="fname">First name</label> 
+							<label class="control-label" for="fname">First name
+								<?php getErrs('fname'); // check for errs?>
+							</label> 
 							<input class="input-with-feedback" id="fname" name="fname" type="text" value="" />
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="lname">Lastname</label> <input class=
+							<label class="control-label" for="lname">Lastname
+								<?php getErrs('lname'); // check for errs?>
+							</label> <input class=
 							"input-with-feedback" id="lname" name="lname" type="text" value="" />
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="passwd">Password</label> <input class=
+							<label class="control-label" for="passwd">Password
+								<?php getErrs('password'); // check for errs?>
+							</label> <input class=
 							"input-with-feedback" id="password" name="password" type="password" value="" />
 						</div>
 
@@ -286,5 +306,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<div class="modal-content" data-bind="modal-content"></div>
 		</div>
 	</div>
+	<?php unset($_SESSION['ERRMSG_ARR']); ?>
 </body>
 </html>

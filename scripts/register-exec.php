@@ -36,32 +36,37 @@
 	$fname = clean($_POST['fname']);
 	$lname = clean($_POST['lname']);
 	$login = clean($_POST['login']);
+	$email = clean($_POST['email']);
 	$password = clean($_POST['password']);
 	$cpassword = clean($_POST['cpassword']);
 	
 	//Input Validations
 	if($fname == '') {
-		$errmsg_arr[] = 'First name missing';
+		$errmsg_arr['fname'] = 'First name missing';
 		$errflag = true;
 	}
 	if($lname == '') {
-		$errmsg_arr[] = 'Last name missing';
+		$errmsg_arr['lname'] = 'Last name missing';
 		$errflag = true;
 	}
 	if($login == '') {
-		$errmsg_arr[] = 'Login ID missing';
+		$errmsg_arr['login'] = 'Login ID missing';
+		$errflag = true;
+	}
+	if($email == ''){
+		$errmsg_arr['email'] = 'Email is missing';
 		$errflag = true;
 	}
 	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr['password'] = 'Password missing';
 		$errflag = true;
 	}
 	if($cpassword == '') {
 		$errmsg_arr[] = 'Confirm password missing';
 		$errflag = true;
 	}
-	if( strcmp($password, $cpassword) != 0 ) {
-		$errmsg_arr[] = 'Passwords do not match';
+	if(strcmp($password, $cpassword) != 0 ) {
+		$errmsg_arr['password'] = 'Passwords do not match';
 		$errflag = true;
 	}
 	
@@ -71,7 +76,32 @@
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr[] = 'Login ID already in use';
+				$errmsg_arr[] = 'Username already in use';
+				$errflag = true;
+			}
+			@mysql_free_result($result);
+		}
+		else {
+			die("Query failed");
+		}
+	}
+
+	// grab domain of email
+	list($user, $domain) = explode('@', $email);
+	// if domain is not from umbc, reject
+
+	if ($errmsg_arr['email'] == '' && $domain != 'umbc.edu') {
+	    $errmsg_arr['email'] = 'Invalid email';
+	    $errflag = true;
+	}
+
+	// check for duplicate email and from umbc
+	if($email != '') {
+		$qry = "SELECT * FROM users WHERE email='$email'";
+		$result = mysql_query($qry);
+		if($result) {
+			if(mysql_num_rows($result) > 0) {
+				$errmsg_arr['email'] = 'Email already in use';
 				$errflag = true;
 			}
 			@mysql_free_result($result);
@@ -90,7 +120,7 @@
 	}
 
 	//Create INSERT query
-	$qry = "INSERT INTO users(firstname, lastname, login, passwd) VALUES('$fname','$lname','$login','".md5($_POST['password'])."')";
+	$qry = "INSERT INTO users(firstname, lastname, login, email, passwd) VALUES('$fname','$lname','$login', '$email' ,'".md5($_POST['password'])."')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not

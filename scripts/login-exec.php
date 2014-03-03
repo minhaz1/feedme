@@ -38,11 +38,11 @@
 	
 	//Input Validations
 	if($login == '') {
-		$errmsg_arr[] = 'Login ID missing';
+		$errmsg_arr['login'] = 'Login ID missing';
 		$errflag = true;
 	}
 	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr['password'] = 'Password missing';
 		$errflag = true;
 	}
 	
@@ -72,6 +72,9 @@
 			exit();
 		}else {
 			//Login failed
+			$errmsg_arr['login'] = "Wrong Username or Password";
+			$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+			session_write_close();
 			header("location: ../login.php");
 			exit();
 		}

@@ -6,6 +6,16 @@
 		header("location: index.php");
 		exit();
 	}
+
+	function getErrs($field){
+		if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){								$ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
+			if(isset($ERRMSG_ARR[$field])){
+				echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
+			}
+		unset($ERRMSG_ARR[$field]);
+		// unset($_SESSION['ERRMSG_ARR']);
+		}
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -30,15 +40,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 <body class="" data-base="" id="body">
 	<?php
 	    include_once('navbar.php');
-
-		if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
-			echo '<ul class="err">';
-			foreach($_SESSION['ERRMSG_ARR'] as $msg) {
-				echo '<li>',$msg,'</li>'; 
-			}
-			echo '</ul>';
-			unset($_SESSION['ERRMSG_ARR']);
-		}
 	?>
 	
 	<div class="clearpage container" id="wrapper">
@@ -68,12 +69,16 @@ xmlns="http://www.w3.org/1999/xhtml">
 					<form action="./scripts/login-exec.php" data-bind="login-form" id="loginForm" method="post" name="loginForm"
 					novalidate="novalidate">
 						<div class="control-group text-left">
-							<label class="control-label" for="username">Username</label> 
+							<label class="control-label" for="username">Username
+								<?php getErrs('login'); // check for errs?>
+							</label> 
 							<input class="input-with-feedback" id="login" name="login" type="text" value="" />
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="passwd">Password</label> 
+							<label class="control-label" for="passwd">Password 
+								<?php getErrs('password'); // check for errs?>
+							</label> 
 							<input class="input-with-feedback" id="password" name="password" type="password" />
 
 						</div><input id="ret" name="ret" type="hidden" value="" />
@@ -97,5 +102,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<div class="modal-content" data-bind="modal-content"></div>
 		</div>
 	</div>
+	<?php unset($_SESSION['ERRMSG_ARR']); ?>
 </body>
 </html>
