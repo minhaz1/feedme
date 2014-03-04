@@ -76,7 +76,7 @@
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr[] = 'Username already in use';
+				$errmsg_arr['login'] = 'Username already in use';
 				$errflag = true;
 			}
 			@mysql_free_result($result);
