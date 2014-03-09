@@ -55,30 +55,36 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM users WHERE login='$login' AND passwd='".md5($_POST['password'])."'";
+	$qry="SELECT * FROM users WHERE login='$login'";
 	$result=mysql_query($qry);
 	
-	//Check whether the query was successful or not
+	// check if query succeeded
 	if($result) {
+		// verify that only 1 row is returned
 		if(mysql_num_rows($result) == 1) {
-			//Login Successful
-			session_regenerate_id();
+			//Get value from $results array.
 			$member = mysql_fetch_assoc($result);
-			$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
-			$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
-			$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
-			session_write_close();
-			header("location: ../index.php");
-			exit();
-		}else {
-			//Login failed
-			$errmsg_arr['login'] = "Wrong Username or Password";
-			$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-			session_write_close();
-			header("location: ../login.php");
-			exit();
+
+			// check password match
+			if(password_verify($password, $member['passwd'])){
+				//Login Successful
+				session_regenerate_id();
+				$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
+				$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
+				$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
+				session_write_close();
+				header("location: ../index.php");
+				exit();
+			}
 		}
-	}else {
+		//Login failed
+		$errmsg_arr['login'] = "Wrong Username or Password";
+		$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+		session_write_close();
+		header("location: ../login.php");
+		exit();
+	}
+	else {
 		die("Query failed");
 	}
 ?>

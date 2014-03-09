@@ -120,7 +120,9 @@
 	}
 
 	//Create INSERT query
-	$qry = "INSERT INTO users(firstname, lastname, login, email, passwd) VALUES('$fname','$lname','$login', '$email' ,'".md5($_POST['password'])."')";
+	$hash = password_hash($password, PASSWORD_BCRYPT);
+
+	$qry = "INSERT INTO users(firstname, lastname, login, email, passwd) VALUES('$fname','$lname','$login', '$email' ,'$hash')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not
