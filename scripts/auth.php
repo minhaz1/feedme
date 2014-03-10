@@ -1,4 +1,6 @@
 <?php
+	// NOT CURRENTLY IN USE
+	
 	//Start session
 	session_start();
 	
