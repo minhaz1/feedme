@@ -45,10 +45,20 @@
 		$errmsg_arr['fname'] = 'First name missing';
 		$errflag = true;
 	}
+	//Check to make sure first name only contains alphabetic characters
+	if(preg_match('/^[A-Za-z]+$/', $fname) == 0) {
+		$errmsg_arr['fname'] = 'First name must only contain alphabetic characters';
+		$errflag = true;
+	} 
 	if($lname == '') {
 		$errmsg_arr['lname'] = 'Last name missing';
 		$errflag = true;
 	}
+	//Check to make sure last name only contains alphabetic characters
+	if(preg_match('/^[A-Za-z]+$/', $lname) == 0) {
+		$errmsg_arr['lname'] = 'Last name must only contain alphabetic characters';
+		$errflag = true;
+	} 
 	if($login == '') {
 		$errmsg_arr['login'] = 'Login ID missing';
 		$errflag = true;
