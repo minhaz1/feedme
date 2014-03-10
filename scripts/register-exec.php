@@ -57,6 +57,23 @@
 		$errmsg_arr['email'] = 'Email is missing';
 		$errflag = true;
 	}
+
+	// make sure it is a valid email address with no special chars
+	if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+		// grab domain of email
+		list($user, $domain) = explode('@', $email);
+		// if domain is not from umbc, reject
+		if ($errmsg_arr['email'] == '' && $domain != 'umbc.edu') {
+		    $errmsg_arr['email'] = 'Must be @umbc.edu!';
+		    $errflag = true;
+		}
+	}
+	else{
+		// invalid, reject
+		$errmsg_arr['email'] = 'Invalid email';
+		$errflag = true;
+	}
+
 	if($password == '') {
 		$errmsg_arr['password'] = 'Password missing';
 		$errflag = true;
@@ -76,7 +93,7 @@
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr['login'] = 'Username already in use';
+				$errmsg_arr['login'] = $login . ' is already in use';
 				$errflag = true;
 			}
 			@mysql_free_result($result);
@@ -86,22 +103,13 @@
 		}
 	}
 
-	// grab domain of email
-	list($user, $domain) = explode('@', $email);
-	// if domain is not from umbc, reject
-
-	if ($errmsg_arr['email'] == '' && $domain != 'umbc.edu') {
-	    $errmsg_arr['email'] = 'Invalid email';
-	    $errflag = true;
-	}
-
 	// check for duplicate email and from umbc
 	if($email != '') {
 		$qry = "SELECT * FROM users WHERE email='$email'";
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
-				$errmsg_arr['email'] = 'Email already in use';
+				$errmsg_arr['email'] = $email . ' is already in use';
 				$errflag = true;
 			}
 			@mysql_free_result($result);
@@ -119,7 +127,7 @@
 		exit();
 	}
 
-	//Create INSERT query
+	//encrypt password before storing
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 
 	$qry = "INSERT INTO users(firstname, lastname, login, email, passwd) VALUES('$fname','$lname','$login', '$email' ,'$hash')";
