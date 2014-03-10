@@ -46,7 +46,7 @@
 		$errflag = true;
 	}
 	//Check to make sure first name only contains alphabetic characters
-	if(preg_match('/^[A-Za-z]+$/', $fname) == 0) {
+	else if(preg_match('/^[A-Za-z]+$/', $fname) == 0) {
 		$errmsg_arr['fname'] = 'First name must only contain alphabetic characters';
 		$errflag = true;
 	} 
@@ -55,7 +55,7 @@
 		$errflag = true;
 	}
 	//Check to make sure last name only contains alphabetic characters
-	if(preg_match('/^[A-Za-z]+$/', $lname) == 0) {
+	else if(preg_match('/^[A-Za-z]+$/', $lname) == 0) {
 		$errmsg_arr['lname'] = 'Last name must only contain alphabetic characters';
 		$errflag = true;
 	} 
@@ -69,7 +69,7 @@
 	}
 
 	// make sure it is a valid email address with no special chars
-	if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+	else if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 		// grab domain of email
 		list($user, $domain) = explode('@', $email);
 		// if domain is not from umbc, reject
