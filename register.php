@@ -25,12 +25,6 @@
 "wf-futurapt-n4-active wf-futurapt-n7-active wf-keplerstd-n4-active wf-keplerstd-n7-active wf-museosans-n3-active wf-museosans-n7-active wf-active"
 xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-	<script>
-<![CDATA[
-	var urchinTracker=function(){},_gaq={push:function(){try {if(arguments[0][0]=='_link')window.location.href=arguments[0][1]}catch(er){}}},_gat={_createTracker:function(){}, _getTracker:function(){return{__noSuchMethod__:function(){},_link:function(o){if(o)location.href=o;},_linkByPost:function(){return true;},_getLinkerUrl:function(o){return o;},_trackEvent:function(){}}}};
-	]]>
-	</script>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
 	<title>Join FeedMe</title>
@@ -41,16 +35,6 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<?php
 		// show navigation bar
 		include_once('navbar.php');
-
-		// for errors
-		// if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
-		// 	echo '<ul class="err">';
-		// 	foreach($_SESSION['ERRMSG_ARR'] as $msg) {
-		// 		echo '<li>',$msg,'</li>'; 
-		// 	}
-		// 	echo '</ul>';
-		// 	unset($_SESSION['ERRMSG_ARR']);
-		// }
 	?>
 	<div class="clearpage container" id="wrapper">
 		<div class="row clearpage-box">
@@ -140,149 +124,42 @@ xmlns="http://www.w3.org/1999/xhtml">
 						<div class="control-group text-left">
 							<label class="control-label" for="umbcsince">When did you first arrive at UMBC?</label>
 							<select id="umbcsince" name="profileGenderId">
-								<option value="0">
-									Select a year
-								</option>
-
-								<option value="1980">
-									1980
-								</option>
-
-								<option value="1981">
-									1981
-								</option>
-
-								<option value="1982">
-									1982
-								</option>
-
-								<option value="1983">
-									1983
-								</option>
-
-								<option value="1984">
-									1984
-								</option>
-
-								<option value="1985">
-									1985
-								</option>
-
-								<option value="1986">
-									1986
-								</option>
-
-								<option value="1987">
-									1987
-								</option>
-
-								<option value="1988">
-									1988
-								</option>
-
-								<option value="1989">
-									1989
-								</option>
-
-								<option value="1990">
-									1990
-								</option>
-
-								<option value="1991">
-									1991
-								</option>
-
-								<option value="1992">
-									1992
-								</option>
-
-								<option value="1993">
-									1993
-								</option>
-
-								<option value="1994">
-									1994
-								</option>
-
-								<option value="1995">
-									1995
-								</option>
-
-								<option value="1996">
-									1996
-								</option>
-
-								<option value="1997">
-									1997
-								</option>
-
-								<option value="1998">
-									1998
-								</option>
-
-								<option value="1999">
-									1999
-								</option>
-
-								<option value="2000">
-									2000
-								</option>
-
-								<option value="2001">
-									2001
-								</option>
-
-								<option value="2002">
-									2002
-								</option>
-
-								<option value="2003">
-									2003
-								</option>
-
-								<option value="2004">
-									2004
-								</option>
-
-								<option value="2005">
-									2005
-								</option>
-
-								<option value="2006">
-									2006
-								</option>
-
-								<option value="2007">
-									2007
-								</option>
-
-								<option value="2008">
-									2008
-								</option>
-
-								<option value="2009">
-									2009
-								</option>
-
-								<option value="2010">
-									2010
-								</option>
-
-								<option value="2011">
-									2011
-								</option>
-
-								<option value="2012">
-									2012
-								</option>
-
-								<option value="2013">
-									2013
-								</option>
-
-								<option value="2014">
-									2014
-								</option>
+								<option value="0">Select a year</option>
+								<option value="1980">1980</option>
+								<option value="1981">1981</option>
+								<option value="1982">1982</option>
+								<option value="1983">1983</option>
+								<option value="1984">1984</option>
+								<option value="1985">1985</option>
+								<option value="1986">1986</option>
+								<option value="1987">1987</option>
+								<option value="1988">1988</option>
+								<option value="1989">1989</option>
+								<option value="1990">1990</option>
+								<option value="1991">1991</option>
+								<option value="1992">1992</option>
+								<option value="1993">1993</option>
+								<option value="1994">1994</option>
+								<option value="1995">1995</option>
+								<option value="1996">1996</option>
+								<option value="1997">1997</option>
+								<option value="1998">1998</option>
+								<option value="1999">1999</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
 							</select>
 						</div><label class="checkbox text-left"><input id="newsletter" name="newsletter" type=
 						"checkbox" value="true" /><input id="__checkbox_newsletter" name="__checkbox_newsletter" type=
