@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Upload</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./css/styles.css" rel="stylesheet"/>
+<link href="./css/bootstrap.css" rel="stylesheet"/>
+
+
+</head>
+
+
+<body>
+This button will be placed on every restaurant page.
+    Click it...
+<!-----------------   
+    ***IGNORE***
+
+<div class="container" style="width:800px">
+	<form class="well span8">
+        <div class="row">
+            <div class="span3">
+                <label>Food Item</label> <input class="span3" placeholder="Enter the name of the food item" type="text"> 
+                <label>Image Link</label><input class="span3" placeholder="Place image URL here..." type="text">
+                <label>Enter Tags, Separated By A Space</label> <input class="span3" placeholder="IE: Yum Chicken Poor Animal" type="text"> 
+            </div>
+    
+            <div class="span5">
+                <label>Description</label> 
+                <textarea class="input-xlarge span5" id="message" name="message"
+                rows="10">
+    </textarea>
+            </div><button class="btn btn-primary pull-right" type=
+            "submit">Upload</button>
+        </div>
+    </form>
+</div>
+    
+    
+    
+-------------------------------------------------------------------->
+    <div class="container">
+	<div class="row">
+    <br/><br/><br/>
+        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact" data-original-title>
+          Upload!
+        </a>
+        <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        
+                        <h4 class="panel-title" id="contactLabel" style="text-align:center"><span class="glyphicon glyphicon-info-sign"></span>Ate a new dish? Tell us about it!</h4>
+                    </div>
+                    <form action="#" method="post" accept-charset="utf-8">
+                    <div class="modal-body" style="padding: 5px;">
+                        
+                            <div style="float-left">                       
+                                    <input style="width:530px"class="form-control" name="fooditem" placeholder="Food Item" type="text" required  />
+                            </div>
+                        
+                            <div style="float-left">
+                                <input class="form-control" name="imglink" placeholder="Image Link" type="text" />
+                                 or 
+                              <span style="width:250px;vertical-align:top;height:20px" class="btn btn-file"><input type="file" /></span>
+                            </div >
+                        
+                            <div>
+                                <div  align="center">
+                                    <textarea style="resize:vertical;width:530px" class="form-control" placeholder="Write your item review here...(500 word Limit)" maxlength="500" rows="5"  name="review" required></textarea>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="panel-footer" style="margin-bottom:-14px;" align="center">
+                              <input style="width:530px;" class="form-control" name="subject" placeholder="Enter tags here, sepearated by a space" type="text" required />
+
+                            <input style="float: middle;width:530px" type="submit" class="btn btn-succes" value="Send" />
+                                <!--<span class="glyphicon glyphicon-ok"></span>-->
+                            <input style="float: middle;width:530px" type="reset" class="btn btn-danger" value="Clear" />
+                                <!--<span class="glyphicon glyphicon-remove"></span>-->
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+        
+	</div>
+    
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src = "js/bootstrap.js"></script>
+<script src = "js/jscripts.js"></script>
+
+    
+    </body>
+
+
+
+</html>
