@@ -31,6 +31,11 @@ body{color:#88818d;line-height:1.4em;font-size:125%;font-family:"museo-sans","He
 .board-preview {width:270px;}
 .board-preview .tiles{height:55px;}
 
+.likebutton{padding-right:10px;line-height:40px;position:relative;font-size:0.6em;}
+.board-preview .info .likebutton>a{color:#cfccd0;}
+.board-preview .info .likebutton{color:#cfccd0;}
+.board-preview .info .likebutton>a:hover{color:#3b5998;}
+
 #h7{font-family:"futura-pt",Avenir,Futura,"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:1em;margin:0;}
 
 .imageClip{
