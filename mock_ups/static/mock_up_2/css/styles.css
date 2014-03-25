@@ -119,6 +119,10 @@
  
   /*-------------------------------*/
 
+.topNav{
+    font-size:50px;
+    
+}
  
  .blogShort{ border-bottom:1px solid #ddd;}
 .add{background: #333; padding: 10%; height: 300px;}
@@ -175,7 +179,7 @@
  body{padding-top:10px;}
 
 .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
-
+.makeBlue{background-color: #3B5998}
 img{
 height:150px;
 width:150px
