@@ -1050,3 +1050,71 @@ a.btn:active{color:#fff;text-decoration:none;}
 #widget-generator .option{margin-bottom:20px;}
 #widget-generator .alert{padding:15px 20px;margin-bottom:20px;color:#c09853;background-color:#fcf8e3;border:1px solid #fbeed5;border-radius:4px;text-align:center;}
 #widget-generator .alert-danger{font-size:14px;color:#b94a48;background-color:#f2dede;border-color:#eed3d7;}
+
+
+ul {
+	margin:0px;
+	padding:0px;
+	text-align: center;
+}
+
+li{
+	display:inline;
+	padding-left:0px;
+}
+
+a:link,a:visited{
+	text-align:center;
+	text-decoration:italic;
+	text-transform:uppercase;
+	text-height: 20px;
+	color: gray;
+}
+
+a:hover,a:active {
+	text-decoration:underline;
+}
+
+
+#horizontalmenu ul {
+	margin-top:0px; 
+	margin-left:0px;
+	margin-bottom: 0px;
+}
+
+#horizontalmenu li {
+	float:left; 
+	position:relative;  
+	display:block;
+	height: 20px;
+	text-align: left;
+	text-height: 20px;
+	padding-top: 20px;
+	margin-left: 20px;
+	width: 200px;
+	
+}
+
+
+#horizontalmenu li ul {
+    display:none;
+	position:absolute;
+	padding: 0px;
+}
+
+#horizontalmenu li:hover ul{
+	color:gray;
+	text-decoration:underline;
+    display:block;
+	/*height:10px;*/ 
+	/*width:100px;*/
+	
+}
+
+
+#horizontalmenu li ul li{
+    clear:both;
+	padding-left: 0px;
+	
+
+}
