@@ -1,228 +1,106 @@
-#wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
-}
+<!doctype html>
+<html><head>
+<title>Upload</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./css/styles.css" rel="stylesheet">
+<link href="./css/bootstrap.css" rel="stylesheet">
 
-#sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #000;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
-}
 
-#page-content-wrapper {
-  width: 100%;
-}
+</head>
 
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-.sidebar-nav li {
-  line-height: 40px;
-  text-indent: 20px;
-}
+<body>
+This button will be placed on every restaurant page.
+    Click it...
+<!-----------------   
+    ***IGNORE***
 
-.sidebar-nav li a {
-  color: #999999;
-  display: block;
-  text-decoration: none;
-}
-
-.sidebar-nav li a:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.2);
-  text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-  text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-  height: 65px;
-  line-height: 60px;
-  font-size: 18px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-  color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
-  background: none;
-}
-
-.content-header {
-  height: 65px;
-  line-height: 65px;
-}
-
-.content-header h1 {
-  margin: 0;
-  margin-left: 20px;
-  line-height: 65px;
-  display: inline-block;
-}
-
-#menu-toggle {
-  display: none;
-}
-
-.inset {
-  padding: 20px;
-}
-
-@media (max-width:767px) {
-
-#wrapper {
-  padding-left: 0;
-}
-
-#sidebar-wrapper {
-  left: 0;
-}
-
-#wrapper.active {
-  position: relative;
-  left: 250px;
-}
-
-#wrapper.active #sidebar-wrapper {
-  left: 250px;
-  width: 250px;
-  transition: all 0.4s ease 0s;
-}
-
-#menu-toggle {
-  display: inline-block;
-}
-
-.inset {
-  padding: 15px;
-}
-
-}
-
- 
-  /*-------------------------------*/
-
-.topNav{
-    font-size:50px;
+<div class="container" style="width:800px">
+	<form class="well span8">
+        <div class="row">
+            <div class="span3">
+                <label>Food Item</label> <input class="span3" placeholder="Enter the name of the food item" type="text"> 
+                <label>Image Link</label><input class="span3" placeholder="Place image URL here..." type="text">
+                <label>Enter Tags, Separated By A Space</label> <input class="span3" placeholder="IE: Yum Chicken Poor Animal" type="text"> 
+            </div>
     
-}
- 
- .blogShort{ border-bottom:1px solid #ddd;}
-.add{background: #333; padding: 10%; height: 300px;}
-
-.nav-sidebar { 
-    width: 100%;
-    padding: 8px 0; 
-    border-right: 1px solid #ddd;
-}
-.nav-sidebar a {
-    color: #333;
-    -webkit-transition: all 0.08s linear;
-    -moz-transition: all 0.08s linear;
-    -o-transition: all 0.08s linear;
-    transition: all 0.08s linear;
-}
-.nav-sidebar .active a { 
-    cursor: default;
-    background-color: #34ca78; 
-    color: #fff; 
-}
-.nav-sidebar .active a:hover {
-    background-color: #37D980;   
-}
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis; 
-}
-
-.btn-blog {
-    color: #ffffff;
-    background-color: #37d980;
-    border-color: #37d980;
-    border-radius:0;
-    margin-bottom:10px
-}
-.btn-blog:hover,
-.btn-blog:focus,
-.btn-blog:active,
-.btn-blog.active,
-.open .dropdown-toggle.btn-blog {
-    color: white;
-    background-color:#34ca78;
-    border-color: #34ca78;
-}
- h2{color:#34ca78;}
- .margin10{margin-bottom:10px; margin-right:10px;}
- 
- 
- /*-------------------------------*/
- body{padding-top:10px;}
-
-.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
-.makeBlue{background-color: #3B5998}
-img{
-height:150px;
-width:150px
-}
-
-small {
-display: block;
-line-height: 1.428571429;
-color: black;
-}
-
-/*---------------------------------*/
-
-body { margin-top:20px; }
-.modal-body:not(.two-col) { padding:0px }
-.glyphicon { margin-right:5px; }
-.glyphicon-new-window { margin-left:5px; }
-.modal-body .radio,.modal-body .checkbox {margin-top: 0px;margin-bottom: 0px;}
-.modal-body .list-group {margin-bottom: 0;}
-.margin-bottom-none { margin-bottom: 0; }
-.modal-body .radio label,.modal-body .checkbox label { display:block; }
-.modal-footer {margin-top: 0px;}
-@media screen and (max-width: 325px){
-    .btn-close {
-        margin-top: 5px;
-        width: 100%;
-    }
-    .btn-results {
-        margin-top: 5px;
-        width: 100%;
-    }
-    .btn-vote{
-        margin-top: 5px;
-        width: 100%;
-    }
+            <div class="span5">
+                <label>Description</label> 
+                <textarea class="input-xlarge span5" id="message" name="message"
+                rows="10">
+    </textarea>
+            </div><button class="btn btn-primary pull-right" type=
+            "submit">Upload</button>
+        </div>
+    </form>
+</div>
     
-}
-.modal-footer .btn+.btn {
-    margin-left: 0px;
-}
-.progress {
-    margin-right: 10px;
-}
+    
+    
+-------------------------------------------------------------------->
+    <div class="container">
+	<div class="row">
+    <br><br><br>
+        <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact" data-original-title="">
+          Upload!
+        </a>
+        <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        
+                        <h4 class="panel-title" id="contactLabel" style="text-align:center"><span class="glyphicon glyphicon-info-sign"></span>Ate a new dish? Tell us about it!</h4>
+                    </div>
+                    <form action="#" method="post" accept-charset="utf-8">
+                    <div class="modal-body" style="padding: 5px;">
+                        
+                            <div style="float-left">                       
+                                    <input style="width:530px" class="form-control" name="fooditem" placeholder="Food Item" type="text" required="">
+                            </div>
+                        
+                            <div style="float-left">
+                                <input class="form-control" name="imglink" placeholder="Image Link" type="text">
+                                 or 
+                              <span style="width:250px;vertical-align:top;height:20px" class="btn btn-file btn-default"><input type="file" class="form-control"></span>
+                            </div>
+                        
+                            <div>
+                                <div align="center">
+                                    <textarea style="resize:vertical;width:530px" class="form-control" placeholder="Write your item review here...(500 word Limit)" maxlength="500" rows="5" name="review" required=""></textarea>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="panel-footer" style="margin-bottom:-14px;" align="center">
+                              <input style="width:530px;" class="form-control" name="subject" placeholder="Enter tags here, sepearated by a space" type="text" required="">
+
+                            <input style="float: middle;width:530px" type="submit" class="btn btn-succes form-control btn-default" value="Send">
+                                <!--<span class="glyphicon glyphicon-ok"></span>-->
+                            <input style="float: middle;width:530px" type="reset" class="btn btn-danger form-control" value="Clear">
+                                <!--<span class="glyphicon glyphicon-remove"></span>-->
+                        </div>
+                        
+                        
+                        
+                        
+                    </form></div>
+                </div>
+            </div>
+        </div>
+    
+        
+        
+	</div>
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jscripts.js"></script>
+
+    
+    
+
+
+
+</body></html>
 
 /*---------------------------------*/
 
@@ -233,7 +111,7 @@ body { margin-top:20px; }
      margin-bottom:-60px;
 }
 
-.panel{
+.panelResturant{
     background-image:url("http://www.pouted.com/wp-content/uploads/2013/04/kfc.jpg"); 
     height: 100px;
 }
