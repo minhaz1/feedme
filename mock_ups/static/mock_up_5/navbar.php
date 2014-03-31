@@ -1,3 +1,17 @@
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FeedME CSS -->
+    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+
     <!------------------------ Start of Navbar ------------------------>
     <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
       <div class="container">
