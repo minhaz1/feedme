@@ -63,6 +63,11 @@
 		$errmsg_arr['login'] = 'Login ID missing';
 		$errflag = true;
 	}
+	//Check to make sure login starts with a letter and only contains alphanumeric characters
+	else if(preg_match('/^[A-Za-z]+[A-Za-z0-9]+$/', $login) == 0) {
+		$errmsg_arr['login'] = 'Login must start with a letter and only contain alphanumeric characters';
+		$errflag = true;
+	} 
 	if($email == ''){
 		$errmsg_arr['email'] = 'Email is missing';
 		$errflag = true;
