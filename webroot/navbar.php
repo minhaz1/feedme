@@ -46,7 +46,7 @@
             else{
               // if they are logged in, show their name and logout
               echo "<a href=\"logout.php\" class=\"pull-right navbar-text\">Logout</a>";
-              echo "<a href=\"\" class=\"pull-right navbar-text\">" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a>";
+              echo "<a href=\"profile.php\" class=\"pull-right navbar-text\">" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a>";
             }
 
           ?>            
