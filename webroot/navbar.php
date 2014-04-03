@@ -1,44 +1,56 @@
-  <div id="wrapper">
-    <div class="navbar active" data-bind="main-nav">
-      <div class="container">
-        <button class="navbar-toggle collapsed" data-target=".navbar-responsive-collapse" data-toggle=
-        "collapse" style="font-weight: bold" type="button">×</button> <!-- Logo
-  <img class="hidden-phone" alt="Logo" width="112" height="60">-->
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FeedME CSS -->
+    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
 
-        <div class="nav-collapse navbar-responsive-collapse collapse">
-          <ul class="nav">
-            <li class="active"><a href="index.php"><h1>FEEDME</h1></a></li>
-<!--             <li class="active">
-              <a href="index.php">Home</a>
-            </li> -->
-            <?php
+    <!------------------------ Start of Navbar ------------------------>
+    <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.php">FEEDME</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href=""><span>Home</span></a></li>
+            <li><a href=""><span>About</span></a></li>
+            <li><a href=""><span>Contact</span></a></li>
+              
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Most Active Communities</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Food Types</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Popular</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Random</a></li>
+                </ul>
+            </li>
+          </ul>
+            
+          <?php
             // if they are not logged in, show login/register
             if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID'])) == '') {
               echo 
-              "<li>
-              <a href=\"login.php\"> Login </a>
-              </li>
-
-              <li>
-              <a href=\"register.php\"> Register </a>
-              </li>";
+              "<a href=\"login.php\" class=\"pull-right navbar-text\"><span> Login </span></a>
+              <a href=\"register.php\" class=\"pull-right navbar-text\"><span> Register </span></a>";
             }
             else{
               // if they are logged in, show their name and logout
-              echo "<li class=\"pull-right\"><a href=\"logout.php\">Logout</a></li>";
-              echo "<li class=\"pull-right\"><a>" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a></li>";
+              echo "<a href=\"logout.php\" class=\"pull-right navbar-text\">Logout</a>";
+              echo "<a href=\"\" class=\"pull-right navbar-text\">" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a>";
             }
 
-            ?>
-          </ul>
-        </div><!-- Mobile breadcrumb -->
-
-        <div class="visible-phone" id="current"></div>
-
-        <div id="search">
-          <form action="" data-bind="main-search-submit">
-            <input autocomplete="off" class="icon-search" data-bind="main-search-box" data-provide=
-            "autocompleter" name="searchstring" type="text" />
-          </form>
-        </div>
+          ?>            
+        </div><!--/.nav-collapse -->
       </div>
+    </div>
+    <!------------------------ End of Navbar ------------------------>  
