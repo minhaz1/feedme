@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>Login to FeedMe</title>
+        <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+<body id="body" class="" data-base="">
+
+
+
+<!------------------------ Start of Navbar ------------------------>
+    <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="">FeedMe</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href=""><span>Home</span></a></li>
+            <li><a href=""><span>About</span></a></li>
+            <li><a href=""><span>Contact</span></a></li>
+              
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Most Active Communities</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Food Types</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Popular</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Random</a></li>
+                </ul>
+            </li>
+          </ul>
+            
+          <a href="" class="pull-right navbar-text"><span>Login</span></a>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <!------------------------ End of Navbar ------------------------> 
+
+<div id="wrapper" class="clearpage container" style="font-size:155% !important; font-weight: 300!important; padding-top:5em;">
+    
+    <div class="row clearpage-box">
+	    <div class="col-span-6 col-offset-3">
+	
+	<div class="com-header">
+	  <div class="h1">
+	  		Login to FeedMe</div>
+	</div>
+	
+	<div class="text-center">
+		<div class="mt-large">
+			<div class="btn btn-fb btn-icon btn-block btn-large icon-left" data-bind="facebook-signin"><i class="icon-fb"></i>Facebook Login</div>
+		</div>
+		
+		<div class="divider-stroked">
+		  <div class="divider"></div>
+		  <div class="h6">or</div>
+		</div>
+
+		<form method="post" acceptcharset="UTF-8" name="loginForm" id="loginForm" data-bind="login-form" novalidate="novalidate">
+					
+			<div class="control-group text-left ">
+				<label for="username" class="control-label">
+				
+					Username&nbsp;or&nbsp;Email</label>
+		    	<input class="input-with-feedback" type="text" name="username" id="username" value="">
+			</div>
+			
+			<div class="control-group text-left ">
+				<label for="passwd" class="control-label">
+					Password</label>
+				<input type="password" id="passwd" class="input-with-feedback" name="passwd">
+		    </div>
+			
+			<input type="hidden" name="ret" value="" id="ret"><input type="submit" class="btn btn-large btn-block mt" value="Login with your email!">
+			
+		</form>
+		
+		<div class="h5 mt">
+			<a>
+				Not a member? Join us!</a>
+			<br>
+			<a>
+				Forgotten your password?</a>
+		</div>
+		
+	</div>
+
+
+</div>
+	
+</div>
+</div>
+	<div class="push tiny"></div>
+</div>
+
+
+<div class="modal fade in needsclick" data-bind="modal-wrapper" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" data-bind="modal-content">
+
+    </div>
+  </div>
+</div>
+
+</body></html>
