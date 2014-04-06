@@ -1,13 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html>
+
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<title>Login to FeedMe</title>
-        <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
-    </head>
+	<title>Login FeedMe</title>
+    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	
+<script>
+function validateForm()
+{
+var x=document.forms["loginForm"]["username"].value;
+var atpos=x.indexOf("@umbc.edu");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  alert("Not a valid e-mail address");
+  return false;
+  }
+}
 
-<body id="body" class="" data-base="">
+
+
+function validateForm()
+{
+var x=document.forms["loginForm"]["username"].value;
+if (x==null || x=="")
+  {
+  alert("Username or email must be filled out");
+  return false;
+  }
+  var x=document.forms["loginForm"]["passwd"].value;
+  if (x==null || x=="")
+  {
+  alert("Password must be filled out");
+  return false;
+  }
+  else ( x
+}
+
+
+			
+</script>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,7 +93,7 @@
       </div>
     </div>
     <!------------------------ End of Navbar ------------------------> 
-
+    
 <div id="wrapper" class="clearpage container" style="font-size:155% !important; font-weight: 300!important; padding-top:5em;">
     
     <div class="row clearpage-box">
@@ -62,8 +113,9 @@
 		  <div class="divider"></div>
 		  <div class="h6">or</div>
 		</div>
-
-		<form method="post" acceptcharset="UTF-8" name="loginForm" id="loginForm" data-bind="login-form" novalidate="novalidate">
+	
+	<!-- I put onsubmit="return validateForm() to check for email -->
+		<form method="post" acceptcharset="UTF-8" name="loginForm" onsubmit="return validateForm();" id="loginForm" data-bind="login-form" novalidate="novalidate">
 					
 			<div class="control-group text-left ">
 				<label for="username" class="control-label">
@@ -71,6 +123,14 @@
 					Username&nbsp;or&nbsp;Email</label>
 		    	<input class="input-with-feedback" type="text" name="username" id="username" value="">
 			</div>
+
+			
+			
+			
+		
+			
+			
+			
 			
 			<div class="control-group text-left ">
 				<label for="passwd" class="control-label">
@@ -79,6 +139,8 @@
 		    </div>
 			
 			<input type="hidden" name="ret" value="" id="ret"><input type="submit" class="btn btn-large btn-block mt" value="Login with your email!">
+			
+			
 			
 		</form>
 		
@@ -108,5 +170,7 @@
     </div>
   </div>
 </div>
+	 <script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.js"></script>
 
 </body></html>
