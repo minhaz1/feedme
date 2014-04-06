@@ -4,6 +4,8 @@
 	
 	//Include database connection details
 	require_once('config.php');
+
+	require_once('passwordLib.php');
 	
 	//Array to store validation errors
 	$errmsg_arr = array();
@@ -64,6 +66,10 @@
 		if(mysql_num_rows($result) == 1) {
 			//Get value from $results array.
 			$member = mysql_fetch_assoc($result);
+
+			foreach($member as $key => $value) {
+    				       echo "Key: $key; Value: $value\n";
+			}   
 
 			// check password match
 			if(password_verify($password, $member['passwd'])){
