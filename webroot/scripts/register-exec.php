@@ -4,6 +4,9 @@
 	
 	//Include database connection details
 	require_once('config.php');
+
+	//Include password lib
+	require_once('password.php');
 	
 	//Array to store validation errors
 	$errmsg_arr = array();
