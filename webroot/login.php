@@ -42,7 +42,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 	    include_once('navbar.php');
 	?>
 	
-	<div class="clearpage container" id="wrapper">
+	<div class="clearpage container" id="wrapper" style="font-size:155% !important; font-weight: 300!important; padding-top:5em;"> 
 		<div class="row clearpage-box">
 			<div class="col-span-6 col-offset-3">
 				<div class="com-header">
