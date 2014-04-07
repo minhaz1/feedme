@@ -5,35 +5,68 @@
 <title>User Profile</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="./css/bootstrap.css" rel="stylesheet"/>
-<link href="css/styles.css" rel="stylesheet"/>
+<!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FeedME CSS -->
+    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+    <link href="./css/styles.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
 
 </head>
 
-
-<body class="makeBlue">
+<body style="color:black">
     
         
- <div class="navbar navbar-inner navbar-fixed-top" style="-webkit-border-radius:0px;font-family:sans-serif">
-    
-        <div class="container">
-        <a class="topNav brand" href="/" >Feed Me!                           (Temporary Nav Bar)</a>
+ <!------------------------ Start of Navbar ------------------------>
+    <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="">FeedMe</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href=""><span>Home</span></a></li>
+            <li><a href=""><span>About</span></a></li>
+            <li><a href=""><span>Contact</span></a></li>
+              
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Most Active Communities</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Food Types</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Popular</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Random</a></li>
+                </ul>
+            </li>
+          </ul>
             
+          <a href="" class="pull-right navbar-text"><span>Login</span></a>
+        </div><!--/.nav-collapse -->
       </div>
-    
-     
-</div>
-    
+    </div>
+    <!------------------------ End of Navbar ------------------------> 
        
 <!--------------------------------->
     
   <br>
   <h1></h1>
 <div class="container well" style="width:85%">
-	<div class="row">
+	<div class="row" style="margin-top:10px;">
 
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-3 col-md-3" style="margin-top:30px;" >
 		    <img style="height:100%;width:100%" src="https://pbs.twimg.com/profile_images/3778529164/544b976dc018444e4547dad4d5aabe7b.jpeg" class="img-circle">
+            <br>
+                        <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1"><strong>Edit Profile</strong></button>
+
         </div>
         
         <div class="col-sm-9 col-md-9">
@@ -42,7 +75,7 @@
             <h5>Username: Spiderman123</h5>
             <h5>Gender: Male</h5>
             <h5>Year Arrived: 2011</h5>
-            <h5>Biography: You're not going to believe me. My name is Peter Parker and I am the Spiderman. I live in Queens, NY. I am a science-whiz, and I live with my Uncle Ben and Aunt May. Oh, I dont eat food. I'm not quite sure why I'm here.</h5>
+            <label>Biography: </label><label id="userBio">You're not going to believe me. My name is Peter Parker and I am the Spiderman. I live in Queens, NY. I am a science-whiz, and I live with my Uncle Ben and Aunt May. Oh, I dont eat food. I'm not quite sure why I'm here.</label>
               <div class="pull-left"><h6>Favorite Food Tags:</h6><span class="label label-default">Vegan</span> <span class="label label-primary label-default">Soup</span> <span class="label label-success">Spiders</span>
         </div>
       </div>
@@ -65,14 +98,40 @@
     </div>
 
     
+<div class="modal fade pop-up-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Update Biography:</h4>
+      </div>
+      <div class="modal-body">
+        <textarea id="editBio" rows="4" style="width:97%"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateBio()">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <hr>
     
-    
-    
-    
-    
-    
-    
-    
+    <script type="text/javascript">
+function getDesc(){
+  var x =document.getElementById("userBio");
+  //alert(x.innerHTML); 
+    document.getElementById('editBio').innerHTML = x.innerHTML;
+}
+        //updateBio will be done by server
+  function updateBio(){
+  var y =document.getElementById("editBio");
+  //alert(y.innerHTML); 
+    document.getElementById('userBio').innerHTML = y.innerHTML;
+}      
+        
+        
+</script>
 <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src = "js/bootstrap.js"></script>
 </body>
