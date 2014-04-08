@@ -105,25 +105,25 @@ xmlns="http://www.w3.org/1999/xhtml">
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="profileGenderId">Gender <?php getErrs('gender'); // check for errs?></label> 
-							<select id="gender" name="gender">
+							<label class="control-label" for="profileGenderId">Gender</label> <select id="gender" name=
+							"profileGenderId">
 								<option value="0">
 									Select your gender
 								</option>
 
-								<option value="female">
+								<option value="3">
 									Female
 								</option>
 
-								<option value="male">
+								<option value="2">
 									Male
 								</option>
 							</select>
 						</div>
 
 						<div class="control-group text-left">
-							<label class="control-label" for="umbcsince">When did you first arrive at UMBC? <?php getErrs('yeararrived'); // check for errs?></label>
-							<select id="yeararrived" name="yeararrived">
+							<label class="control-label" for="umbcsince">When did you first arrive at UMBC?</label>
+							<select id="umbcsince" name="profileGenderId">
 								<option value="0">Select a year</option>
 								<option value="1980">1980</option>
 								<option value="1981">1981</option>

@@ -1,3 +1,24 @@
+<?php
+  session_start();
+
+  //Check whether the session variable SESS_MEMBER_ID is present or not
+  //if(isset($_SESSION['SESS_MEMBER_ID'])) {
+  //  header("location: index.php");
+  //  exit();
+  //}
+
+  function getErrs($field){
+    if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){               $ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
+      if(isset($ERRMSG_ARR[$field])){
+        echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
+      }
+    unset($ERRMSG_ARR[$field]);
+    //unset($_SESSION['ERRMSG_ARR']);
+    }
+  }
+
+?>
+
  <!doctype html>
 <html><head>
 <title>Restaurant View</title>
@@ -23,6 +44,8 @@
       }
     </style>
     
+  <?php getErrs('test') ?>;
+
 <script type="text/javascript">
 		$(document).ready(function(){
             <!-- loads the timeline when the page starts -->
@@ -48,46 +71,7 @@
   
 <!------------------------ End of Navbar ------------------------> 
     
-    <!---Modal ---->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Ate a new dish? Tell us about it</h4>
-          </div>
-          <div class="modal-body">
-               <form role="form">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Food Items:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter the food items">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Image Link:</label><input  type="file" onchange="upload(this.files[0])">
-                    <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
-                  </div>
-                  <div>
-                    <div  align="center">
-                        <textarea style="resize:vertical;width:530px" class="form-control" 
-                                  placeholder="Write your item review here...(500 word Limit)" maxlength="500" rows="5"  name="review" required></textarea>
-                    </div>
-                  </div>
-                   <div class="form-group">
-                    <label for="exampleInputEmail1">Enter tags here, separated by a space:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-                  </div>
-                   
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php include_once('submitReview.php') ?>
 
     <!------------------------ Start Resturant Header ------------------------>
     <div class="container">
@@ -305,6 +289,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.js"></script>
+  <?php unset($_SESSION['ERRMSG_ARR']); ?>
 
 </body>
 </html>
