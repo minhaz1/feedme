@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html><head>
 <title>Restaurant View</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,7 +74,7 @@
     </div>
     <!------------------------ End of Navbar ------------------------> 
     
-    <!-- Modal -->
+    <!---Modal ---->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -86,11 +86,11 @@
                <form role="form">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Food Items:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter the food items">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Image Link:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Image Link:</label><input  type="file" onchange="upload(this.files[0])">
+                    <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
                   </div>
                   <div>
                     <div  align="center">
@@ -99,7 +99,7 @@
                     </div>
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputEmail1">Enter tags here, sepearated by a space:</label>
+                    <label for="exampleInputEmail1">Enter tags here, separated by a space:</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
                    
