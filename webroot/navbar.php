@@ -24,9 +24,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href=""><span>Home</span></a></li>
-            <li><a href=""><span>About</span></a></li>
-            <li><a href=""><span>Contact</span></a></li>
-              
+            <li><a href=""><span>About</span></a></li>              
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -37,6 +35,10 @@
                   <li><a href="#">Popular</a></li>
                   <li class="divider"></li>
                   <li><a href="#">Random</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Create a Resturant</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Profile</a></li>
                 </ul>
             </li>
           </ul>

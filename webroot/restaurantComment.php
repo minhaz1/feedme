@@ -27,19 +27,9 @@
                 $('#digital_download').html('Downloading...'); // Show "Downloading..."
                 // Do an ajax request
                 $.ajax({
-                  url: "resturantTimeLine.php?id=restResult"
+                  url: "resturantTimeLine.php?id=resturantTimeLineBody"
                 }).done(function(data) { // data what is sent back by the php page
-                  $('#getThis').html(data); // display data
-                });
-		   });
- 
-		   $("#page2").click(function(){
-                $('#digital_download').html('Downloading...'); // Show "Downloading..."
-                // Do an ajax request
-                $.ajax({
-                  url: "restaurantComment.php?id=result"
-                }).done(function(data) { // data what is sent back by the php page
-                  $('#restResult').html(data); // display data
+                  $('#resturantCommentBody').html(data); // display data
                 });
 		   });
 		 });
@@ -57,7 +47,7 @@
     $id_post = "1"; //the post or the page id
     ?>
     
-    <div class="containers" id="getThis">
+    <div class="containers" id="resturantCommentBody">
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
