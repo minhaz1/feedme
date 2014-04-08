@@ -1,19 +1,13 @@
 <?php
 	//Start session
 	session_start();
-	
-	//Include database connection details
-	require_once('config.php');
 
 	//Include password lib
 	require_once('password.php');
-	
-	//Array to store validation errors
-	$errmsg_arr = array();
-	
-	//Validation error flag
-	$errflag = false;
-	
+
+	//Include database connection details
+	require_once('config.php');
+
 	//Connect to mysql server
 	$link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
 	if(!$link) {
@@ -25,6 +19,12 @@
 	if(!$db) {
 		die("Unable to select database");
 	}
+
+	//Array to store validation errors
+	$errmsg_arr = array();
+	
+	//Validation error flag
+	$errflag = false;
 	
 	//Function to sanitize values received from the form. Prevents SQL injection
 	function clean($str) {
@@ -42,8 +42,12 @@
 	$email = clean($_POST['email']);
 	$password = clean($_POST['password']);
 	$cpassword = clean($_POST['cpassword']);
-	
+	$gender = clean($_POST['gender']);
+	$yeararrived = clean($_POST['yeararrived']);
+
 	//Input Validations
+
+	// validate first name	
 	if($fname == '') {
 		$errmsg_arr['fname'] = 'First name missing';
 		$errflag = true;
@@ -81,7 +85,7 @@
 		// grab domain of email
 		list($user, $domain) = explode('@', $email);
 		// if domain is not from umbc, reject
-		if ($errmsg_arr['email'] == '' && $domain != 'umbc.edu') {
+		if (!isset($errmsg_arr['email']) && $domain != 'umbc.edu') {
 		    $errmsg_arr['email'] = 'Must be @umbc.edu!';
 		    $errflag = true;
 		}
@@ -104,10 +108,41 @@
 		$errmsg_arr['password'] = 'Passwords do not match';
 		$errflag = true;
 	}
-	
+
+	// validate gender
+	if($gender == ''){
+		$errmsg_arr['gender'] = 'Gender missing';
+		$errflag = true;
+	}
+	else if($gender != 'female' && $gender != 'male'){
+		
+		if($gender == '0'){
+			$errmsg_arr['gender'] = "Please select a gender";
+		}
+		else{
+			$errmsg_arr['gender'] = 'Invalid value: ' . $gender;
+		}
+		
+		$errflag = true;
+	}
+
+	if($yeararrived == ''){
+		$errmsg_arr['yeararrived'] = 'Year Arrived is missing';
+		$errflag = true;
+	}
+	else if($yeararrived < "1980" || $yeararrived > "2014"){
+		if($yeararrived == '0'){
+			$errmsg_arr['yeararrived'] = "Please select a year.";
+		}
+		else{
+			$errmsg_arr['yeararrived'] = 'Invalid value: ' . $yeararrived;	
+		}	
+		$errflag = true;
+	}
+
 	//Check for duplicate login ID
 	if($login != '') {
-		$qry = "SELECT * FROM users WHERE login='$login'";
+		$qry = "SELECT * FROM " . USER_TABLE . " WHERE login='$login'";
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
@@ -117,13 +152,14 @@
 			@mysql_free_result($result);
 		}
 		else {
+			echo $qry;
 			die("Query failed");
 		}
 	}
 
 	// check for duplicate email and from umbc
 	if($email != '') {
-		$qry = "SELECT * FROM users WHERE email='$email'";
+		$qry = "SELECT * FROM " . USER_TABLE . " WHERE email='$email'";
 		$result = mysql_query($qry);
 		if($result) {
 			if(mysql_num_rows($result) > 0) {
@@ -148,7 +184,7 @@
 	//encrypt password before storing
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 
-	$qry = "INSERT INTO users(firstname, lastname, login, email, passwd) VALUES('$fname','$lname','$login', '$email' ,'$hash')";
+	$qry = "INSERT INTO " . USER_TABLE . " (firstname, lastname, login, email, password, gender, yeararrived) VALUES('$fname','$lname','$login', '$email' ,'$hash','$gender','$yeararrived')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not

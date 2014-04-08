@@ -7,23 +7,13 @@
 
 	require_once('password.php');
 	
+	require_once('dbconnect.php');
+
 	//Array to store validation errors
 	$errmsg_arr = array();
 	
 	//Validation error flag
 	$errflag = false;
-	
-	//Connect to mysql server
-	$link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
-	if(!$link) {
-		die('Failed to connect to server: ' . mysql_error());
-	}
-	
-	//Select database
-	$db = mysql_select_db(DB_DATABASE);
-	if(!$db) {
-		die("Unable to select database");
-	}
 	
 	//Function to sanitize values received from the form. Prevents SQL injection
 	function clean($str) {
@@ -57,7 +47,7 @@
 	}
 	
 	//Create query
-	$qry="SELECT * FROM users WHERE login='$login'";
+	$qry="SELECT * FROM " . USER_TABLE . " WHERE login='$login'";
 	$result=mysql_query($qry);
 	
 	// check if query succeeded
@@ -65,14 +55,10 @@
 		// verify that only 1 row is returned
 		if(mysql_num_rows($result) == 1) {
 			//Get value from $results array.
-			$member = mysql_fetch_assoc($result);
-
-			foreach($member as $key => $value) {
-    				       echo "Key: $key; Value: $value\n";
-			}   
+			$member = mysql_fetch_assoc($result); 
 
 			// check password match
-			if(password_verify($password, $member['passwd'])){
+			if(password_verify($password, $member['password'])){
 				//Login Successful
 				session_regenerate_id();
 				$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
