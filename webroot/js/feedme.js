@@ -117,8 +117,8 @@ function upload(file) {
         
         
         var link = JSON.parse(xhr.responseText).upload.links.imgur_page;
-        document.querySelector("#IMGLink").value = link;
-        document.querySelector("#IMGLink").innerHTML = link;
+        document.querySelector("#IMGLink").value = link + ".jpg";
+        document.querySelector("#IMGLink").innerHTML = link + ".jpg";
         
         
         
