@@ -29,9 +29,9 @@
             $('#digital_download').html('Downloading...'); // Show "Downloading..."
                 // Do an ajax request
                 $.ajax({
-                  url: "resturantTimeLine.php?id=restResult"
+                  url: "resturantTimeLine.php?id=resturantTimeLineBody"
                 }).done(function(data) { // data what is sent back by the php page
-                  $('#getThis').html(data); // display data
+                  $('#resturantBody').html(data); // display data
                 }); 
 		 });
 	</script>
@@ -278,7 +278,7 @@
           </div>
         </div>
     
-     <div class="containers" id="getThis">
+     <div class="containers" id="resturantBody">
          </div>
         
           

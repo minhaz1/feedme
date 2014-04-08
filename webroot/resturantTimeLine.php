@@ -22,23 +22,23 @@
     <script type="text/javascript">
 		$(document).ready(function(){
     
-		   $("#page1").click(function(){
+		   $("#reviewIDA").click(function(){
                 $('#digital_download').html('Downloading...'); // Show "Downloading..."
                 // Do an ajax request
                 $.ajax({
-                  url: "resturantTimeLine.php?id=restResult"
+                  url: "resturantTimeLine.php?id=resturantCommentBody"
                 }).done(function(data) { // data what is sent back by the php page
-                  $('#getThis').html(data); // display data
+                  $('#restaurantTimeLineBody').html(data); // display data
                 });
 		   });
  
-		   $("#page2").click(function(){
+		   $("#reviewIDB").click(function(){
                 $('#digital_download').html('Downloading...'); // Show "Downloading..."
                 // Do an ajax request
                 $.ajax({
-                  url: "restaurantComment.php?id=result"
+                  url: "restaurantComment.php?id=resturantCommentBody"
                 }).done(function(data) { // data what is sent back by the php page
-                  $('#restResult').html(data); // display data
+                  $('#restaurantTimeLine').html(data); // display data
                 });
 		   });
 		 });
@@ -54,7 +54,7 @@
     $id_post = "1"; //the post or the page id
     ?>
     
-          <div class="container" id="restResult">
+          <div class="container" id="resturantTimeLineBody">
 
             <ul class="timeline">
                 <!-- Start of Review -->
@@ -90,7 +90,7 @@
                       
                    <div class="timeline-footer">
                         <a><i class="glyphicon glyphicon-thumbs-up"></i> 233</a>
-                        <a class="pull-right" id="page2" href="#">Comment</a>
+                        <a class="pull-right" id="reviewIDB" href="#">Comment</a>
                     </div>
                   </div>
                 </li>
@@ -123,7 +123,7 @@
                       
                    <div class="timeline-footer">
                         <a><i class="glyphicon glyphicon-thumbs-up"></i> 344</a> 
-                        <a class="pull-right" id="page2" href="#">Comment</a>
+                        <a class="pull-right" id="reviewIDA" href="#">Comment</a>
                     </div>
                   </div>
                 </li>
