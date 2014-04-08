@@ -317,7 +317,7 @@
     <div class="div-swipe-right" id="swipe-right">
     </div>
     
-    
+    <script src="./js/feedme.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
     <link href="./css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
