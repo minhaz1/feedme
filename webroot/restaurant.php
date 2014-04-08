@@ -1,8 +1,4 @@
-<?php
-  //vStart session
-  session_start();
-?>
-<!doctype html>
+ <!doctype html>
 <html><head>
 <title>Restaurant View</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +9,13 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
     <link href="./css/styles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+     <!-- Optional theme -->
+    <link rel="stylesheet" href="bootstrap/css/maf.css">
+        <link type="text/css" rel="stylesheet" href="css/example.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
+
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -20,14 +23,58 @@
       }
     </style>
     
+<script type="text/javascript">
+		$(document).ready(function(){
+            <!-- loads the timeline when the page starts -->
+            $('#digital_download').html('Downloading...'); // Show "Downloading..."
+                // Do an ajax request
+                $.ajax({
+                  url: "resturantTimeLine.php?id=restResult"
+                }).done(function(data) { // data what is sent back by the php page
+                  $('#getThis').html(data); // display data
+                }); 
+		 });
+	</script>
+</script>
 </head>
 
 
-<body>
+<body >
     
-    <?php include_once('navbar.php') ?>
     
-    <!-- Modal -->
+<!------------------------ Start of Navbar ------------------------>
+    <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="">FeedMe</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href=""><span>Home</span></a></li>
+            <li><a href=""><span>About</span></a></li>
+            <li><a href=""><span>Contact</span></a></li>
+              
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Most Active Communities</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Food Types</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Popular</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Random</a></li>
+                </ul>
+            </li>
+          </ul>
+            
+          <a href="" class="pull-right navbar-text"><span>Login</span></a>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <!------------------------ End of Navbar ------------------------> 
+    
+    <!---Modal ---->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -39,11 +86,11 @@
                <form role="form">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Food Items:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter the food items">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Image Link:</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputPassword1">Image Link:</label><input  type="file" onchange="upload(this.files[0])">
+                    <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
                   </div>
                   <div>
                     <div  align="center">
@@ -52,7 +99,7 @@
                     </div>
                   </div>
                    <div class="form-group">
-                    <label for="exampleInputEmail1">Enter tags here, sepearated by a space:</label>
+                    <label for="exampleInputEmail1">Enter tags here, separated by a space:</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
                    
@@ -256,91 +303,34 @@
     
           </div>
         </div>
+    
+     <div class="containers" id="getThis">
+         </div>
         
           
 
           
-        <div class="container">
-
-            <ul class="timeline">
-                <li>
-                  <div class="timeline-badge primary">
-                      <a>
-                        <i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id="">
-                        </i>
-                      </a>
-                  </div>
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <img class="img-responsive" src="./img/kfc_review_1.jpg" />
-
-                    </div>
-                    <div class="timeline-body">
-                      <p>KFC's Boneless Chicken is a skinless, boneless take on their bone-in Original Recipe fried chicken. According to their research, a majority of people like boneless chicken and this is their effort to appeal to those folks, notwithstanding the fact that they offer chicken strips and have offered a Boneless Filet in the past. a song at the end of the show).</p>
-
-                    </div>
-
-                    <div class="timeline-regiontags">
-                            <span class="label label-default">alice</span> 
-                            <span class="label label-primary">story</span> 
-                            <span class="label label-success">blog</span> 
-                            <span class="label label-info">personal</span> 
-                            <span class="label label-warning">Warning</span>
-                            <span class="label label-danger">Danger</span>
-                    </div>
-                      
-                    <div class="timeline-info">
-                        <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
-                    </div>
-                      
-                   <div class="timeline-footer">
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i> 233</a>
-                        <a class="pull-right">Comment</a>
-                    </div>
-                  </div>
-                </li>
-
-                <li  class="timeline-inverted">
-                  <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <img class="img-responsive" src="./img/kfc_review_2.jpg" />
-
-                    </div>
-                    <div class="timeline-body">
-                      <p>The white meat Boneless Chicken is pretty much the spiritual successor to the Boneless Filet. The breading is not as greasy and noticeably drier than its bone-in counterpart. The lack of fatty skin accounts for the breading's dry aspect. On the plus side, unlike bone-in fried chicken, it's unlikely that you'll have any grease on your face afterwards.</p>
-
-                    </div>
-                      
-                    <div class="timeline-regiontags">
-                            <span class="label label-default">alice</span> 
-                            <span class="label label-primary">story</span> 
-                            <span class="label label-success">blog</span> 
-                            <span class="label label-info">personal</span> 
-                            <span class="label label-warning">Warning</span>
-                            <span class="label label-danger">Danger</span>
-                    </div>
-                      
-                    <div class="timeline-info">
-                        <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
-                    </div>
-                      
-                   <div class="timeline-footer">
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i> 344</a> 
-                        <a class="pull-right">Comment</a>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="clearfix" style="float: none;"></li>
-            </ul>
-        </div>
 
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.js"></script>
+    <div class="div-swipe-left" id="swipe-left">
+    </div>
+    <div class="div-swipe-right" id="swipe-right">
+    </div>
+    
+    <script src="./js/feedme.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
+    <link href="./css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <script src="./js/jquery.fancybox.pack.js"></script> 
+    <link href="./css/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css"></script> 
+    <script src="./js/jquery.fancybox-buttons.js"></script> 
+    <script src="./js/jquery.fancybox-media.js"></script> 
+    <script src="./js/hammer.min.js"></script>
+    <script src="./js/jquery.nanogallery.min.js"></script> 
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
 
-
-
-
-</body></html>
+</body>
+</html>
