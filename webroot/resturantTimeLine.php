@@ -50,7 +50,7 @@
         
     <?php 
     // Connect to the database
-    include('config.php'); 
+    include('scripts/dbconnect.php'); 
     $id_post = "1"; //the post or the page id
     ?>
     
