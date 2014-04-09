@@ -22,141 +22,77 @@
     </div>
     <!------------------------ End of two spaces ------------------------>
     <div class="container">
-      <div class="row">
-        <div class ="col-sm-12">
-          <!------------------------ First Item in row ------------------------> 
-          <div  class="col-lg-3 col-md-6">
-            <div class="shade2 board-preview">
-              <a>
-                <!--<div class="img-wrap">-->
-                <div class="img-wrap max-width">
-                  <img src="./img/five_guys.jpeg" class="img-responsive" alt="" width="270">
-                  <div class="hover-tags">
-                    <div class="bottom-tags">
-                      <span>#steak</span>
-                      <span>#burgers</span>
-                      <span>#highly recommended</span>
-                      <span>#cheap prices</span>
+
+      <!--    Begin php script  -->
+          <?php 
+
+            require('scripts/dbconnect.php');
+
+            $qry = "SELECT R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R";
+            $result = @mysql_query($qry);
+            // Check result
+            // This shows the actual query sent to MySQL, and the error. Useful for debugging.
+            if (!$result) {
+              $message  = 'Invalid query: ' . mysql_error() . "\n";
+              $message .= 'Whole query: ' . $query;
+              die($message);
+            }
+
+            $i = 0;
+            $newRow = false;
+            while($row = mysql_fetch_assoc($result)){
+
+              $name = $row['name'];
+              $image = $row['image'];
+              $upvotes = $row['upvotes'];
+
+              if($i > 3){
+                $i = 0;
+              }
+              if($i == 0){
+                echo "<div class=\"row\">";
+                echo "<div class =\"col-sm-12\">";
+              }
+
+              echo "<div  class=\"col-lg-3 col-md-6\">
+              <div class=\"shade2 board-preview\">
+                <a>
+                  <!--<div class=\"img-wrap\">-->
+                  <div class=\"img-wrap max-width\">
+                    <img src=\"$image\" class=\"img-responsive\" alt=\"\" width=\"270\">
+                    <div class=\"hover-tags\">
+                      <div class=\"bottom-tags\">
+                        <span>#steak</span>
+                        <span>#burgers</span>
+                        <span>#highly recommended</span>
+                        <span>#cheap prices</span>
+                      </div>
+                    </div>
+                    <div class=\"shop-label h6\">
+                      Top Rated
                     </div>
                   </div>
-                  <div class="shop-label h6">
-                    Top Rated
-                  </div>
-                </div>
-              </a>
-              <div class="info">
-                <div class="title" id="h7">
-                  <a> <strong>Five Guys</strong> </a>
-                  <div class="likebutton pull-right" id="h7">
-                    <a><i class="glyphicon glyphicon-thumbs-up"></i></a> 87 
-                    <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                  </div>
-                </div>
-                <!--<div class="heart">
-                  <span>324</span>
-                  <i class="icon-heart"></i>
-                  </div>-->
-              </div>
-            </div>
-          </div>
-          <!------------------------ End of First Item ------------------------> 
-          <!------------------------ Second Item in row ------------------------> 
-          <div class="col-lg-3 col-md-6">
-            <div class="shade2 board-preview">
-              <a>
-                <div class="img-wrap">
-                  <img src="./img/chick_fil_a.jpeg" alt="" class="img-responsive" width="270">
-                  <div class="hover-tags">
-                    <div class="bottom-tags">
-                      <span>#steak</span>
-                      <span>#burgers</span>
-                      <span>#highly recommended</span>
-                      <span>#cheap prices</span>
+                </a>
+                <div class=\"info\">
+                  <div class=\"title\" id=\"h7\">
+                    <a> <strong>$name</strong> </a>
+                    <div class=\"likebutton pull-right\" id=\"h7\">
+                      <a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
+                      <a><i class=\"glyphicon glyphicon-thumbs-down\"></i></a>
                     </div>
-                  </div>
-                  <div class="shop-label h6">
-                    Top Rated
-                  </div>
-                </div>
-              </a>
-              <div class="info">
-                <div class="title" id="h7">
-                  <a> <strong>Chick-fil-A</strong> </a>
-                  <div class="likebutton pull-right" id="h7">
-                    <a><i class="glyphicon glyphicon-thumbs-up"></i></a> 65 
-                    <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!------------------------ End of Second Item ------------------------> 
-          <!------------------------ Third Item in row ------------------------> 
-          <div class="col-lg-3 col-md-6">
-            <div class="shade2 board-preview">
-              <a>
-                <div class="img-wrap">
-                  <img src="./img/taco_bell.jpeg" alt="" class="img-responsive" width="270">
-                  <div class="hover-tags">
-                    <div class="bottom-tags">
-                      <span>#steak</span>
-                      <span>#burgers</span>
-                      <span>#highly recommended</span>
-                      <span>#cheap prices</span>
-                    </div>
-                  </div>
-                  <div class="shop-label h6">
-                    Top Rated
-                  </div>
-                </div>
-              </a>
-              <div class="info">
-                <div class="title" id="h7">
-                  <a> <strong>Taco Bell</strong> </a>
-                  <div class="likebutton pull-right" id="h7">
-                    <a><i class="glyphicon glyphicon-thumbs-up"></i></a> 43 
-                    <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!------------------------ End of Third Item ------------------------> 
-          <!------------------------ Foruth Item in row ------------------------> 
-          <div class="col-lg-3 col-md-6">
-            <div class="shade2 board-preview">
-              <a>
-                <div class="img-wrap">
-                  <img src="./img/mcdonalds.jpeg" alt="" class="img-responsive" width="270">
-                  <div class="hover-tags">
-                    <div class="bottom-tags">
-                      <span>#steak</span>
-                      <span>#burgers</span>
-                      <span>#highly recommended</span>
-                      <span>#cheap prices</span>
-                    </div>
-                  </div>
-                  <div class="shop-label h6">
-                    Top Rated
-                  </div>
-                </div>
-              </a>
-              <div class="info">
-                <div class="title" id="h7">
-                  <a> <strong>Mcdonalds</strong> </a>
-                  <div class="likebutton pull-right" id="h7">
-                    <a><i class="glyphicon glyphicon-thumbs-up"></i></a> 23 
-                    <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!------------------------ End of Fourth Item ------------------------> 
-        </div>
-        <!-- /col-sm-12 -->
-      </div>
-      <!-- /row -->
+            </div>"; 
+
+              if($i == 3){
+                echo "</div>";
+                echo "</div>";
+                $i = 0;
+              }
+              $i = $i + 1;   
+            }
+          ?>
     </div>
     <!-- /container -->
     <!-- Bootstrap core JavaScript
