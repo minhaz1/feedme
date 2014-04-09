@@ -114,7 +114,7 @@
                                 </div>
                                 <div class=\"timeline-info\">
                                     <span class=\"badge\">
-                                        Posted by <a style=\"color:black\" href=\"\">" . $username . " </a> on " . $date . "
+                                        Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
                                     </span>
                                 </div>
                                 <div class=\"timeline-footer\">

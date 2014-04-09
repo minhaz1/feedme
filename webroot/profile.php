@@ -1,6 +1,55 @@
 <?php
-  //verify they are logged in, if not redirect them to home
-  require('scripts/auth.php');
+
+  //Start session
+  session_start();
+
+  // require('scripts/auth.php');
+    
+  $login = "";
+
+  if(!isset($_GET['userid'])){
+
+    // if user is getting to profile.php without params or being logged in, redirect
+    if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {
+      header("location: index.php");
+      exit();
+    }
+
+    $firstname = $_SESSION['SESS_FIRST_NAME'];
+    $lastname = $_SESSION['SESS_LAST_NAME'];
+    $login = $_SESSION['SESS_LOGIN'];
+    $biography = $_SESSION['SESS_BIO'];
+    $gender = $_SESSION['SESS_GENDER'];
+    $year = $_SESSION['SESS_YEAR_ARRIVED'];
+    $member_id = $_SESSION['SESS_MEMBER_ID'];
+  }
+  else{
+      // connect to db
+      require('scripts/dbconnect.php');
+      // set variable for which user's info to get
+      $login = $_GET['userid'];
+      // query to get data for user
+      $qry="SELECT * FROM " . USER_TABLE . " WHERE login='$login'";
+
+      $result=@mysql_query($qry);
+
+      // if succeeded, set variables for the user
+      if($result) {
+
+        // verify that only 1 row is returned
+        if(mysql_num_rows($result) == 1) {
+          $member = mysql_fetch_assoc($result); 
+          $firstname = $member['firstname'];
+          $lastname = $member['lastname'];
+          $login = $member['login'];
+          $biography = $member['biography'];
+          $gender = $member['gender'];
+          $year = $member['yeararrived'];
+          $member_id = $member['member_id'];
+        }
+      }
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,13 +72,13 @@
         <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1"><strong>Edit Profile</strong></button>
         </div>
         <div class="col-sm-9 col-md-9">
-          <h1 align="center"><?php echo $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] ?></h1>
+          <h1 align="center"><?php echo $firstname . " " . $lastname ?></h1>
           <br>
-          <h5>Username: Spiderman123</h5>
-          <h5>Gender: Male</h5>
-          <h5>Year Arrived: 2011</h5>
+          <h5>Username: <?php echo $login ?></h5>
+          <h5>Gender: <?php echo $gender ?></h5>
+          <h5>Year Arrived: <?php echo $year ?></h5>
            <br>
-            <h5>Biography: </h5><h5 id="userBio">You're not going to believe me. My name is Peter Parker and I am the Spiderman. I live in Queens, NY. I am a science-whiz, and I live with my Uncle Ben and Aunt May. Oh, I dont eat food. I'm not quite sure why I'm here.</h5>
+            <h5>Biography: </h5><h5 id="userBio"><?php echo $biography ?></h5>
             <br>
             <br>
           <div class="pull-left">

@@ -6,7 +6,7 @@
 
 	require_once('password.php');
 	
-	require_once('dbconnect.php');
+	require('dbconnect.php');
 
 	// users previous URL
 	$redirect_url = $_SERVER['HTTP_REFERER'];
@@ -66,6 +66,10 @@
 				$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
 				$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
 				$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
+				$_SESSION['SESS_LOGIN'] = $member['login'];
+				$_SESSION['SESS_BIO'] = $member['biography'];
+				$_SESSION['SESS_GENDER'] = $member['gender'];
+				$_SESSION['SESS_YEAR_ARRIVED'] = $member['yeararrived'];
 				session_write_close();
 				header("location: " . $redirect_url);
 				exit();
