@@ -1,7 +1,7 @@
 <?php
 
 	//Include database connection details
-	require_once('config.php');
+	require_once('params.php');
 
 	//Connect to mysql server
 	$link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);

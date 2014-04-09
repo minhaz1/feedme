@@ -4,4 +4,5 @@
     define('DB_PASSWORD', 'team1');
     define('DB_DATABASE', 'feedme');
 	define('USER_TABLE', 'users');
+	define('RES_REVIEWS', 'restaurant_review');
 ?>
