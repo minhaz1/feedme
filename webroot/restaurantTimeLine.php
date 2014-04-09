@@ -80,6 +80,7 @@
                     $review_text = $row['description'];
                     $username = $row['login'];
                     $date = $row['reviewdate'];
+                    $helpfulnessscore = $row['helpfulnessscore'];
                     
                     if($inverted == False){
                         $side = "";
@@ -118,7 +119,7 @@
                                 </div>
                                 <div class=\"timeline-footer\">
                                     <a>
-                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i> 233</a>
+                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>
                                         <a class=\"pull-right\" id=\"reviewIDB\" href=\"#\">Comment</a>
                                 </div>
                             </div>
