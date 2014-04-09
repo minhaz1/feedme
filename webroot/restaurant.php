@@ -20,16 +20,18 @@
 
   require('scripts/dbconnect.php'); 
 
-  // 
-  if(!isset($_GET['resid'])){
-    $resid = $_SESSION['resid'];
+  $resid = "";
+   
+  if(isset($_GET['resid'])){
+    $resid = $_GET['resid'];
+    $_SESSION['resid'] = $resid;
   }
   else if(!isset($_SESSION['resid'])){
     header("location: index.php");        
     exit();
   }
   else{
-    $resid = $_GET['resid'];
+    $resid = $_SESSION['resid'];
   }
 
   $_SESSION['resid'] = $resid;
@@ -183,7 +185,7 @@
                                 <br>
 
                                 <i class="glyphicon glyphicon-globe"></i>
-                                <a href=<?php echo "\"" . $url . "\"" ?> >
+                                <a href=<?php echo "\"http://" . $url . "\"" ?> >
                                     <?php echo $url ?>
                                 </a>
                                 <br>
