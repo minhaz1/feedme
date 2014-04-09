@@ -44,8 +44,6 @@
       }
     </style>
     
-  <?php getErrs('test') ?>;
-
 <script type="text/javascript">
 		$(document).ready(function(){
             <!-- loads the timeline when the page starts -->
@@ -262,8 +260,10 @@
           </div>
         </div>
     
-     <div class="containers" id="resturantBody">
-         </div>
+     <!-- disabling ajax stuff for now until it's fully functionable -->
+     <!-- <div class="containers" id="resturantBody"> -->
+     <?php include_once('restaurantTimeLine.php'); ?>
+    </div>
         
           
 

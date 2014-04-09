@@ -51,82 +51,82 @@
     <?php 
     // Connect to the database
     include('scripts/dbconnect.php'); 
+
     $id_post = "1"; //the post or the page id
     ?>
-    
+
           <div class="container" id="resturantTimeLineBody">
 
             <ul class="timeline">
                 <!-- Start of Review -->
-                <li>
-                  <div class="timeline-badge primary">
-                      <a>
-                        <i class="glyphicon glyphicon-record" rel="tooltip" title="11 hours ago via Twitter" id="">
-                        </i>
-                      </a>
-                  </div>
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <img class="img-responsive" src="./img/kfc_review_1.jpg" />
+            <?php 
+                //$resid = $_GET['resid'];
 
-                    </div>
-                    <div class="timeline-body">
-                      <p>KFC's Boneless Chicken is a skinless, boneless take on their bone-in Original Recipe fried chicken. According to their research, a majority of people like boneless chicken and this is their effort to appeal to those folks, notwithstanding the fact that they offer chicken strips and have offered a Boneless Filet in the past. a song at the end of the show).</p>
+                    //Create query
+                $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, U.login
+                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id";
 
-                    </div>
+                $result=@mysql_query($qry);
 
-                    <div class="timeline-regiontags">
-                            <span class="label label-default">alice</span> 
-                            <span class="label label-primary">story</span> 
-                            <span class="label label-success">blog</span> 
-                            <span class="label label-info">personal</span> 
-                            <span class="label label-warning">Warning</span>
-                            <span class="label label-danger">Danger</span>
-                    </div>
-                      
-                    <div class="timeline-info">
-                        <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
-                    </div>
-                      
-                   <div class="timeline-footer">
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i> 233</a>
-                        <a class="pull-right" id="reviewIDB" href="#">Comment</a>
-                    </div>
-                  </div>
-                </li>
+                    //Check whether the query was successful or not
+                if(!$result) {
+                    die("Query failed". $qry);
+                }
 
-                <!-- Start of Review -->
-                <li  class="timeline-inverted">
-                  <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record invert" rel="tooltip" title="11 hours ago via Twitter" id=""></i></a></div>
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <img class="img-responsive" src="./img/kfc_review_2.jpg" />
+                $inverted = False;
+                while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 
-                    </div>
-                    <div class="timeline-body">
-                      <p>The white meat Boneless Chicken is pretty much the spiritual successor to the Boneless Filet. The breading is not as greasy and noticeably drier than its bone-in counterpart. The lack of fatty skin accounts for the breading's dry aspect. On the plus side, unlike bone-in fried chicken, it's unlikely that you'll have any grease on your face afterwards.</p>
+                    $image = $row['foodimage'];
+                    $review_text = $row['description'];
+                    $username = $row['login'];
+                    $date = $row['reviewdate'];
+                    
+                    if($inverted == False){
+                        $side = "";
+                        $inverted = True;
+                    }
+                    else{
+                        $side = "timeline-inverted";
+                        $inverted = False;
+                    }
 
-                    </div>
-                      
-                    <div class="timeline-regiontags">
-                            <span class="label label-default">alice</span> 
-                            <span class="label label-primary">story</span> 
-                            <span class="label label-success">blog</span> 
-                            <span class="label label-info">personal</span> 
-                            <span class="label label-warning">Warning</span>
-                            <span class="label label-danger">Danger</span>
-                    </div>
-                      
-                    <div class="timeline-info">
-                        <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
-                    </div>
-                      
-                   <div class="timeline-footer">
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i> 344</a> 
-                        <a class="pull-right" id="reviewIDA" href="#">Comment</a>
-                    </div>
-                  </div>
-                </li>
+                    echo "<li class=\"" . $side . "\">
+                            <div class=\"timeline-badge primary\">
+                                <a>
+                                    <i class=\"glyphicon glyphicon-record\" rel=\"tooltip\" title=\"" . $date . "\" id=\"\"></i>
+                                </a>
+                            </div>
+                            <div class=\"timeline-panel\">
+                                <div class=\"timeline-heading\">
+                                    <img class=\"img-responsive\" src=\"" . $image . "\" />
+                                </div>
+                                <div class=\"timeline-body\">
+                                    <p>" . $review_text . ".</p>
+                                </div>
+                                <div class=\"timeline-regiontags\">
+                                    <span class=\"label label-default\">alice</span>
+                                    <span class=\"label label-primary\">story</span>
+                                    <span class=\"label label-success\">blog</span>
+                                    <span class=\"label label-info\">personal</span>
+                                    <span class=\"label label-warning\">Warning</span>
+                                    <span class=\"label label-danger\">Danger</span>
+                                </div>
+                                <div class=\"timeline-info\">
+                                    <span class=\"badge\">
+                                        Posted by <a style=\"color:black\" href=\"\">" . $username . " </a> on " . $date . "
+                                    </span>
+                                </div>
+                                <div class=\"timeline-footer\">
+                                    <a>
+                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i> 233</a>
+                                        <a class=\"pull-right\" id=\"reviewIDB\" href=\"#\">Comment</a>
+                                </div>
+                            </div>
+                        </li>";
+
+                }
+            ?>
+
 
                 <li class="clearfix" style="float: none;"></li>
             </ul>
