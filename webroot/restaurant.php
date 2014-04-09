@@ -7,17 +7,6 @@
   //  exit();
   //}
 
-  function getErrs($field){
-    if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){
-      $ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
-      if(isset($ERRMSG_ARR[$field])){
-        echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
-      }
-    unset($ERRMSG_ARR[$field]);
-    //unset($_SESSION['ERRMSG_ARR']);
-    }
-  }
-
   require('scripts/dbconnect.php'); 
 
   $resid = "";

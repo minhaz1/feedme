@@ -25,12 +25,6 @@
 "wf-futurapt-n4-active wf-futurapt-n7-active wf-keplerstd-n4-active wf-keplerstd-n7-active wf-museosans-n3-active wf-museosans-n7-active wf-active"
 xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-	<script>
-<![CDATA[
-	var urchinTracker=function(){},_gaq={push:function(){try {if(arguments[0][0]=='_link')window.location.href=arguments[0][1]}catch(er){}}},_gat={_createTracker:function(){}, _getTracker:function(){return{__noSuchMethod__:function(){},_link:function(o){if(o)location.href=o;},_linkByPost:function(){return true;},_getLinkerUrl:function(o){return o;},_trackEvent:function(){}}}};
-	]]>
-	</script>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
 	<title>Login to FeedMe</title>

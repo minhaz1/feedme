@@ -8,6 +8,9 @@
 	
 	require_once('dbconnect.php');
 
+	// users previous URL
+	$redirect_url = $_SERVER['HTTP_REFERER'];
+
 	//Array to store validation errors
 	$errmsg_arr = array();
 	
@@ -64,7 +67,7 @@
 				$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
 				$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
 				session_write_close();
-				header("location: ../index.php");
+				header("location: " . $redirect_url);
 				exit();
 			}
 		}
