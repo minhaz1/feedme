@@ -28,7 +28,7 @@
 
             require('scripts/dbconnect.php');
 
-            $qry = "SELECT R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R";
+            $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R";
             $result = @mysql_query($qry);
             // Check result
             // This shows the actual query sent to MySQL, and the error. Useful for debugging.
@@ -42,6 +42,7 @@
             $newRow = false;
             while($row = mysql_fetch_assoc($result)){
 
+              $resid = $row['resid'];
               $name = $row['name'];
               $image = $row['image'];
               $upvotes = $row['upvotes'];
@@ -59,7 +60,9 @@
                 <a>
                   <!--<div class=\"img-wrap\">-->
                   <div class=\"img-wrap max-width\">
+                  <a href=\"restauraunt.php?resid=$resid\">
                     <img src=\"$image\" class=\"img-responsive\" alt=\"\" width=\"270\">
+                  </a>
                     <div class=\"hover-tags\">
                       <div class=\"bottom-tags\">
                         <span>#steak</span>
@@ -93,6 +96,7 @@
               $i = $i + 1;   
             }
           ?>
+          <!-- end PHP script -->
     </div>
     <!-- /container -->
     <!-- Bootstrap core JavaScript
