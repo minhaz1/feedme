@@ -60,11 +60,11 @@
             <ul class="timeline">
                 <!-- Start of Review -->
             <?php 
-                //$resid = $_GET['resid'];
+                $resid = $_SESSION['resid'];
 
                     //Create query
                 $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, U.login
-                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id";
+                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid'";
 
                 $result=@mysql_query($qry);
 

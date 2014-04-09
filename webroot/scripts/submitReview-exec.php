@@ -27,6 +27,7 @@
 	$title = clean($_POST['title']);
 	$imglink = clean($_POST['IMGlink']);
 	$review = clean($_POST['review']);
+	$resid = clean($_POST['resid']);
 	
 	//Input Validations
 	if($title == '') {
@@ -68,13 +69,14 @@
 		exit();
 	}
 	$memid = $_SESSION['SESS_MEMBER_ID'];
-	$qry = "INSERT INTO restaurant_review (resid, title, member_id, description, foodimage, helpfulnessscore) VALUES(1,'$title','$memid', '$review', '$imglink', 0)";
+	$qry = "INSERT INTO " . RES_REVIEWS . " (resid, title, member_id, description, foodimage, helpfulnessscore) VALUES('$resid','$title','$memid', '$review', '$imglink', 0)";
 	$result = @mysql_query($qry);
 	
 	//die($qry);
 
 	//Check whether the query was successful or not
 	if($result) {
+		$_SESSION['resid'] = $resid;
 		header("location: ../restaurant.php");				
 		exit();
 	}else {

@@ -60,7 +60,7 @@
                 <a>
                   <!--<div class=\"img-wrap\">-->
                   <div class=\"img-wrap max-width\">
-                  <a href=\"restauraunt.php?resid=$resid\">
+                  <a href=\"restaurant.php?resid=$resid\">
                     <img src=\"$image\" class=\"img-responsive\" alt=\"\" width=\"270\">
                   </a>
                     <div class=\"hover-tags\">

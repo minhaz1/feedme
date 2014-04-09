@@ -26,7 +26,8 @@
                     <label for="exampleInputEmail1">Enter tags here, separated by a space:</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
-                   
+
+                  <input type="hidden" name="resid" value=<?php echo "\"" .  $_SESSION['resid'] . "\""?>>                   
                   <button type="submit" class="btn btn-default">Submit</button>
                 </form>
             

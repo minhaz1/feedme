@@ -8,7 +8,8 @@
   //}
 
   function getErrs($field){
-    if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){               $ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
+    if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){
+      $ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
       if(isset($ERRMSG_ARR[$field])){
         echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
       }
@@ -16,6 +17,38 @@
     //unset($_SESSION['ERRMSG_ARR']);
     }
   }
+
+  require('scripts/dbconnect.php'); 
+
+  // 
+  if(!isset($_GET['resid'])){
+    $resid = $_SESSION['resid'];
+  }
+  else if(!isset($_SESSION['resid'])){
+    header("location: index.php");        
+    exit();
+  }
+  else{
+    $resid = $_GET['resid'];
+  }
+
+  $_SESSION['resid'] = $resid;
+
+  //Create query
+  $qry = "SELECT name, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
+  $result=@mysql_query($qry);
+
+  if(!$result) {
+    die("Query failed". $qry);
+  } 
+
+  $restaurant = mysql_fetch_assoc($result); 
+
+  $name = $restaurant['name'];
+  $phone = $restaurant['phone'];
+  $address = $restaurant['address'];
+  $url = $restaurant['url'];
+  $image = $restaurant['image'];
 
 ?>
 
@@ -55,6 +88,24 @@
                   $('#resturantBody').html(data); // display data
                 }); 
 		 });
+
+      $("#reviewForm").submit(function(event) {
+
+      /* stop form from submitting normally */
+      event.preventDefault();
+
+      /* get some values from elements on the page: */
+      var $form = $( this ),
+          url = $form.attr( 'action' );
+
+      /* Send the data using post */
+      var posting = $.post( url, { title: $('#title').val(), IMGLink: $('#IMGLink').val(), review: $('#review').val(), resid: $('#resid') } );
+
+      /* Put the results in a div */
+      posting.done(function( data ) {
+        alert('success');
+      });
+    });
 	</script>
 </script>
 </head>
@@ -78,10 +129,10 @@
 	       <div class="row well">
                
             <div class="col-md-12">
-                <div class="panel panelResturant">
+                <div class="panel panelResturant"> <img class="panel panelResturant" src=<?php echo "\"" . $image . "\"" ?>> </img>
                 </div>
                 <div class="name">
-                    KFC
+                    <?php echo $name ?>
                 </div>
                 
                 <br><br><br>
@@ -121,19 +172,19 @@
                         <div class="btn-toolbar well well-sm resturant-sub" 
                              role="toolbar"  style="margin:0px;">
                             <div id="a1" class="btn-group col-md-12">
-                                <h1>Atwater's Market</h1>
+                                <h1><?php echo $name ?></h1>
                                 <cite>
-                                    815 Frederick Road. Catonsville, Maryland 21228
+                                    <?php echo $address ?>
                                     <i class="glyphicon glyphicon-map-marker"></i>
                                 </cite>
                         
                                 <p>    
-                                <i class="glyphicon glyphicon-envelope"></i>410-747-4120           
+                                <i class="glyphicon glyphicon-envelope"></i><?php echo $phone ?>          
                                 <br>
 
                                 <i class="glyphicon glyphicon-globe"></i>
-                                <a href="http://www.jquery2dotnet.com">
-                                    http://www.atwaters.biz/
+                                <a href=<?php echo "\"" . $url . "\"" ?> >
+                                    <?php echo $url ?>
                                 </a>
                                 <br>
                             </div>
