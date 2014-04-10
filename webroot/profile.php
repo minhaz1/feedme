@@ -3,29 +3,16 @@
   //Start session
   session_start();
 
-  // require('scripts/auth.php');
+  // require('scripts/auth.php')
+  require_once('scripts/params.php');
     
+  // connect to db
+  require('scripts/dbconnect.php');
+
   $login = "";
 
-  if(!isset($_GET['userid'])){
+  if(isset($_GET['userid'])){
 
-    // if user is getting to profile.php without params or being logged in, redirect
-    if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {
-      header("location: index.php");
-      exit();
-    }
-
-    $firstname = $_SESSION['SESS_FIRST_NAME'];
-    $lastname = $_SESSION['SESS_LAST_NAME'];
-    $login = $_SESSION['SESS_LOGIN'];
-    $biography = $_SESSION['SESS_BIO'];
-    $gender = $_SESSION['SESS_GENDER'];
-    $year = $_SESSION['SESS_YEAR_ARRIVED'];
-    $member_id = $_SESSION['SESS_MEMBER_ID'];
-  }
-  else{
-      // connect to db
-      require('scripts/dbconnect.php');
       // set variable for which user's info to get
       $login = $_GET['userid'];
       // query to get data for user
@@ -48,6 +35,19 @@
           $member_id = $member['member_id'];
         }
       }
+  }
+  else if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {
+    header("location: index.php");
+    exit();
+  }
+  else{
+    $firstname = $_SESSION['SESS_FIRST_NAME'];
+    $lastname = $_SESSION['SESS_LAST_NAME'];
+    $login = $_SESSION['SESS_LOGIN'];
+    $biography = $_SESSION['SESS_BIO'];
+    $gender = $_SESSION['SESS_GENDER'];
+    $year = $_SESSION['SESS_YEAR_ARRIVED'];
+    $member_id = $_SESSION['SESS_MEMBER_ID'];
   }
 
 ?>
