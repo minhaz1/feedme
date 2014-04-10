@@ -90,16 +90,30 @@
       <div class="row">
         <br>
         <hr>
-        <p style="font-size:30px">Recent posts:</p>
-        <div>
-          <span class="badge">Posted  on <a style="color:black" href="">Atwater's Catonsville,MD </a> on 2012-08-02 20:47:04</span>
-        </div>
-        <h1>Chicken Salad</h1>
-        <p>Where do I start. This chicken salad is fantastic! The way the chicken meets the salad and the salad meets the chicken I indescribable! I almost felt like I was becoming one with the salad! Great job!</p>
-        <hr>
-        <span class="badge">Posted  on <a style="color:black" href="">KFC Towson,MD </a> on 2012-08-02 20:47:04</span>
-        <h1>Drum Stick</h1>
-        <p>I was extremely dissapointed in the Drum Sticks. I was playing the drums last week and broke my last drum stick. Worried, I went to KFC to get some more, but instead I was given a chicken leg. All I wanted was a new drum stick! AVOID!</p>
+        <p style="font-size:30px">Recent posts:</p><hr>
+
+        <?php 
+
+            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, MR.name FROM " . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate LIMIT 10";
+
+            $result=@mysql_query($qry);
+
+            if($result){
+              while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+                $resid = $row['resid'];
+                $title = $row['title'];
+                $name = $row['name'];
+                $review_text = $row['description'];
+                $date = $row['reviewdate'];
+
+                echo "<span class=\"label label-default\">Posted on <a style=\"color:black\" href=\"restaurant.php?resid=$resid\">$name</a> on $date</span>";
+                echo "<h1>$title</h1>";
+                echo "<p>$review_text</p>";
+                echo "<hr>";
+              
+              }
+            }
+        ?>
       </div>
     </div>
       
