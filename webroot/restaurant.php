@@ -120,8 +120,8 @@
 	       <div class="row well">
                
             <div class="col-md-12">
-                <div class="panel panelResturant"> <img class="panel panelResturant" src=<?php echo "\"" . $image . "\"" ?>> </img>
-                </div>
+                <!--<div class="panel panelResturant"> <img class="panel panelResturant" src=<?php echo "\"" . $image . "\"" ?>> </img>
+                </div> -->
                 <div class="name">
                     <?php echo $name ?>
                 </div>
