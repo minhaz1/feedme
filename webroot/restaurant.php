@@ -189,7 +189,24 @@
                         <div class="btn-toolbar well well-sm resturant-sub" 
                              role="toolbar"  style="margin:0px;">
                             <div id="a1" class="btn-group col-md-12">
-                                This is the message body1
+                                    <span class="label label-default">alice</span>
+                                    <span class="label label-primary">story</span>
+                                    <span class="label label-success">blog</span>
+                                    <span class="label label-info">personal</span>
+                                    <span class="label label-warning">Warning</span>
+                                    <span class="label label-danger">Danger</span>
+                                    <span class="label label-default">alice</span>
+                                    <span class="label label-primary">story</span>
+                                    <span class="label label-success">blog</span>
+                                    <span class="label label-info">personal</span>
+                                    <span class="label label-warning">Warning</span>
+                                    <span class="label label-danger">Danger</span>
+                                    <span class="label label-default">alice</span>
+                                    <span class="label label-primary">story</span>
+                                    <span class="label label-success">blog</span>
+                                    <span class="label label-info">personal</span>
+                                    <span class="label label-warning">Warning</span>
+                                    <span class="label label-danger">Danger</span>
                             </div>
                         </div>
                     </a>
