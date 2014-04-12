@@ -1,3 +1,9 @@
+<!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FeedME CSS -->
+    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+
 <?php 
   $title = "";
   if(!isset($_SESSION['SESS_MEMBER_ID'])){
@@ -42,12 +48,12 @@
               // user is logged in, so let them submit review
               echo "
                 <form role=\"form\" action=\"./scripts/submitReview-exec.php\" id=\"reviewForm\" method=\"post\" name=\"reviewForm\">
-                  <div class=\"form-group\">
-                    <label for=\"exampleInputEmail1\">Food Items:</label>
-                    <input name=\"title\" type=\"text\" id=\"title\" placeholder=\"Enter the food items\">
+                  <div class=\"form-group model-test-feedme\">
+                    <label for=\"exampleInputEmail1\"><h5>Food Items:</h5></label>
+                    <input name=\"title\" type=\"text\" id=\"title\"  placeholder=\"Enter the food items\">
                   </div>
                   <div class=\"form-group\">
-                    <label for=\"exampleInputPassword1\">Image Link:</label>
+                    <label for=\"exampleInputPassword1\"><h5>Image Link:</h5></label>
                     <input  type=\"file\" onchange=\"upload(this.files[0])\">
                     <input name=\"IMGlink\" type=\"link\" class=\"form-control\" id=\"IMGLink\" placeholder=\"Or place image link here\" value=\"\">
                   </div>
@@ -58,7 +64,7 @@
                     </div>
                   </div>
                   <div class=\"form-group\">
-                    <label for=\"exampleInputEmail1\">Enter tags here, separated by a space:</label>
+                    <label for=\"exampleInputEmail1\"><h5>Enter tags here, separated by a space:</h5></label>
                     <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"\">
                   </div>
                   <input type=\"hidden\" name=\"resid\" value=\"" . $_SESSION['resid'] . "\">

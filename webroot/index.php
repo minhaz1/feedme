@@ -59,9 +59,9 @@
               <div class=\"shade2 board-preview\">
                 <a>
                   <!--<div class=\"img-wrap\">-->
-                  <div class=\"img-wrap max-width\">
+                  <div class=\"img-wrap max-width img-index\">
                   <a href=\"restaurant.php?resid=$resid\">
-                    <img src=\"$image\" class=\"img-responsive\" alt=\"\" width=\"270\">
+                    <img src=\"$image\" class=\"img-responsive\" alt=\"\">
                   </a>
                     <div class=\"hover-tags\">
                       <div class=\"bottom-tags\">

@@ -10,6 +10,12 @@
       }
     </style>
 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
     <!------------------------ Start of Navbar ------------------------>
     <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
       <div class="container">
@@ -43,21 +49,24 @@
             </li>
           </ul>
             
+          <ul class="nav navbar-nav navbar-right">
+            
           <?php
             // if they are not logged in, show login/register
             if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID'])) == '') {
               echo 
-              "<a href=\"login.php\" class=\"pull-right navbar-text\"><span> Login </span></a>
-              <a href=\"register.php\" class=\"pull-right navbar-text\"><span> Register </span></a>";
+              "<li><a href=\"login.php\"><span> Login </span></a></li>
+              <li><a href=\"register.php\"><span> Register </span></a></li>";
             }
             else{
               // if they are logged in, show their name and logout
-              echo "<a href=\"logout.php\" class=\"pull-right navbar-text\">Logout</a>";
-              echo "<a href=\"profile.php\" class=\"pull-right navbar-text\">" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a>";
+              echo "<li><a href=\"profile.php\">" . $_SESSION['SESS_FIRST_NAME'] . " " . $_SESSION['SESS_LAST_NAME'] . "</a></li>";
+              echo "<li><a href=\"logout.php\">Logout</a></li>";
             }
 
-          ?>            
-        </div><!--/.nav-collapse -->
+          ?>  
+          </ul>
+       </div><!--/.nav-collapse -->
       </div>
     </div>
     <!------------------------ End of Navbar ------------------------>  
