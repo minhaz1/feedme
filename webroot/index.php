@@ -57,12 +57,10 @@
 
               echo "<div  class=\"col-lg-3 col-md-6\">
               <div class=\"shade2 board-preview\">
-                <a>
+                <a href=\"restaurant.php?resid=$resid\">
                   <!--<div class=\"img-wrap\">-->
                   <div class=\"img-wrap max-width img-index\">
-                  <a href=\"restaurant.php?resid=$resid\">
                     <img src=\"$image\" class=\"img-responsive\" alt=\"\">
-                  </a>
                     <div class=\"hover-tags\">
                       <div class=\"bottom-tags\">
                         <span>#steak</span>
