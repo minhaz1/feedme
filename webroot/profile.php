@@ -126,7 +126,7 @@
       </div>
       <div class="modal-body">
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
-          <textarea id="editBio" name="editBio" rows="4" style="width:97%"></textarea>
+          <textarea id="editBio" name="editBio" rows="4" style="width:97%"><?php echo $biography;?></textarea>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-default">Save changes</button>
