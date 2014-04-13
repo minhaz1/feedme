@@ -50,7 +50,7 @@
                 <form role=\"form\" action=\"./scripts/submitReview-exec.php\" id=\"reviewForm\" method=\"post\" name=\"reviewForm\">
                   <div class=\"form-group model-test-feedme\">
                     <label for=\"exampleInputEmail1\"><h5>Food Items:</h5></label>
-                    <input name=\"title\" type=\"text\" id=\"title\"  placeholder=\"Enter the food items\">
+                    <input name=\"title\" type=\"text\" class=\"btn btn-default\" id=\"title\"  placeholder=\"Enter the food items\">
                   </div>
                   <div class=\"form-group\">
                     <label for=\"exampleInputPassword1\"><h5>Image Link:</h5></label>

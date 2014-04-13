@@ -63,14 +63,14 @@
                   <a href=\"restaurant.php?resid=$resid\">
                     <img src=\"$image\" class=\"img-responsive\" alt=\"\">
                   </a>
-                    <div class=\"hover-tags\">
+                    <!--<div class=\"hover-tags\">
                       <div class=\"bottom-tags\">
                         <span>#steak</span>
                         <span>#burgers</span>
                         <span>#highly recommended</span>
                         <span>#cheap prices</span>
                       </div>
-                    </div>
+                    </div> -->
                     <div class=\"shop-label h6\">
                       Top Rated
                     </div>

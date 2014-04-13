@@ -10,6 +10,8 @@
       }
     </style>
 
+    <?php include_once('createRestaurant.php') ?>
+
 
     <!------------------------ Start of Navbar ------------------------>
     <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
@@ -37,8 +39,8 @@
                   <li class="divider"></li>
                   <li><a href="#">Random</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Create a Resturant</a></li>
-                  <li class="divider"></li>
+                  <!--<li><a href="#Submit" data-toggle="modal" data-target="#createrestaurant">Create a Resturant</a></li>
+                  <li class="divider"></li> -->
                   <li><a href="profile.php">Profile</a></li>
                 </ul>
             </li>
