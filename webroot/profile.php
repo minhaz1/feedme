@@ -125,17 +125,20 @@
         <h4 class="modal-title">Update Biography:</h4>
       </div>
       <div class="modal-body">
-        <textarea id="editBio" rows="4" style="width:97%"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateBio()">Save changes</button>
+        <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
+          <textarea id="editBio" name="editBio" rows="4" style="width:97%"><?php echo $biography;?></textarea>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-default">Save changes</button>
+          </div>
+        </form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
     <hr>
     
+    <!-- I don't think this is needed...Seth
     <script type="text/javascript">
 function getDesc(){
   var x =document.getElementById("userBio");
@@ -148,9 +151,8 @@ function getDesc(){
   //alert(y.innerHTML); 
     document.getElementById('userBio').innerHTML = y.innerHTML;
 }      
-        
-        
 </script>
+-->
     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src = "js/bootstrap.js"></script>
   </body>
