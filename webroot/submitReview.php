@@ -49,8 +49,8 @@
               echo "
                 <form role=\"form\" action=\"./scripts/submitReview-exec.php\" id=\"reviewForm\" method=\"post\" name=\"reviewForm\">
                   <div class=\"form-group model-test-feedme\">
-                    <label for=\"exampleInputEmail1\"><h5>Food Items:</h5></label>
-                    <input name=\"title\" type=\"text\" id=\"title\"  placeholder=\"Enter the food items\">
+                    <label for=\"exampleInputEmail1\"><h5>Title:</h5></label>
+                    <input name=\"title\" type=\"text\" id=\"title\"  placeholder=\"e.g. The food was delicous\">
                   </div>
                   <div class=\"form-group\">
                     <label for=\"exampleInputPassword1\"><h5>Image Link:</h5></label>
@@ -59,8 +59,7 @@
                   </div>
                   <div>
                     <div align=\"center\">
-                      <textarea style=\"resize:vertical;width:530px\" class=\"form-control\" placeholder=\"Write your item review here...(500 word Limit)\" maxlength=\"500\" rows=\"5\"  name=\"review\" required>
-                      </textarea>
+                      <textarea style=\"resize:vertical;width:530px\" class=\"form-control\" placeholder=\"Write your item review here...(250 word Limit)\" maxlength=\"1000\" rows=\"5\"  name=\"review\" required></textarea>
                     </div>
                   </div>
                   <div class=\"form-group\">
