@@ -66,7 +66,7 @@
 
 	//Check whether the query was successful or not
 	if($result) {
-		//$_SESSION['resid'] = $resid;
+		$_SESSION['SESS_BIO'] = $bio;
 		header("location: ../profile.php");				
 		exit();
 	}else {
