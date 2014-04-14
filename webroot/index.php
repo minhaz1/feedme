@@ -55,7 +55,7 @@
                 echo "<div class =\"col-sm-12\">";
               }
 
-              echo "<div  class=\"col-lg-3 col-md-6\">
+              echo "<div  class=\"col-lg-3 col-md-6 col-sm-6 col-xs-12 \">
               <div class=\"shade2 board-preview\">
                 <a href=\"restaurant.php?resid=$resid\">
                   <!--<div class=\"img-wrap\">-->
