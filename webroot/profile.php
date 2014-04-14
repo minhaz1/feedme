@@ -106,9 +106,9 @@
                 $review_text = $row['description'];
                 $date = $row['reviewdate'];
 
-                echo "<span class=\"label label-default\">Posted on <a style=\"color:black\" href=\"restaurant.php?resid=$resid\">$name</a> on $date</span>";
-                echo "<h1>$title</h1>";
-                echo "<p>$review_text</p>";
+                echo "<span class=\"label label-default\" style=\"font-size: 85% !important;\">Posted on <a style=\"color:black\" href=\"restaurant.php?resid=$resid\">$name</a> on $date</span>";
+                echo "<h2>$title</h2>";
+                echo "<p><h5>$review_text</h5></p>";
                 echo "<hr>";
               
               }
