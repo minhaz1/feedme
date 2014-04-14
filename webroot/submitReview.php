@@ -63,8 +63,8 @@
                     </div>
                   </div>
                   <div class=\"form-group\">
-                    <label for=\"exampleInputEmail1\"><h5>Enter tags here, separated by a space:</h5></label>
-                    <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"\">
+                    <label for=\"exampleInputText\"><h5>Enter tags here, separated by a space:</h5></label>
+                    <input type=\"text\" class=\"form-control\" id=\"exampleInputText\" placeholder=\"\">
                   </div>
                   <input type=\"hidden\" name=\"resid\" value=\"" . $_SESSION['resid'] . "\">
                   <button type=\"submit\" class=\"btn btn-default\">Submit</button>
