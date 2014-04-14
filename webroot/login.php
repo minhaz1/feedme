@@ -76,7 +76,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 							<input class="input-with-feedback" id="password" name="password" type="password" />
 
 						</div><input id="ret" name="ret" type="hidden" value="" />
-
+                        
+                        <br>
+                        
 						<input class="btn btn-large btn-block mt" type="submit" value="Login!" />
 					</form>
 
