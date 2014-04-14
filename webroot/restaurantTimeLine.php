@@ -99,7 +99,7 @@
                             </div>
                             <div class=\"timeline-panel\">
                                 <div class=\"timeline-heading\">
-                                    <img class=\"img-responsive\" src=\"" . $image . "\" />
+                                    <img class=\"img-responsive\" src=\"" . $image . "\" width=\"100%\" />
                                 </div>
                                 <div class=\"timeline-body\">
                                     <p>" . $review_text . ".</p>
