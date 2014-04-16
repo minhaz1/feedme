@@ -4,6 +4,28 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
 
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+<script>
+//callback handler for form submit
+$("#reviewForm").submit(function(e)
+{
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+});
+ 
+$("#reviewForm").submit(); //Submit  the FORM
+</script>
+
 <?php 
   $title = "";
   if(!isset($_SESSION['SESS_MEMBER_ID'])){
@@ -47,7 +69,7 @@
             else{
               // user is logged in, so let them submit review
               echo "
-                <form role=\"form\" action=\"./scripts/submitReview-exec.php\" id=\"reviewForm\" method=\"post\" name=\"reviewForm\">
+                <form role=\"form\" action=\"./scripts/submitReview-exec.php\" id=\"reviewForm\" method=\"POST\" name=\"reviewForm\">
                   <div class=\"form-group model-test-feedme\">
                     <label for=\"exampleInputEmail1\"><h5>Title:</h5></label>
                     <input name=\"title\" type=\"text\" placeholder=\"e.g. The food was delicous\">
@@ -74,7 +96,6 @@
             }
 
           ?>
-      
           </div>
         </div>
       </div>

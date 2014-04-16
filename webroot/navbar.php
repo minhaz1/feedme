@@ -10,7 +10,7 @@
       }
     </style>
 
-    <?php include_once('createRestaurant.php') ?>
+    <!-- <?php include_once('createRestaurant.php') ?> -->
 
 
     <!------------------------ Start of Navbar ------------------------>
