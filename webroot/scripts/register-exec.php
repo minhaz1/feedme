@@ -1,4 +1,8 @@
 <?php
+	// setting debug flag, will allow non-umbc emails
+	$UMBC_FLAG = false;
+	$EMAIL_FLAG = true;
+
 	//Start session
 	session_start();
 
@@ -66,10 +70,13 @@
 	else if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 		// grab domain of email
 		list($user, $domain) = explode('@', $email);
-		// if domain is not from umbc, reject
-		if (!isset($errmsg_arr['email']) && $domain != 'umbc.edu') {
-		    $errmsg_arr['email'] = 'Must be @umbc.edu!';
-		    $errflag = true;
+
+		if($UMBC_FLAG){
+			// if domain is not from umbc, reject
+			if (!isset($errmsg_arr['email']) && $domain != 'umbc.edu') {
+			    $errmsg_arr['email'] = 'Must be @umbc.edu!';
+			    $errflag = true;
+			}
 		}
 	}
 	else{
@@ -178,7 +185,8 @@
 	
 	//Check whether the query was successful or not
 	if($result) {
-		sendEmail($email, "Please confirm your email.", $message);
+		if($EMAIL_FLAG) 
+			sendEmail($email, "Please confirm your email.", $message);
 		header("location: ../login.php");				
 		exit();
 	}else {
