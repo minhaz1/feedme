@@ -1,18 +1,15 @@
 <?php
   session_start();
 
-  //Check whether the sle SESS_MEMBER_ID is present or not
-  //if(isset($_SESSION['SESS_MEMBER_ID'])) {
-  //  header("location: index.php");
-  //  exit();
-  //}
-
   require('scripts/dbconnect.php'); 
+
+  // include helper functions
+  include_once('helper.php');
 
   $resid = "";
    
   if(isset($_GET['resid'])){
-    $resid = $_GET['resid'];
+    $resid = clean($_GET['resid']);
     $_SESSION['resid'] = $resid;
   }
   else if(!isset($_SESSION['resid'])){
@@ -20,7 +17,7 @@
     exit();
   }
   else{
-    $resid = $_SESSION['resid'];
+    $resid = clean($_SESSION['resid']);
   }
 
   $_SESSION['resid'] = $resid;
@@ -246,61 +243,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!------------------------ end 5 --------------------------------------->
-
-                                            <div class="col-xs-3 col-md-3 text-right">
-                                                <span class="glyphicon glyphicon-star"></span>4
-                                            </div>
-                                            <div class="col-xs-8 col-md-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                        <span class="sr-only">60%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!------------------------ end 4 --------------------------------------->
-                                            <div class="col-xs-3 col-md-3 text-right">
-                                                <span class="glyphicon glyphicon-star"></span>3
-                                            </div>
-                                            <div class="col-xs-8 col-md-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                        <span class="sr-only">40%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!------------------------ end 3 --------------------------------------->
-                                            <div class="col-xs-3 col-md-3 text-right">
-                                                <span class="glyphicon glyphicon-star"></span>2
-                                            </div>
-                                            <div class="col-xs-8 col-md-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                                        <span class="sr-only">20%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!------------------------ end 2 --------------------------------------->
-
-                                            <div class="col-xs-3 col-md-3 text-right">
-                                                <span class="glyphicon glyphicon-star"></span>1
-                                            </div>
-                                            <div class="col-xs-8 col-md-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: 15%">
-                                                        <span class="sr-only">15%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!------------------------ end 1 --------------------------------------->
-                                        </div>
                                         <!-- end row -->
                                     </div>
                                 </div>

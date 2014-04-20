@@ -8,6 +8,9 @@
 	
 	require('dbconnect.php');
 
+	// include helper functions
+	include_once('helper.php');
+
 	// users previous URL
 	$redirect_url = $_SERVER['HTTP_REFERER'];
 
@@ -16,15 +19,6 @@
 	
 	//Validation error flag
 	$errflag = false;
-	
-	//Function to sanitize values received from the form. Prevents SQL injection
-	function clean($str) {
-		$str = @trim($str);
-		if(get_magic_quotes_gpc()) {
-			$str = stripslashes($str);
-		}
-		return mysql_real_escape_string($str);
-	}
 	
 	//Sanitize the POST values
 	$login = clean($_POST['login']);
@@ -62,7 +56,7 @@
 			// check password match
 			if(password_verify($password, $member['password'])){
 
-				if($member['confirmation'] != "1"){
+				if($member['confirmation'] != "0"){
 					$errmsg_arr['login'] = "Please confirm your email.";
 					$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 					header("location: " . $redirect_url);

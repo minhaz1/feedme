@@ -9,12 +9,15 @@
   // connect to db
   require('scripts/dbconnect.php');
 
+  // include helper functions
+  include_once('helper.php');
+
   $login = "";
 
   if(isset($_GET['userid'])){
 
       // set variable for which user's info to get
-      $login = $_GET['userid'];
+      $login = clean($_GET['userid']);
       // query to get data for user
       $qry="SELECT * FROM " . USER_TABLE . " WHERE login='$login'";
 

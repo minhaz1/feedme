@@ -1,21 +1,15 @@
 <?php
 	session_start();
 
+	// contains helper function
+	include_once('helper.php');
+
 	//Check whether the session variable SESS_MEMBER_ID is present or not
 	if(isset($_SESSION['SESS_MEMBER_ID'])) {
 		header("location: index.php");
 		exit();
 	}
 
-	function getErrs($field){
-		if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){								$ERRMSG_ARR = $_SESSION['ERRMSG_ARR'];
-			if(isset($ERRMSG_ARR[$field])){
-				echo " - <font color='red'>" . $ERRMSG_ARR[$field] . "</font>";
-			}
-		unset($ERRMSG_ARR[$field]);
-		//unset($_SESSION['ERRMSG_ARR']);
-		}
-	}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

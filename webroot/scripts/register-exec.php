@@ -9,23 +9,14 @@
 	require_once('dbconnect.php');
 
 	// include email function
-	include_once('email.php');
+	include_once('helper.php');
 
 	//Array to store validation errors
 	$errmsg_arr = array();
 	
 	//Validation error flag
 	$errflag = false;
-	
-	//Function to sanitize values received from the form. Prevents SQL injection
-	function clean($str) {
-		$str = @trim($str);
-		if(get_magic_quotes_gpc()) {
-			$str = stripslashes($str);
-		}
-		return mysql_real_escape_string($str);
-	}
-	
+		
 	//Sanitize the POST values
 	$fname = clean($_POST['fname']);
 	$lname = clean($_POST['lname']);
@@ -175,9 +166,9 @@
 
 	// email confirmation hash value
 	$confirmation = md5($login . $email);
-	$confirm_url = $_SERVER['HTTP_HOST'] . "confirm.php?id=" . $confirmation;
+	$confirm_url = "http://" . $_SERVER['HTTP_HOST'] . "/confirm.php?id=" . $confirmation;
 
-	$message = "Thank you for signing up for FEEDME!\nPlease click this link to confirm your account: $confirm_url";
+	$message = "Thank you for signing up for FEEDME!\nPlease click this link to confirm your account: \n$confirm_url";
 
 	//encrypt password before storing
 	$hash = password_hash($password, PASSWORD_BCRYPT);
