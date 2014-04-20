@@ -1,12 +1,13 @@
 <?php
 
-	include('dbconnect.php');
-	include_once('helper.php');
+	include('scripts/dbconnect.php');
+	include_once('scripts/helper.php');
 
 	$id = clean($_GET['id']);
 
 	// attempt to find user with this confirmation id
 	$qry="SELECT * FROM " . USER_TABLE . " WHERE confirmation='$id'";
+
 	$result=mysql_query($qry);
 
 	// if he is found
