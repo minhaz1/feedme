@@ -1,15 +1,17 @@
 <?php
 
-	include('dbconnect.php');
-
+	include('scripts/dbconnect.php');
 	$id = $_GET['id'];
 
 	//Create query
-	$qry="SELECT * FROM " . USER_TABLE . " WHERE confirmation='$id'";
+	$qry="SELECT * FROM users" . " WHERE confirmation='$id'";
+	echo $qry;
+
 	$result=mysql_query($qry);
 
 	// found
 	if($result){
+		echo "what is going on?";
 		if(mysql_num_rows($result) == 1) {
 
 			$member = mysql_fetch_assoc($result); 
