@@ -9,7 +9,7 @@
 	require_once('dbconnect.php');
 
 	// include email function
-	include_once('helper.php');
+	include_once('scripts/helper.php');
 
 	//Array to store validation errors
 	$errmsg_arr = array();

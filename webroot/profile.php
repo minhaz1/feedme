@@ -10,7 +10,7 @@
   require('scripts/dbconnect.php');
 
   // include helper functions
-  include_once('helper.php');
+  include_once('scripts/helper.php');
 
   $login = "";
 
