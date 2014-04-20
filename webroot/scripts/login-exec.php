@@ -61,6 +61,14 @@
 
 			// check password match
 			if(password_verify($password, $member['password'])){
+
+				if($member['confirmation'] != "1"){
+					$errmsg_arr['login'] = "Please confirm your email.";
+					$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+					header("location: " . $redirect_url);
+					exit();
+				}
+
 				//Login Successful
 				session_regenerate_id();
 				$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];

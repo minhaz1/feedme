@@ -8,6 +8,9 @@
 	//Include database connection details
 	require_once('dbconnect.php');
 
+	// include email function
+	include_once('email.php');
+
 	//Array to store validation errors
 	$errmsg_arr = array();
 	
@@ -169,14 +172,22 @@
 		exit();
 	}
 
+
+	// email confirmation hash value
+	$confirmation = md5($login . $email);
+	$confirm_url = $_SERVER['HTTP_HOST'] . "confirm.php?id=" . $confirmation;
+
+	$message = "Thank you for signing up for FEEDME!\nPlease click this link to confirm your account: $confirm_url";
+
 	//encrypt password before storing
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 
-	$qry = "INSERT INTO " . USER_TABLE . " (firstname, lastname, login, email, password, gender, yeararrived) VALUES('$fname','$lname','$login', '$email' ,'$hash','$gender','$yeararrived')";
+	$qry = "INSERT INTO " . USER_TABLE . " (firstname, lastname, login, email, password, gender, yeararrived, confirmation) VALUES('$fname','$lname','$login', '$email' ,'$hash','$gender','$yeararrived','$confirmation')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not
 	if($result) {
+		sendEmail($email, "Please confirm your email.", $message);
 		header("location: ../login.php");				
 		exit();
 	}else {
