@@ -132,7 +132,7 @@
         <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
         <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
-        <textarea id="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
+        <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
       <div class="modal-footer">
             <button type="button" class="btn btn-default" >Close</button>
              <button type="submit" class="btn btn-default">Save changes</button>
