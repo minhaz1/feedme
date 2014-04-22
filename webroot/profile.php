@@ -125,16 +125,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Update Biography:</h4>
+        <h4 class="modal-title">Edit Your Profile:</h4>
       </div>
-      <div class="modal-body">
-        <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
-          <textarea id="editBio" name="editBio" rows="4" style="width:97%"><?php echo $biography;?></textarea>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-default">Save changes</button>
-          </div>
-        </form>
+      <div class="modal-body" style="font-size:18px">
+          <label for="exampleInputPassword1" style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
+        <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
+        <label style="color:black">Update Biography:</label>
+        <textarea id="editBio" rows="4" style="width:97%;"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateBio()">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -157,6 +158,7 @@ function getDesc(){
 </script>
 -->
     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src = "js/feedme.js"></script>
     <script src = "js/bootstrap.js"></script>
   </body>
 </html>
