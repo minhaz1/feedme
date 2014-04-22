@@ -128,9 +128,10 @@
         <h4 class="modal-title">Edit Your Profile:</h4>
       </div>
       <div class="modal-body" style="font-size:18px">
-          <label for="exampleInputPassword1" style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
+          <label style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
         <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
         <label style="color:black">Update Biography:</label>
+        <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
         <textarea id="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
       </div>
       <div class="modal-footer">
