@@ -133,12 +133,12 @@
         <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
         <textarea id="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
-    </div>
       <div class="modal-footer">
             <button type="button" class="btn btn-default" >Close</button>
              <button type="submit" class="btn btn-default">Save changes</button>
       </div><!-- /.modal-footer -->
-        </form>
+         </form>
+     </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
