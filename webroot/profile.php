@@ -142,21 +142,7 @@
 </div><!-- /.modal -->
     <hr>
     
-    <!-- I don't think this is needed...Seth
-    <script type="text/javascript">
-function getDesc(){
-  var x =document.getElementById("userBio");
-  //alert(x.innerHTML); 
-    document.getElementById('editBio').innerHTML = x.innerHTML;
-}
-        //updateBio will be done by server
-  function updateBio(){
-  var y =document.getElementById("editBio");
-  //alert(y.innerHTML); 
-    document.getElementById('userBio').innerHTML = y.innerHTML;
-}      
-</script>
--->
+   
     <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src = "js/feedme.js"></script>
     <script src = "js/bootstrap.js"></script>
