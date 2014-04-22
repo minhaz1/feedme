@@ -120,7 +120,7 @@
       </div>
     </div>
       
-      <div class="modal fade pop-up-1">
+<div class="modal fade pop-up-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -133,11 +133,12 @@
         <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
         <textarea id="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
-      </div>
+    </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateBio()">Save changes</button>
-      </div>
+            <button type="button" class="btn btn-default" >Close</button>
+             <button type="submit" class="btn btn-default">Save changes</button>
+      </div><!-- /.modal-footer -->
+        </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
