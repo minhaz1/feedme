@@ -36,6 +36,7 @@
           $gender = $member['gender'];
           $year = $member['yeararrived'];
           $member_id = $member['member_id'];
+          $picture = $member['picture'];
         }
       }
   }
@@ -51,6 +52,7 @@
     $gender = $_SESSION['SESS_GENDER'];
     $year = $_SESSION['SESS_YEAR_ARRIVED'];
     $member_id = $_SESSION['SESS_MEMBER_ID'];
+    $picture = $_SESSION['SESS_PICTURE'];
   }
 
 ?>
@@ -70,7 +72,7 @@
     <div class="container well" style="width:85%">
       <div class="row">
         <div class="col-sm-3 col-md-3">
-          <img style="height:100%;width:100%" src="https://pbs.twimg.com/profile_images/3778529164/544b976dc018444e4547dad4d5aabe7b.jpeg" class="img-circle">
+          <img style="height:100%;width:100%" src=<?php echo "\"$picture\"" ?> class="img-circle">
          <br>
         <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1"><strong>Edit Profile</strong></button>
         </div>
