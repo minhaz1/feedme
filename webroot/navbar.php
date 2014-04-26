@@ -3,6 +3,7 @@
     
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -44,15 +45,22 @@
                   <li><a href="profile.php">Profile</a></li>
                 </ul>
             </li>
+            <li>
+                <form method="get" action='searchResults.php' style="padding: 10px 10px 0px 0px !important;">
+                    <input type="text" id="q" name="q">
+                    <input type="submit" hidden="true" value="Submit">
+                </form>
+            </li>
+            <li>
+                <button class="nav btn btn-default navbar-btn">
+                            <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </li>
           </ul>
             
+        
+            
           <ul class="nav navbar-nav navbar-right">
-                      <li>
-<form method="get" action='searchResults.php'>
-<input type="text" id="q" name="q">
-<input type="submit" hidden="true" value="Submit">
-</form>
-  </li>
           <?php
             // if they are not logged in, show login/register
             if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID'])) == '') {

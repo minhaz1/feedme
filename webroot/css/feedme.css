@@ -724,7 +724,7 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
   left: -12px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     ul.timeline:before {
         left: 40px;
     }
@@ -792,6 +792,4 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
 {
     font-size:0.7em !important;
 }
-    
-/*---------------------------------*/
-    
+
