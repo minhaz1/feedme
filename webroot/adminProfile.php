@@ -114,6 +114,7 @@
                     <th>First Name: <i class="fa fa-sort"></i></th>
                     <th>Last Name: <i class="fa fa-sort"></i></th>
                     <th>Recent Post: <i class="fa fa-sort"></i></th>
+                    <th>Edit: <i class="fa fa-sort"></i></th>
                     <th>Flag: <i class="fa fa-sort"></i></th>
                     <th>Delete: <i class="fa fa-sort"></i></th>
                   </tr>
@@ -124,13 +125,18 @@
                     <td>Last</td>
                     <td>KFC</td>
                     <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
                         <span class="label label-warning">
                             <i class="glyphicon glyphicon-flag"> </i>
                         </span>
                     </td>
                     <td>
                         <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
+                            <i class="glyphicon glyphicon-trash"> </i>
                         </span>
                     </td>
                   </tr>
@@ -139,13 +145,18 @@
                     <td>Last</td>
                     <td>KFC</td>
                     <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
                         <span class="label label-warning">
                             <i class="glyphicon glyphicon-flag"> </i>
                         </span>
                     </td>
                     <td>
                         <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
+                            <i class="glyphicon glyphicon-trash"> </i>
                         </span>
                     </td>
                   </tr>
@@ -154,13 +165,18 @@
                     <td>Last</td>
                     <td>KFC</td>
                     <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
                         <span class="label label-warning">
                             <i class="glyphicon glyphicon-flag"> </i>
                         </span>
                     </td>
                     <td>
                         <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
+                            <i class="glyphicon glyphicon-trash"> </i>
                         </span>
                     </td>
                   </tr>
@@ -169,20 +185,10 @@
                     <td>Last</td>
                     <td>KFC</td>
                     <td>
-                        <span class="label label-warning">
-                            <i class="glyphicon glyphicon-flag"> </i>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
                         </span>
                     </td>
-                    <td>
-                        <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
-                        </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sean</td>
-                    <td>Last</td>
-                    <td>KFC</td>
                     <td>
                         <span class="label label-warning">
                             <i class="glyphicon glyphicon-flag"> </i>
@@ -190,37 +196,7 @@
                     </td>
                     <td>
                         <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
-                        </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sean</td>
-                    <td>Last</td>
-                    <td>KFC</td>
-                    <td>
-                        <span class="label label-warning">
-                            <i class="glyphicon glyphicon-flag"> </i>
-                        </span>
-                    </td>
-                    <td>
-                        <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
-                        </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Sean</td>
-                    <td>Last</td>
-                    <td>KFC</td>
-                    <td>
-                        <span class="label label-warning">
-                            <i class="glyphicon glyphicon-flag"> </i>
-                        </span>
-                    </td>
-                    <td>
-                        <span class="label label-danger">
-                            <i class="glyphicon glyphicon-remove-circle"> </i>
+                            <i class="glyphicon glyphicon-trash"> </i>
                         </span>
                     </td>
                   </tr>
@@ -228,7 +204,6 @@
               </table>
             </div>             
       </div>
-        
         
       <div class="row">
         <br>

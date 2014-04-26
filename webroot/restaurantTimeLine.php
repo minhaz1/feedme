@@ -108,11 +108,16 @@
                                         Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
                                     </span>
                        
+                                    <span class=\"label\" style=\"background-color: #3b5998 \">
+                                        <i class=\"glyphicon glyphicon-pencil\"> </i>
+                                    </span>
+                                    
+                                    <span class=\"label label-danger\">
+                                        <i class=\"glyphicon glyphicon-trash\"> </i>
+                                    </span>
+                                    
                                     <span class=\"label label-warning\">
                                         <i class=\"glyphicon glyphicon-flag\"> </i>
-                                    </span>
-                                    <span class=\"label label-danger\">
-                                        <i class=\"glyphicon glyphicon-remove-circle\"> </i>
                                     </span>
                                     
                                 </div>
