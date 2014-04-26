@@ -49,7 +49,7 @@
 
                     //Create query
                 $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, R.tags, U.login
-                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid'";
+                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid' ORDER BY reviewdate DESC LIMIT 10";
 
                 $result=@mysql_query($qry);
 
@@ -96,13 +96,10 @@
                                 if(sizeof($tags_arr) != 0){
                                     echo "<div class=\"timeline-regiontags\">";
 
-                                    foreach($tags_arr as $val){
-                                        echo "<span class=\"label label-info\">$val</span> ";
+                                    foreach($tags_arr as $tag){
+                                        echo "<a href=\"searchResults.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
                                     }
                                     echo "</div>";
-                                }
-                                else{
-                                    echo "BOB'S YOUR UNCLE";
                                 }
                                     
                                 echo

@@ -42,7 +42,7 @@
 
  <!doctype html>
 <html><head>
-<title>Restaurant View</title>
+<title><?php echo $name ?></title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap core CSS -->
