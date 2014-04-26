@@ -107,6 +107,14 @@
                                     <span class=\"badge\">
                                         Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
                                     </span>
+                       
+                                    <span class=\"label label-warning\">
+                                        <i class=\"glyphicon glyphicon-flag\"> </i>
+                                    </span>
+                                    <span class=\"label label-danger\">
+                                        <i class=\"glyphicon glyphicon-remove-circle\"> </i>
+                                    </span>
+                                    
                                 </div>
                                 <div class=\"timeline-footer\">
                                     <a>
