@@ -173,7 +173,7 @@
 
 	// email confirmation hash value
 	$confirmation = md5($login . $email);
-	$confirm_url = "http://" . $_SERVER['HTTP_HOST'] . "/confirm.php?id=" . $confirmation;
+	$confirm_url = "http://" . $_SERVER['HTTP_HOST'] . "/public/confirm.php?id=" . $confirmation;
 
 	$message = "Thank you for signing up for FEEDME!\nPlease click this link to confirm your account: \n$confirm_url";
 
