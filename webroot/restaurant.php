@@ -265,11 +265,6 @@
      <!-- <div class="containers" id="resturantBody"> -->
      <?php include_once('restaurantTimeLine.php'); ?>
     </div>
-        
-          
-
-          
-
 
     <div class="div-swipe-left" id="swipe-left">
     </div>
@@ -277,7 +272,6 @@
     </div>
     
     <script src="./js/feedme.js"></script>
-    <script src="./js/jquery.min.js"></script>
     <script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
     <link href="./css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <script src="./js/jquery.fancybox.pack.js"></script> 
@@ -287,8 +281,6 @@
     <script src="./js/hammer.min.js"></script>
     <script src="./js/jquery.nanogallery.min.js"></script> 
     <script src="./js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.js"></script>
   <?php unset($_SESSION['ERRMSG_ARR']); ?>
 

@@ -1,17 +1,4 @@
-<!doctype html>
-<html><head>
-<title>Restaurant View</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FeedME CSS -->
-    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="css/example.css" type="text/css" rel="stylesheet" >
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -43,8 +30,6 @@
 		   });
 		 });
 	</script>
-</head>
-
 
 <body>
         
@@ -185,10 +170,7 @@
 
     });
 </script>
-        
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.js"></script>
 
 </body>
 </html>
