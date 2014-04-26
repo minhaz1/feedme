@@ -99,7 +99,7 @@
 
         <?php 
 
-            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, MR.name FROM " . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate LIMIT 10";
+            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate DESC LIMIT 5";
 
             $result=@mysql_query($qry);
 
@@ -108,13 +108,39 @@
                 $resid = $row['resid'];
                 $title = $row['title'];
                 $name = $row['name'];
-                $review_text = $row['description'];
-                $date = $row['reviewdate'];
+                $text = $row['description'];
+                $reviewdate = explode(" ", $row['reviewdate']);
+                $date = $reviewdate[0];
+                $time = DATE("g:i a", STRTOTIME($reviewdate[1]));
+                $image = $row['foodimage'];
+                $tags = explode(",", $row['tags']);
 
-                echo "<span class=\"label label-default\" style=\"font-size: 85% !important;\">Posted on <a style=\"color:black\" href=\"restaurant.php?resid=$resid\">$name</a> on $date</span>";
-                echo "<h2>$title</h2>";
-                echo "<p><h5>$review_text</h5></p>";
-                echo "<hr>";
+
+                $tagstring = "";
+                foreach($tags as $tag){
+                  if($tag != "")
+                    $tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"searchResults.php?q=$tag\"> $tag</a></span></li>";
+                }
+
+
+                echo 
+                  "<article class=\"search-result row\">
+                    <div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
+                    <div class=\"col-xs-12 col-sm-12 col-md-2\">
+                      <ul class=\"meta-search\">
+                        <li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
+                        <li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
+                        $tagstring
+                      </ul>
+                    </div>
+                    <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
+                      <h3><a href=\"restaurant.php?resid=$resid\" title=\"\">$title</a></h3>
+                      <p>$text</p>
+                    </div>
+                    <span class=\"clearfix borda\"></span>
+                  </article>";
+
+
               
               }
             }
