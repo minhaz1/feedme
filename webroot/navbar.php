@@ -47,7 +47,12 @@
           </ul>
             
           <ul class="nav navbar-nav navbar-right">
-            
+                      <li>
+<form method="get" action='searchResults.php'>
+<input type="text" id="q" name="q">
+<input type="submit" hidden="true" value="Submit">
+</form>
+  </li>
           <?php
             // if they are not logged in, show login/register
             if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID'])) == '') {
@@ -62,6 +67,7 @@
             }
 
           ?>  
+
           </ul>
        </div><!--/.nav-collapse -->
       </div>

@@ -1,17 +1,4 @@
-<!doctype html>
-<html><head>
-<title>Restaurant View</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FeedME CSS -->
-    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="css/example.css" type="text/css" rel="stylesheet" >
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -43,8 +30,6 @@
 		   });
 		 });
 	</script>
-</head>
-
 
 <body>
         
@@ -63,7 +48,7 @@
                 $resid = $_SESSION['resid'];
 
                     //Create query
-                $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, U.login
+                $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, R.tags, U.login
                         FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid'";
 
                 $result=@mysql_query($qry);
@@ -81,6 +66,9 @@
                     $username = $row['login'];
                     $date = $row['reviewdate'];
                     $helpfulnessscore = $row['helpfulnessscore'];
+                    $tags = $row['tags'];
+
+                    $tags_arr = explode(',', $tags);
                     
                     if($inverted == False){
                         $side = "";
@@ -103,16 +91,22 @@
                                 </div>
                                 <div class=\"timeline-body\">
                                     <p>" . $review_text . ".</p>
-                                </div>
-                                <div class=\"timeline-regiontags\">
-                                    <span class=\"label label-default\">alice</span>
-                                    <span class=\"label label-primary\">story</span>
-                                    <span class=\"label label-success\">blog</span>
-                                    <span class=\"label label-info\">personal</span>
-                                    <span class=\"label label-warning\">Warning</span>
-                                    <span class=\"label label-danger\">Danger</span>
-                                </div>
-                                <div class=\"timeline-info\">
+                                </div>";
+
+                                if(sizeof($tags_arr) != 0){
+                                    echo "<div class=\"timeline-regiontags\">";
+
+                                    foreach($tags_arr as $val){
+                                        echo "<span class=\"label label-info\">$val</span> ";
+                                    }
+                                    echo "</div>";
+                                }
+                                else{
+                                    echo "BOB'S YOUR UNCLE";
+                                }
+                                    
+                                echo
+                                "<div class=\"timeline-info\">
                                     <span class=\"badge\">
                                         Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
                                     </span>
@@ -185,10 +179,7 @@
 
     });
 </script>
-        
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.js"></script>
 
 </body>
 </html>
