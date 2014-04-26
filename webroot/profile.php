@@ -73,8 +73,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-3">
           <img style="height:100%;width:100%" src=<?php echo "\"$picture\"" ?> class="img-circle">
+          <br>
          <br>
-        <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1"><strong>Edit Profile</strong></button>
+        <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1">
+          <strong>Edit Profile
+          </strong>
+        </button>
         </div>
         <div class="col-sm-9 col-md-9">
           <h1 align="center"><?php echo $firstname . " " . $lastname ?></h1>
@@ -88,7 +92,9 @@
             <br>
           <div class="pull-left">
             <h6>Favorite Food Tags:</h6>
-            <span class="label label-default">Vegan</span> <span class="label label-primary label-default">Soup</span> <span class="label label-success">Spiders</span>
+            <span class="label label-default">Vegan</span> 
+            <span class="label label-primary label-default">Soup</span> 
+            <span class="label label-success">Spiders</span>
           </div>
         </div>
       </div>
@@ -99,7 +105,9 @@
 
         <?php 
 
-            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate DESC LIMIT 5";
+            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " 
+                    . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE 
+                    . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate DESC LIMIT 5";
 
             $result=@mysql_query($qry);
 
