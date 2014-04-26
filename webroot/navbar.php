@@ -47,14 +47,9 @@
             </li>
             <li>
                 <form method="get" action='searchResults.php' style="padding: 10px 10px 0px 0px !important;">
-                    <input type="text" id="q" name="q">
+                    <input type="text" id="q" name="q" placeholder="Search">
                     <input type="submit" hidden="true" value="Submit">
                 </form>
-            </li>
-            <li>
-                <button class="nav btn btn-default navbar-btn">
-                            <i class="glyphicon glyphicon-search"></i>
-                </button>
             </li>
           </ul>
             
