@@ -95,7 +95,7 @@
                 <div class="new-com-post">
                     <a href="<?php echo "restaurant.php?resid=$resid"?>"><button type="button" class="btn btn-primary" href="">Return</button></a>
             </div>
-                <img class="img-responsive" src="./img/kfc_review_2.jpg" />
+                <img class="img-responsive" src="<?php echo $image ?>" />
                 <br></br>
             
             <div class="new-com-post">
@@ -150,6 +150,7 @@
 <!--             <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
             <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" /> -->
             <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
+            <br><br>
             <div class="bt-add-com">Post comment</div>
             <div class="bt-cancel-com">Cancel</div>
         </div>
@@ -170,7 +171,7 @@
         $('.new-com-bt').click(function(event){    
             $(this).hide();
             $('.new-com-cnt').show();
-            $('#name-com').focus();
+            $('#comment').focus();
         });
 
         /* when start writing the comment activate the "add" button */
