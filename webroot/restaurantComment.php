@@ -13,8 +13,8 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
     <link href="./css/styles.css" rel="stylesheet">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-    <link href="css/example.css" type="text/css" rel="stylesheet">
+    <link href="./css/style.css" type="text/css" rel="stylesheet">
+    <link href="./css/example.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
     <style type="text/css">
@@ -83,85 +83,88 @@
      
             ?>
 
+    
+    
+    
+            <div class="com">
+                  <div class="new-com-post">
+                    <a href="<?php echo "restaurant.php?resid=$resid"?>">
+                        <button type="button" class="btn btn-primary" href="">Return
+                        </button>
+                      </a>
+                  </div>
+                
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <img class="img-responsive" style="width: 100% !important;" src="<?php echo $image ?>" />
 
-                  <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-2 col-xs-1 col-md-3 col-sm-3 ">
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-8 col-xs-10 col-md-6 col-sm-6">
-            
-            
-            <div class="cmt-containers" >
-                <div class="new-com-post">
-                    <a href="<?php echo "restaurant.php?resid=$resid"?>"><button type="button" class="btn btn-primary" href="">Return</button></a>
-            </div>
-                <img class="img-responsive" src="<?php echo $image ?>" />
-                <br></br>
-            
-            <div class="new-com-post">
-                <?php 
+                    </div>
+                    <div class="timeline-body">
+                      <p><br><?php echo $review_text ?></b></p>
+
+                    </div>
+
+                    <div class="timeline-regiontags">
+                    <?php 
 
                         if(sizeof($tags_arr) != 0){
                             foreach($tags_arr as $tag){
                                 echo "<a href=\"searchResults.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
                             }
                         }
-                ?>
+                    ?>
+                    </div>
+                      
+                    <div class="timeline-info">
+                        <span class="badge">Posted by 
+                            <a style="color:black" href="">Dolan 
+                            </a> on 2012-08-02 20:47:04
+                        </span>
+                    </div>
+                      
+                   <div class="timeline-footer">
+                       <hr>
+                        <?php 
+                        require('scripts/dbconnect.php');
 
-            </div>
-            <br>
-            <div class="new-com-post">
-                <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
-            </div>
-            
-            <div class="new-com-org-review">
-                    <p><br><?php echo $review_text ?></b></p>
-            </div>
+                        $sql = mysql_query("SELECT C.comment, C.date, C.member_id, C.login, U.picture FROM comments as C INNER JOIN users AS U ON C.member_id = U.member_id WHERE reviewid='$reviewid'") or die(mysql_error());;
 
-    <hr>
-    <?php 
-    require('scripts/dbconnect.php');
+                        while($affcom = mysql_fetch_assoc($sql)){ 
+                            $comment = $affcom['comment'];
+                            $date = $affcom['date'];
+                            $member_id = $affcom['member_id'];
+                            $login = $affcom['login'];
+                            // $email = $_SESSION['SESS_EMAIL'];
+                            $picture = $affcom['picture'];
+                        ?>
+                        <div class="cmt-cnt new-com-org-review">
+                            <img src="<?php echo $picture ?>" />
+                            <div class="thecom">
+                                <h5><?php echo $login ?></h5><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $date; ?></span>
+                                <br/>
+                                <p><?php echo $comment; ?></p>
+                            </div>
+                        </div><!-- end "cmt-cnt" -->
+                        <?php } ?>
 
-    $sql = mysql_query("SELECT C.comment, C.date, C.member_id, C.login, U.picture FROM comments as C INNER JOIN users AS U ON C.member_id = U.member_id WHERE reviewid='$reviewid'") or die(mysql_error());;
-    
-    while($affcom = mysql_fetch_assoc($sql)){ 
-        $comment = $affcom['comment'];
-        $date = $affcom['date'];
-        $member_id = $affcom['member_id'];
-        $login = $affcom['login'];
-        // $email = $_SESSION['SESS_EMAIL'];
-        $picture = $affcom['picture'];
-    ?>
-    <div class="cmt-cnt new-com-org-review">
-        <img src="<?php echo $picture ?>" />
-        <div class="thecom">
-            <h5><?php echo $login ?></h5><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $date; ?></span>
-            <br/>
-            <p><?php echo $comment; ?></p>
+                        <div class="new-com-org-review">
+                            <div class="new-com-bt comment-post">
+                                <span>Write a comment ...</span>
+                            </div>
+                            <div class="new-com-cnt">
+                    <!--             <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
+                                <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" /> -->
+                                <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
+                                <br><br>
+                                <div class="bt-add-com">Post comment</div>
+                                <div class="bt-cancel-com">Cancel</div>
+                            </div>
+                        </div>    
+
+                        <div class="clear"></div>
+                    </div>
+                  </div>
         </div>
-    </div><!-- end "cmt-cnt" -->
-    <?php } ?>
-
-    <div class="new-com-org-review">
-        <div class="new-com-bt comment-post">
-            <span>Write a comment ...</span>
-        </div>
-        <div class="new-com-cnt">
-<!--             <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
-            <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" /> -->
-            <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
-            <br><br>
-            <div class="bt-add-com">Post comment</div>
-            <div class="bt-cancel-com">Cancel</div>
-        </div>
-    </div>    
-        
-    <div class="clear"></div>
-    </div><!-- end of comments container "cmt-container" -->
-            
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-2 col-xs-1 col-md-3 col-sm-3">
-      </div><!-- /.row -->
     </div>
 </div>
 
