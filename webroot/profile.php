@@ -81,7 +81,12 @@
         </button>
         </div>
         <div class="col-sm-9 col-md-9">
-          <h1 align="center"><?php echo $firstname . " " . $lastname ?></h1>
+          <h1 align="center"><?php echo $firstname . " " . $lastname ?>
+            <a class="btn btn-large" style="background-color: red !important;" href="#">
+                <i class="glyphicon glyphicon-ban-circle">
+                </i>
+            </a>
+          </h1>
           <br>
           <h5>Username: <?php echo $login ?></h5>
           <h5>Gender: <?php echo $gender ?></h5>
@@ -133,6 +138,17 @@
 
                 echo 
                   "<article class=\"search-result row\">
+                                    <span class=\"label\" style=\"background-color: #3b5998; color: white !important;\">
+                                        <i class=\"glyphicon glyphicon-pencil\"> </i>
+                                    </span>
+                                    
+                                    <span class=\"label label-danger\" style=\"font-color: white !important;\">
+                                        <i class=\"glyphicon glyphicon-trash\"> </i>
+                                    </span>
+                                    
+                                    <span class=\"label label-warning\">
+                                        <i class=\"glyphicon glyphicon-flag\"> </i>
+                                    </span>
                     <div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
                     <div class=\"col-xs-12 col-sm-12 col-md-2\">
                       <ul class=\"meta-search\">
