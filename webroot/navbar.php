@@ -11,9 +11,6 @@
       }
     </style>
 
-    <!-- <?php include_once('createRestaurant.php') ?> -->
-
-
     <!------------------------ Start of Navbar ------------------------>
     <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
       <div class="container">

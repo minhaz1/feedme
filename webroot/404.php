@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 <html>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -8,6 +10,8 @@
 	</head>
 
 <body>
+<?php include('navbar.php'); ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -20,7 +24,7 @@
                     Sorry, an error has occured, Requested page not found!
                 </h2>                
                 <div class="error-actions" style="margin-top:50px;">
-                    <a style="width:80%;" href="http://www.binarymaze.com/public" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                    <a style="width:80%;" href="index.php" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
                         Take Me Home </a>
                 </div>
             </div>

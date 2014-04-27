@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!doctype html>
 <html><head>
 <title>Restaurant View</title>
@@ -42,14 +46,45 @@
         
     
     <?php 
+    // include navbar 
+    include('navbar.php');
+
     // Connect to the database
-    include('config.php'); 
+    include('scripts/dbconnect.php'); 
     $id_post = "1"; //the post or the page id
     ?>
-    
-    <div class="containers" id="resturantCommentBody">
 
-      <!-- Three columns of text below the carousel -->
+                    <!-- Start of Review -->
+            <?php 
+                $reviewid = $_GET['reviewid'];
+
+                    //Create query
+                $qry = "SELECT R.title, R.resid, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, R.tags, U.login
+                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE R.reviewid='$reviewid'";
+
+                $result=@mysql_query($qry);
+
+                    //Check whether the query was successful or not
+                if(!$result) {
+                    echo "died";
+                    die("Query failed". $qry);
+                }
+
+                $row = mysql_fetch_array($result, MYSQL_ASSOC);
+                $image = $row['foodimage'];
+                $review_text = $row['description'];
+                $username = $row['login'];
+                $date = $row['reviewdate'];
+                $helpfulnessscore = $row['helpfulnessscore'];
+                $tags = $row['tags'];
+                $resid = $row['resid'];
+
+                $tags_arr = explode(',', $tags);
+     
+            ?>
+
+
+                  <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-2 col-xs-1 col-md-3 col-sm-3 ">
         </div><!-- /.col-lg-4 -->
@@ -58,52 +93,51 @@
             
             <div class="cmt-containers" >
                 <div class="new-com-post">
-                    <button type="button" class="btn btn-primary" id="page1" href="#">Return</button>
+                    <a href="<?php echo "restaurant.php?resid=$resid"?>"><button type="button" class="btn btn-primary" href="">Return</button></a>
             </div>
                 <img class="img-responsive" src="./img/kfc_review_2.jpg" />
                 <br></br>
             
             <div class="new-com-post">
-                            <span class="label label-default">alice</span> 
-                            <span class="label label-primary">story</span> 
-                            <span class="label label-success">blog</span> 
-                            <span class="label label-info">personal</span> 
-                            <span class="label label-warning">Warning</span>
-                            <span class="label label-danger">Danger</span>
-                    </div>
+                <?php 
+
+                        if(sizeof($tags_arr) != 0){
+                            foreach($tags_arr as $tag){
+                                echo "<a href=\"searchResults.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
+                            }
+                        }
+                ?>
+
+            </div>
+            <br>
             <div class="new-com-post">
                 <span class="badge">Posted by <a style="color:black" href="">Dolan </a> on 2012-08-02 20:47:04</span>
             </div>
             
             <div class="new-com-org-review">
-                    <p><br>KFC's Boneless Chicken is a skinless, boneless take on their bone-in Original Recipe fried chicken. According to their research, a majority of people like boneless chicken and this is their effort to appeal to those folks, notwithstanding the fact that they offer chicken strips and have offered a Boneless Filet in the past. a song at the end of the show</b></p>
-             </div>
-    
-    
+                    <p><br><?php echo $review_text ?></b></p>
+            </div>
+
     <hr>
     <?php 
-    $sql = mysql_query("SELECT * FROM comments WHERE id_post = '$id_post'") or die(mysql_error());;
+    require('scripts/dbconnect.php');
+
+    $sql = mysql_query("SELECT C.comment, C.date, C.member_id, C.login, U.picture FROM comments as C INNER JOIN users AS U ON C.member_id = U.member_id WHERE reviewid='$reviewid'") or die(mysql_error());;
+    
     while($affcom = mysql_fetch_assoc($sql)){ 
-        $name = $affcom['name'];
-        $email = $affcom['email'];
         $comment = $affcom['comment'];
         $date = $affcom['date'];
-
-        // Get gravatar Image 
-        // https://fr.gravatar.com/site/implement/images/php/
-        $default = "mm";
-        $size = 35;
-        $grav_url = "http://www.gravatar.com/avatar/".md5(strtolower(trim($email)))."?d=".$default."&s=".$size;
-
+        $member_id = $affcom['member_id'];
+        $login = $affcom['login'];
+        // $email = $_SESSION['SESS_EMAIL'];
+        $picture = $affcom['picture'];
     ?>
     <div class="cmt-cnt new-com-org-review">
-        <img src="<?php echo $grav_url; ?>" />
+        <img src="<?php echo $picture ?>" />
         <div class="thecom">
-            <h5><?php echo $name; ?></h5><span data-utime="1371248446" class="com-dt"><?php echo $date; ?></span>
+            <h5><?php echo $login ?></h5><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $date; ?></span>
             <br/>
-            <p>
-                <?php echo $comment; ?>
-            </p>
+            <p><?php echo $comment; ?></p>
         </div>
     </div><!-- end "cmt-cnt" -->
     <?php } ?>
@@ -113,9 +147,9 @@
             <span>Write a comment ...</span>
         </div>
         <div class="new-com-cnt">
-            <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
-            <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" />
-            <textarea class="the-new-com"></textarea>
+<!--             <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
+            <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" /> -->
+            <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
             <div class="bt-add-com">Post comment</div>
             <div class="bt-cancel-com">Cancel</div>
         </div>
@@ -140,7 +174,7 @@
         });
 
         /* when start writing the comment activate the "add" button */
-        $('.the-new-com').bind('input propertychange', function() {
+        $('.comment').bind('input propertychange', function() {
            $(".bt-add-com").css({opacity:0.6});
            var checklength = $(this).val().length;
            if(checklength){ $(".bt-add-com").css({opacity:1}); }
@@ -148,7 +182,7 @@
 
         /* on clic  on the cancel button */
         $('.bt-cancel-com').click(function(){
-            $('.the-new-com').val('');
+            $('.comment').val('');
             $('.new-com-cnt').fadeOut('fast', function(){
                 $('.new-com-bt').fadeIn('fast');
             });
@@ -156,9 +190,7 @@
 
         // on post comment click 
         $('.bt-add-com').click(function(){
-            var theCom = $('.the-new-com');
-            var theName = $('#name-com');
-            var theMail = $('#mail-com');
+            var theCom = $('.comment');
 
             if( !theCom.val()){ 
                 alert('You need to write a comment!'); 
@@ -166,11 +198,9 @@
                 $.ajax({
                     type: "POST",
                     url: "ajax/add-comment.php",
-                    data: 'act=add-com&id_post='+<?php echo $id_post; ?>+'&name='+theName.val()+'&email='+theMail.val()+'&comment='+theCom.val(),
+                    data: 'act=add-com&reviewid='+<?php echo $reviewid; ?>+'&comment='+theCom.val(),
                     success: function(html){
                         theCom.val('');
-                        theMail.val('');
-                        theName.val('');
                         $('.new-com-cnt').hide('fast', function(){
                             $('.new-com-bt').show('fast');
                             $('.new-com-bt').before(html);  

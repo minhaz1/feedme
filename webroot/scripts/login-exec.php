@@ -68,6 +68,7 @@
 				$_SESSION['SESS_MEMBER_ID'] = $member['member_id'];
 				$_SESSION['SESS_FIRST_NAME'] = $member['firstname'];
 				$_SESSION['SESS_LAST_NAME'] = $member['lastname'];
+				$_SESSION['SESS_EMAIL'] = $member['email'];
 				$_SESSION['SESS_LOGIN'] = $member['login'];
 				$_SESSION['SESS_BIO'] = $member['biography'];
 				$_SESSION['SESS_GENDER'] = $member['gender'];

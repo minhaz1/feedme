@@ -10,17 +10,17 @@
    
   if(isset($_GET['resid'])){
     $resid = clean($_GET['resid']);
-    $_SESSION['resid'] = $resid;
-  }
-  else if(!isset($_SESSION['resid'])){
-    header("location: index.php");        
-    exit();
+    // $_SESSION['resid'] = $resid;
   }
   else{
-    $resid = clean($_SESSION['resid']);
+    header("location: 404.php");        
+    exit();
   }
+  // else{
+  //   $resid = clean($_SESSION['resid']);
+  // }
 
-  $_SESSION['resid'] = $resid;
+  // $_SESSION['resid'] = $resid;
 
   //Create query
   $qry = "SELECT name, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
@@ -51,8 +51,12 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
     <link href="./css/styles.css" rel="stylesheet">
-    
-    
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+     <!-- Optional theme -->
+    <link rel="stylesheet" href="bootstrap/css/maf.css">
+        <link type="text/css" rel="stylesheet" href="css/example.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
 
     <style type="text/css">
       body {

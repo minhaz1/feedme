@@ -45,10 +45,10 @@
             <ul class="timeline">
                 <!-- Start of Review -->
             <?php 
-                $resid = $_SESSION['resid'];
+                // $resid = $_SESSION['resid'];
 
                     //Create query
-                $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, R.tags, U.login
+                $qry = "SELECT R.title, R.reviewid, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, R.tags, U.login
                         FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid' ORDER BY reviewdate DESC LIMIT 10";
 
                 $result=@mysql_query($qry);
@@ -67,6 +67,7 @@
                     $date = $row['reviewdate'];
                     $helpfulnessscore = $row['helpfulnessscore'];
                     $tags = $row['tags'];
+                    $reviewid = $row['reviewid'];
 
                     $tags_arr = explode(',', $tags);
                     
@@ -124,7 +125,7 @@
                                 <div class=\"timeline-footer\">
                                     <a>
                                         <i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>
-                                        <a class=\"pull-right\" id=\"reviewIDB\" href=\"#\">Comment</a>
+                                        <a class=\"pull-right\" id=\"reviewIDB\" href=\"restaurantComment.php?reviewid=$reviewid\">Comment</a>
                                 </div>
                             </div>
                         </li>";
