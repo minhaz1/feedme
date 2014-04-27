@@ -51,12 +51,8 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
     <link href="./css/styles.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-     <!-- Optional theme -->
-    <link rel="stylesheet" href="bootstrap/css/maf.css">
-        <link type="text/css" rel="stylesheet" href="css/example.css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
+    
+    
 
     <style type="text/css">
       body {
