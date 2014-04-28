@@ -31,7 +31,23 @@
 	$gender = clean($_POST['gender']);
 	$yeararrived = clean($_POST['yeararrived']);
 
-	//Input Validations
+	//check if email has @umbc.edu
+	//Input Validations{
+	if($email.indexOf("@umbc.edu");{
+		$errmsg_arr['email'] = 'The email address entered needs to be a UMBC email address';
+		$errflag = true;
+		}
+		
+		//check if password match
+		if($password != 'cpassword') {
+		$errmsg_arr['password'] = 'Password entered does not match';
+		$errflag = true;
+		}
+		
+		
+		
+		
+	
 
 	// validate first name	
 	if($fname == '') {
