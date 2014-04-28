@@ -24,16 +24,20 @@ if($_POST['act'] == 'add-com'):
     //insert the comment in the database
     mysql_query("INSERT INTO comments (member_id, login, reviewid, comment)VALUES( '$member_id','$login', '$reviewid', '$comment')");
     if(!mysql_errno()){
+    	date_default_timezone_set('US/Eastern');
+    	$comment_date = explode(" ", DATE('d-m-Y H:i'));
+    	$date = $comment_date[0];
+    	$time = DATE("g:i a", STRTOTIME($comment_date[1]));
 ?>
 
     <div class="cmt-cnt">
     	<img src="<?php echo $picture ?>" alt="" />
 		<div class="thecom">
-	        <h5><?php echo $login ?></h5><span  class="com-dt"><?php echo date('d-m-Y H:i'); ?></span>
+	        <h5><?php echo $login ?></h5><span  class="com-dt"><?php echo "$time on $date" ?></span>
 	        <br/>
 	       	<p><?php echo $comment; ?></p>
 	    </div>
-	</div><!-- end "cmt-cnt" -->
+	</div>
 
 	<?php } ?>
 <?php endif; ?>

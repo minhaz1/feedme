@@ -83,9 +83,6 @@
      
             ?>
 
-    
-    
-    
             <div class="com">
                   <div class="new-com-post">
                     <a href="<?php echo "restaurant.php?resid=$resid"?>">
