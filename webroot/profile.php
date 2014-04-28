@@ -193,9 +193,18 @@
         <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
         <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
+        <label style="color:black">Change Gender:</label>
+          <select id="gender" name="profileGenderId">
+              <option value="0"><?php echo $gender ?></option>
+              <option value="3">Female</option>
+              <option value="2">Male</option>
+          </select>
+        <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
+        <input type="text" class="form-control" id="updateTags" placeholder="Enter your favorite tags, separated by a space" value="">
+
       <div class="modal-footer">
-            <button type="button" class="btn btn-default" >Close</button>
-             <button type="submit" class="btn btn-default">Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-default"data-dismiss="modal" >Save changes</button>
       </div><!-- /.modal-footer -->
          </form>
      </div>
