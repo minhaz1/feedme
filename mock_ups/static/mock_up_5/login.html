@@ -13,6 +13,41 @@
 <body>
 
 
+<script>
+function validateForm()
+{
+var x=document.forms["loginForm"]["username"].value;
+var atpos=x.indexOf("@umbc.edu");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  alert("Not a valid e-mail address");
+  return false;
+  }
+}
+
+
+
+function validateForm()
+{
+var x=document.forms["loginForm"]["username"].value;
+if (x==null || x=="")
+  {
+  alert("Username or email must be filled out");
+  return false;
+  }
+  var x=document.forms["loginForm"]["passwd"].value;
+  if (x==null || x=="")
+  {
+  alert("Password must be filled out");
+  return false;
+  }
+  else ( x
+}
+
+
+			
+</script>
 
 
 
