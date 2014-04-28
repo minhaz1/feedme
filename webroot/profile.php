@@ -162,7 +162,7 @@
 
                 
                 if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-                  echo "
+                  echo "<br>
                   <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
                     <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
                   </a>&nbsp;
@@ -170,7 +170,7 @@
                       <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
                   </a>";
                 }
-                
+
                     echo "</ul>
                     </div>
                     <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
