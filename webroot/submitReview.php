@@ -11,14 +11,15 @@
 
 <!-- tagging stuff ends -->
 
+<!-- including a list of food tags for auto completion -->
+<script src="js/foodtags.js"></script>
+
 <script>
         $(function(){
-            var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
-
             // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
             // examples, so it automatically defaults to singleField.
             $('#singleFieldTags2').tagit({
-                availableTags: sampleTags,
+                availableTags: adjectives,
                 removeConfirmation: true,
                 readOnly: false,
                 caseSensitive: false
@@ -110,7 +111,7 @@ $("#reviewForm").submit(); //Submit  the FORM
                     <label for=\"exampleInputText\"><h5>Enter tags here, separated by a space:</h5></label>
                     <input name=\"tags\" id=\"singleFieldTags2\" type=\"hidden\" class=\"form-control\">
                   </div>
-                  <input type=\"hidden\" name=\"resid\" value=\"" . $_SESSION['resid'] . "\">
+                  <input type=\"hidden\" name=\"resid\" value=\"" . $resid . "\">
                   <button type=\"submit\" class=\"btn btn-default\">Submit</button>
                   <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>
 

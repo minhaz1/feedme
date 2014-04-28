@@ -24,7 +24,7 @@
 	//Sanitize the POST values
 	$fname = clean($_POST['fname']);
 	$lname = clean($_POST['lname']);
-	$login = clean($_POST['login']);
+	$login = strtolower(clean($_POST['login']));
 	$email = clean($_POST['email']);
 	$password = clean($_POST['password']);
 	$cpassword = clean($_POST['cpassword']);

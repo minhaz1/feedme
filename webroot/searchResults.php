@@ -10,7 +10,7 @@
 	// and an array of the columns you watch to search
 	$results = search_perform(RES_REVIEWS, array('tags','description','title'), $_GET['q']);
 	$num_results = sizeof($results);
-
+	$reviewid = "";
 ?>
 
 <html>
@@ -22,6 +22,12 @@
 	</head>
 
 <body>
+    <?php 
+      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+        include_once("scripts/moderate_helper.php");     
+      }
+    ?>
+
 
 	<!------------------------ Start of Navbar ------------------------>
     <?php include_once('navbar.php') ?>
@@ -41,7 +47,12 @@
 		<?php 
 
 			foreach($results as $row){
+				if($row['flags_count'] >= REVIEW_FLAGS_LIMIT){
+					continue;
+				}
+
 				$resid = $row['resid'];
+				$reviewid = $row['reviewid'];
 				$text = $row['description'];
 				$title = $row['title'];
 				$tags = explode(",", $row['tags']);
@@ -63,8 +74,22 @@
 							<ul class=\"meta-search\">
 								<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
 								<li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
-								$tagstring
-							</ul>
+								$tagstring";
+
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                  echo "<br><a onclick=\"flag_review($reviewid)\" href=\"#\">
+                      <i href=\"#\" class=\"glyphicon glyphicon-flag\" title=\"Remove review\"> </i>
+                  </a>";
+                }
+
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                  echo "
+                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                    <i href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"Flag review\"> </i>
+                  </a>&nbsp;";
+                }
+
+				echo "</ul>
 						</div>
 						<div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
 							<h3><a href=\"restaurant.php?resid=$resid\" title=\"\">$title</a></h3>

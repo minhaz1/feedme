@@ -16,14 +16,19 @@
     header("location: 404.php");        
     exit();
   }
-  // else{
-  //   $resid = clean($_SESSION['resid']);
-  // }
 
-  // $_SESSION['resid'] = $resid;
+  // declare, set later
+  $qry = "";
 
-  //Create query
-  $qry = "SELECT name, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
+  if($_GET['resid'] == "random"){
+    $qry = "SELECT name, resid, phone, address, url, image FROM " . RESTAURANT_TABLE . " ORDER BY RAND() LIMIT 1";
+  }
+  else{
+    //Create query
+    $qry = "SELECT name, resid, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
+  }
+
+
   $result=@mysql_query($qry);
 
   if(!$result) {
@@ -31,7 +36,7 @@
   } 
 
   $restaurant = mysql_fetch_assoc($result); 
-
+  $resid = $restaurant['resid'];
   $name = $restaurant['name'];
   $phone = $restaurant['phone'];
   $address = $restaurant['address'];
@@ -51,9 +56,9 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
     <link href="./css/styles.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
+    
      <!-- Optional theme -->
-    <link rel="stylesheet" href="bootstrap/css/maf.css">
+    
         <link type="text/css" rel="stylesheet" href="css/example.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
@@ -66,17 +71,6 @@
     </style>
     
 <script type="text/javascript">
-		$(document).ready(function(){
-            <!-- loads the timeline when the page starts -->
-            $('#digital_download').html('Downloading...'); // Show "Downloading..."
-                // Do an ajax request
-                $.ajax({
-                  url: "resturantTimeLine.php?id=resturantTimeLineBody"
-                }).done(function(data) { // data what is sent back by the php page
-                  $('#resturantBody').html(data); // display data
-                }); 
-		 });
-
       $("#reviewForm").submit(function(event) {
 
       /* stop form from submitting normally */
@@ -272,14 +266,6 @@
     </div>
     
     <script src="./js/feedme.js"></script>
-    <script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
-    <link href="./css/jquery.fancybox.css" rel="stylesheet" type="text/css" />
-    <script src="./js/jquery.fancybox.pack.js"></script> 
-    <link href="./css/jquery.fancybox-buttons.css" rel="stylesheet" type="text/css"></script> 
-    <script src="./js/jquery.fancybox-buttons.js"></script> 
-    <script src="./js/jquery.fancybox-media.js"></script> 
-    <script src="./js/hammer.min.js"></script>
-    <script src="./js/jquery.nanogallery.min.js"></script> 
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/bootstrap.js"></script>
   <?php unset($_SESSION['ERRMSG_ARR']); ?>

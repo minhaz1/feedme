@@ -21,7 +21,7 @@
 	$errflag = false;
 	
 	//Sanitize the POST values
-	$login = clean($_POST['login']);
+	$login = strtolower(clean($_POST['login']));
 	$password = clean($_POST['password']);
 	
 	//Input Validations
@@ -62,6 +62,12 @@
 					header("location: " . $redirect_url);
 					exit();
 				}
+				else if($member['flags_count'] >= USER_FLAGS_LIMIT){
+					$errmsg_arr['login'] = "You have been flagged too many times!";
+					$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+					header("location: " . $redirect_url);
+					exit();
+				}
 
 				//Login Successful
 				session_regenerate_id();
@@ -74,6 +80,7 @@
 				$_SESSION['SESS_GENDER'] = $member['gender'];
 				$_SESSION['SESS_YEAR_ARRIVED'] = $member['yeararrived'];
 				$_SESSION['SESS_PICTURE'] = $member['picture'];
+				$_SESSION['SESS_USERTYPE'] = $member['usertype'];
 				session_write_close();
 				header("location: " . $redirect_url);
 				exit();
