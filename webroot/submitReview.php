@@ -11,14 +11,15 @@
 
 <!-- tagging stuff ends -->
 
+<!-- including a list of food tags for auto completion -->
+<script src="js/foodtags.js"></script>
+
 <script>
         $(function(){
-            var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
-
             // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
             // examples, so it automatically defaults to singleField.
             $('#singleFieldTags2').tagit({
-                availableTags: sampleTags,
+                availableTags: adjectives,
                 removeConfirmation: true,
                 readOnly: false,
                 caseSensitive: false
