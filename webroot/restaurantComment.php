@@ -145,7 +145,8 @@
                                 </div>
                             </div><!-- end "cmt-cnt" -->
                         <?php } ?>
-
+                        
+                        <?php if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){ ?>
                         <div class="new-com-org-review">
                             <div class="new-com-bt comment-post">
                                 <span>Write a comment ...</span>
@@ -161,6 +162,7 @@
                         </div>    
 
                         <div class="clear"></div>
+                        <?php } ?>
                     </div>
                   </div>
         </div>
