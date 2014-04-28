@@ -2,7 +2,6 @@
  
 <?php 
     include_once('params.php');
-    
 
     if(isset($member_id) && $_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){
 ?>
@@ -32,28 +31,37 @@
 <?php 
     if(isset($reviewid)){
 ?>
-    function flag_review(reviewid){
-      var conf = confirm("Are you sure you want to flag this review?");
-      if(conf){
-        var id = document.createElement("input");
-        id.setAttribute("value", reviewid); 
-        moderate("flag_review", id);
+      function flag_review(reviewid){
+        var conf = confirm("Are you sure you want to flag this review?");
+        if(conf){
+          var id = document.createElement("input");
+          id.setAttribute("value", reviewid); 
+          moderate("flag_review", id);
+        }
+        // alert("The review has been flagged.");
       }
-      // alert("The review has been flagged.");
-    }
 
-    function hide_review(reviewid){
-      var conf = confirm("Are you sure you want to remove this review?");
-      if(conf){      
-        var id = document.createElement("input");
-        id.setAttribute("value", reviewid); 
-        moderate("hide_review", id);
+<?php 
+    }
+   
+   if(isset($reviewid) && $_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){
+?>
+      function hide_review(reviewid){
+        var conf = confirm("Are you sure you want to remove this review?");
+        if(conf){      
+          var id = document.createElement("input");
+          id.setAttribute("value", reviewid); 
+          moderate("hide_review", id);
+        }
+       alert("The review has been removed."); 
       }
-     alert("The review has been removed."); 
-    }
 
 
-<?php } ?>
+<?php } 
+  
+    if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+
+?>
 
     function moderate (value, id) {
 
@@ -75,6 +83,7 @@
       document.body.appendChild(form);
       form.submit();
     }
-
+    
+<?php } ?>
 
 </script>

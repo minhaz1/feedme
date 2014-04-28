@@ -16,14 +16,19 @@
     header("location: 404.php");        
     exit();
   }
-  // else{
-  //   $resid = clean($_SESSION['resid']);
-  // }
 
-  // $_SESSION['resid'] = $resid;
+  // declare, set later
+  $qry = "";
 
-  //Create query
-  $qry = "SELECT name, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
+  if($_GET['resid'] == "random"){
+    $qry = "SELECT name, resid, phone, address, url, image FROM " . RESTAURANT_TABLE . " ORDER BY RAND() LIMIT 1";
+  }
+  else{
+    //Create query
+    $qry = "SELECT name, resid, phone, address, url, image FROM " . RESTAURANT_TABLE . " WHERE resid=" . $resid;
+  }
+
+
   $result=@mysql_query($qry);
 
   if(!$result) {
@@ -31,7 +36,7 @@
   } 
 
   $restaurant = mysql_fetch_assoc($result); 
-
+  $resid = $restaurant['resid'];
   $name = $restaurant['name'];
   $phone = $restaurant['phone'];
   $address = $restaurant['address'];

@@ -47,6 +47,10 @@
 		<?php 
 
 			foreach($results as $row){
+				if($row['flags_count'] >= REVIEW_FLAGS_LIMIT){
+					continue;
+				}
+
 				$resid = $row['resid'];
 				$reviewid = $row['reviewid'];
 				$text = $row['description'];
@@ -71,15 +75,19 @@
 								<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
 								<li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
 								$tagstring";
-	                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-	                  echo "<br>
-	                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
-	                    <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
-	                  </a>&nbsp;
-	                  <a onclick=\"flag_review($reviewid)\" href=\"#\">
-	                      <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
-	                  </a>";
-	                }
+
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                  echo "<br><a onclick=\"flag_review($reviewid)\" href=\"#\">
+                      <i href=\"#\" class=\"glyphicon glyphicon-flag\" title=\"Remove review\"> </i>
+                  </a>";
+                }
+
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                  echo "
+                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                    <i href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"Flag review\"> </i>
+                  </a>&nbsp;";
+                }
 
 				echo "</ul>
 						</div>

@@ -37,6 +37,7 @@
           $year = $member['yeararrived'];
           $member_id = $member['member_id'];
           $picture = $member['picture'];
+          $usertype = $member['usertype'];
         }
       }
   }
@@ -57,7 +58,6 @@
 
   // setting it so that the php knows there are reviews on this page
   $reviewid = "";
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -91,30 +91,41 @@
         </div>
         <div class="col-sm-9 col-md-9">
           <h1 align="center"><?php echo $firstname . " " . $lastname ?>
-            <?php 
-              if($_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){
-            ?>
-            <a onclick="flag_user('<?php echo $login; ?>')" class="btn btn-large" style="background-color: red !important;" href="#">
-                <i class="glyphicon glyphicon-ban-circle">
-                </i>
-            </a>
-            <?php } ?>
+        
+        <font size="5">
+        <?php 
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                  echo "<a onclick=\"flag_user('$login')\" href=\"#\">
+                      <i href=\"#\" class=\"glyphicon glyphicon-flag\" title=\"Flag user\"> </i>
+                  </a>";
+                }
+
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                  echo "
+                  <a onclick=\"ban_user('$login')\" href=\"#\" style=\"font-color: white !important;\">
+                    <i href=\"#\" class=\"glyphicon glyphicon-trash\" title\"Ban user\"></i>
+                  </a>&nbsp;";
+                }
+        ?>
+      </font>
           </h1>
           <br>
-          <h5>Username: <?php echo $login ?></h5>
-          <h5>Gender: <?php echo $gender ?></h5>
-          <h5>Year Arrived: <?php echo $year ?></h5>
+          <h4 align="center">Username: <?php echo $login ?></h4>
+
+          <h4 align="center">Gender: <?php echo $gender ?></h4>
+          <h4 align="center">Year Arrived: <?php echo $year ?></h4>
            <br>
-            <h5>Biography: </h5><h5 id="userBio"><?php echo $biography ?></h5>
+            <h4 align="center">Biography: </h4><h4 id="userBio" align="center"><?php echo $biography ?></h4>
             <br>
-            <br>
-          <div class="pull-left">
-            <h6>Favorite Food Tags:</h6>
+          <div align="center">
+            <h4>Favorite Food Tags:</h4>
             <span class="label label-default">Vegan</span> 
             <span class="label label-primary label-default">Soup</span> 
             <span class="label label-success">Spiders</span>
           </div>
+
         </div>
+
       </div>
       <div class="row">
         <br>
@@ -160,17 +171,18 @@
                         <li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
                         $tagstring";
 
-                
                 if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-                  echo "<br>
-                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
-                    <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
-                  </a>&nbsp;
-                  <a onclick=\"flag_review($reviewid)\" href=\"#\">
+                  echo "<br><a onclick=\"flag_review($reviewid)\" href=\"#\">
                       <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
                   </a>";
                 }
 
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                  echo "
+                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                    <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
+                  </a>&nbsp;";
+                }
                     echo "</ul>
                     </div>
                     <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">

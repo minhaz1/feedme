@@ -20,12 +20,12 @@
 	if($SESS_USERTYPE == USERTYPE_ADMIN){
 		if($action == "ban_user"){
 			$login = clean($_POST['id']);
-			$qry = "UPDATE " . USER_TABLE . " SET flags_count = flags_count + 5 WHERE login ='$login'";
+			$qry = "UPDATE " . USER_TABLE . " SET flags_count = flags_count + " . USER_FLAGS_LIMIT . " WHERE login ='$login'";
 			$result=mysql_query($qry);
 		}
 		else if($action == "hide_review"){
 			$reviewid = clean($_POST['id']);
-			$qry = "UPDATE " . RES_REVIEWS . " SET flags_count = flags_count + 3 WHERE reviewid ='$reviewid'";
+			$qry = "UPDATE " . RES_REVIEWS . " SET flags_count = flags_count " . REVIEW_FLAGS_LIMIT . " WHERE reviewid ='$reviewid'";
 			$result=mysql_query($qry);
 		}		
 	}

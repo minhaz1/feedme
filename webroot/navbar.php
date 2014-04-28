@@ -35,7 +35,7 @@
                   <li class="divider"></li>
                   <li><a href="#">Popular</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Random</a></li>
+                  <li><a href="restaurant.php?resid=random">Random</a></li>
                   <li class="divider"></li>
                   <!--<li><a href="#Submit" data-toggle="modal" data-target="#createrestaurant">Create a Resturant</a></li>
                   <li class="divider"></li> -->

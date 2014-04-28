@@ -62,7 +62,7 @@
 					header("location: " . $redirect_url);
 					exit();
 				}
-				else if($member['flags_count'] >= 5){
+				else if($member['flags_count'] >= USER_FLAGS_LIMIT){
 					$errmsg_arr['login'] = "You have been flagged too many times!";
 					$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
 					header("location: " . $redirect_url);

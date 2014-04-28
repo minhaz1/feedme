@@ -10,4 +10,7 @@
 	define("USERTYPE_NORMAL", 0);
 	define("USERTYPE_MOD", 1);
 	define("USERTYPE_ADMIN", 2);
+
+	define("USER_FLAGS_LIMIT", 5);
+	define("REVIEW_FLAGS_LIMIT", 3);
 ?>
