@@ -74,6 +74,7 @@
 				$_SESSION['SESS_GENDER'] = $member['gender'];
 				$_SESSION['SESS_YEAR_ARRIVED'] = $member['yeararrived'];
 				$_SESSION['SESS_PICTURE'] = $member['picture'];
+				$_SESSION['SESS_USERTYPE'] = $member['usertype'];
 				session_write_close();
 				header("location: " . $redirect_url);
 				exit();

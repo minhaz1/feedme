@@ -57,7 +57,7 @@
 	//Check whether the query was successful or not
 	if($result) {
 		$_SESSION['resid'] = $resid;
-		header("location: ../restaurant.php");				
+		header("location: " . $_SERVER['HTTP_REFERER']);				
 		exit();
 	}else {
 		die("Query failed". $qry);

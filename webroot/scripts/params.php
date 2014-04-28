@@ -6,4 +6,8 @@
 	define('USER_TABLE', 'users');
 	define('RES_REVIEWS', 'restaurant_review');
 	define('RESTAURANT_TABLE', 'mstr_restaurant');
+
+	define("USERTYPE_NORMAL", 0);
+	define("USERTYPE_MOD", 1);
+	define("USERTYPE_ADMIN", 2);
 ?>

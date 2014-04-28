@@ -117,8 +117,8 @@
                       
                     <div class="timeline-info">
                         <span class="badge">Posted by 
-                            <a style="color:black" href="">Dolan 
-                            </a> on 2012-08-02 20:47:04
+                            <a style="color:black" href="profile.php?userid=<?php echo $username ?>"><?php echo $username ?> 
+                            </a> <?php echo $date ?>
                         </span>
                     </div>
                       
@@ -131,20 +131,22 @@
 
                         while($affcom = mysql_fetch_assoc($sql)){ 
                             $comment = $affcom['comment'];
-                            $date = $affcom['date'];
+                            $reviewdate = explode(" ", $affcom['date']);
                             $member_id = $affcom['member_id'];
                             $login = $affcom['login'];
                             // $email = $_SESSION['SESS_EMAIL'];
                             $picture = $affcom['picture'];
+                            $date = $reviewdate[0];
+                            $time = DATE("g:i a", STRTOTIME($reviewdate[1]));
                         ?>
-                        <div class="cmt-cnt new-com-org-review">
-                            <img src="<?php echo $picture ?>" />
-                            <div class="thecom">
-                                <h5><?php echo $login ?></h5><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $date; ?></span>
-                                <br/>
-                                <p><?php echo $comment; ?></p>
-                            </div>
-                        </div><!-- end "cmt-cnt" -->
+                            <div class="cmt-cnt new-com-org-review">
+                                <a href="profile.php?userid=<?php echo $login ?>"><img src="<?php echo $picture ?>" /></a>
+                                <div class="thecom">
+                                    <a href="profile.php?userid=<?php echo $login ?>"><h5><?php echo $login ?></h5></a><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $time . " on " . $date; ?></span>
+                                    <br/>
+                                    <p><?php echo $comment; ?></p>
+                                </div>
+                            </div><!-- end "cmt-cnt" -->
                         <?php } ?>
 
                         <div class="new-com-org-review">
