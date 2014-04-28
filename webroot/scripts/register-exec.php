@@ -24,7 +24,7 @@
 	//Sanitize the POST values
 	$fname = clean($_POST['fname']);
 	$lname = clean($_POST['lname']);
-	$login = clean($_POST['login']);
+	$login = strtolower(clean($_POST['login']));
 	$email = clean($_POST['email']);
 	$password = clean($_POST['password']);
 	$cpassword = clean($_POST['cpassword']);
@@ -173,7 +173,7 @@
 
 	// email confirmation hash value
 	$confirmation = md5($login . $email);
-	$confirm_url = "http://" . $_SERVER['HTTP_HOST'] . "/confirm.php?id=" . $confirmation;
+	$confirm_url = "http://" . $_SERVER['HTTP_HOST'] . "/public/confirm.php?id=" . $confirmation;
 
 	$message = "Thank you for signing up for FEEDME!\nPlease click this link to confirm your account: \n$confirm_url";
 

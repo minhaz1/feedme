@@ -37,12 +37,11 @@
           $year = $member['yeararrived'];
           $member_id = $member['member_id'];
           $picture = $member['picture'];
-          $usertype = $member['usertype'];
         }
       }
   }
   else if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {
-    header("location: 404.php");
+    header("location: index.php");
     exit();
   }
   else{
@@ -56,8 +55,6 @@
     $picture = $_SESSION['SESS_PICTURE'];
   }
 
-  // setting it so that the php knows there are reviews on this page
-  $reviewid = "";
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,12 +65,6 @@
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body class="makeBlue">
-
-    <?php 
-      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-        include_once("scripts/moderate_helper.php");     
-      }
-    ?>
     
     <?php include_once('navbar.php') ?>
     <br>
@@ -90,43 +81,130 @@
         </button>
         </div>
         <div class="col-sm-9 col-md-9">
-          <h1 align="center"><?php echo $firstname . " " . $lastname ?>
-        
-        <font size="5">
-        <?php 
-                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-                  echo "<a onclick=\"flag_user('$login')\" href=\"#\">
-                      <i href=\"#\" class=\"glyphicon glyphicon-flag\" title=\"Flag user\"> </i>
-                  </a>";
-                }
-
-                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
-                  echo "
-                  <a onclick=\"ban_user('$login')\" href=\"#\" style=\"font-color: white !important;\">
-                    <i href=\"#\" class=\"glyphicon glyphicon-trash\" title\"Ban user\"></i>
-                  </a>&nbsp;";
-                }
-        ?>
-      </font>
-          </h1>
+          <h1 align="center"><?php echo $firstname . " " . $lastname ?></h1>
           <br>
-          <h4 align="center">Username: <?php echo $login ?></h4>
-
-          <h4 align="center">Gender: <?php echo $gender ?></h4>
-          <h4 align="center">Year Arrived: <?php echo $year ?></h4>
+          <h5>Username: <?php echo $login ?></h5>
+          <h5>Gender: <?php echo $gender ?></h5>
+          <h5>Year Arrived: <?php echo $year ?></h5>
            <br>
-            <h4 align="center">Biography: </h4><h4 id="userBio" align="center"><?php echo $biography ?></h4>
+            <h5>Biography: </h5><h5 id="userBio"><?php echo $biography ?></h5>
             <br>
-          <div align="center">
-            <h4>Favorite Food Tags:</h4>
+            <br>
+          <div class="pull-left">
+            <h6>Favorite Food Tags:</h6>
             <span class="label label-default">Vegan</span> 
             <span class="label label-primary label-default">Soup</span> 
             <span class="label label-success">Spiders</span>
           </div>
-
         </div>
-
       </div>
+        
+        
+      <div class="row">
+        <br>
+        <hr>
+        <p style="font-size:30px; color: #000000 !important;">Dashboard:</p><hr>
+          
+          
+        
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover tablesorter" style="background-color: white !important">
+                <thead>
+                  <tr>
+                    <th>First Name: <i class="fa fa-sort"></i></th>
+                    <th>Last Name: <i class="fa fa-sort"></i></th>
+                    <th>Recent Post: <i class="fa fa-sort"></i></th>
+                    <th>Edit: <i class="fa fa-sort"></i></th>
+                    <th>Flag: <i class="fa fa-sort"></i></th>
+                    <th>Delete: <i class="fa fa-sort"></i></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sean</td>
+                    <td>Last</td>
+                    <td>KFC</td>
+                    <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">
+                            <i class="glyphicon glyphicon-flag"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-danger">
+                            <i class="glyphicon glyphicon-trash"> </i>
+                        </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sean</td>
+                    <td>Last</td>
+                    <td>KFC</td>
+                    <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">
+                            <i class="glyphicon glyphicon-flag"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-danger">
+                            <i class="glyphicon glyphicon-trash"> </i>
+                        </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sean</td>
+                    <td>Last</td>
+                    <td>KFC</td>
+                    <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">
+                            <i class="glyphicon glyphicon-flag"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-danger">
+                            <i class="glyphicon glyphicon-trash"> </i>
+                        </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sean</td>
+                    <td>Last</td>
+                    <td>KFC</td>
+                    <td>
+                        <span class="label" style="background-color: #3b5998 ">
+                            <i class="glyphicon glyphicon-pencil"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-warning">
+                            <i class="glyphicon glyphicon-flag"> </i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="label label-danger">
+                            <i class="glyphicon glyphicon-trash"> </i>
+                        </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>             
+      </div>
+        
       <div class="row">
         <br>
         <hr>
@@ -134,16 +212,15 @@
 
         <?php 
 
-            $qry = "SELECT R.title, R.reviewid, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " 
+            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " 
                     . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE 
-                    . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' and flags_count < 3 ORDER BY reviewdate DESC LIMIT 5";
+                    . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate DESC LIMIT 5";
 
             $result=@mysql_query($qry);
 
             if($result){
               while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
                 $resid = $row['resid'];
-                $reviewid = $row['reviewid'];
                 $title = $row['title'];
                 $name = $row['name'];
                 $text = $row['description'];
@@ -162,28 +239,14 @@
 
 
                 echo 
-                  "<article class=\"search-result row\">";
-
-                  echo  "<div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
+                  "<article class=\"search-result row\">
+                    <div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
                     <div class=\"col-xs-12 col-sm-12 col-md-2\">
                       <ul class=\"meta-search\">
                         <li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
                         <li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
-                        $tagstring";
-
-                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-                  echo "<br><a onclick=\"flag_review($reviewid)\" href=\"#\">
-                      <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
-                  </a>";
-                }
-
-                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
-                  echo "
-                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
-                    <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
-                  </a>&nbsp;";
-                }
-                    echo "</ul>
+                        $tagstring
+                      </ul>
                     </div>
                     <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
                       <h3><a href=\"restaurant.php?resid=$resid\" title=\"\">$title</a></h3>
@@ -213,18 +276,9 @@
         <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
         <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
-        <label style="color:black">Change Gender:</label>
-          <select id="gender" name="profileGenderId">
-              <option value="0"><?php echo $gender ?></option>
-              <option value="3">Female</option>
-              <option value="2">Male</option>
-          </select>
-        <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
-        <input type="text" class="form-control" id="updateTags" placeholder="Enter your favorite tags, separated by a space" value="">
-
       <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             <button type="submit" class="btn btn-default"data-dismiss="modal" >Save changes</button>
+            <button type="button" class="btn btn-default" >Close</button>
+             <button type="submit" class="btn btn-default">Save changes</button>
       </div><!-- /.modal-footer -->
          </form>
      </div>

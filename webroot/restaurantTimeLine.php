@@ -1,58 +1,50 @@
-<!doctype html>
-<html><head>
-<title>Restaurant View</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FeedME CSS -->
-    <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="css/example.css" type="text/css" rel="stylesheet" >
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    
-    <script type="text/javascript">
-		$(document).ready(function(){
-    
-		   $("#reviewIDA").click(function(){
-                $('#digital_download').html('Downloading...'); // Show "Downloading..."
-                // Do an ajax request
-                $.ajax({
-                  url: "resturantTimeLine.php?id=resturantCommentBody"
-                }).done(function(data) { // data what is sent back by the php page
-                  $('#restaurantTimeLineBody').html(data); // display data
-                });
-		   });
- 
-		   $("#reviewIDB").click(function(){
-                $('#digital_download').html('Downloading...'); // Show "Downloading..."
-                // Do an ajax request
-                $.ajax({
-                  url: "restaurantComment.php?id=resturantCommentBody"
-                }).done(function(data) { // data what is sent back by the php page
-                  $('#restaurantTimeLine').html(data); // display data
-                });
-		   });
-		 });
-	</script>
-</head>
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+
+	   $("#reviewIDA").click(function(){
+            $('#digital_download').html('Downloading...'); // Show "Downloading..."
+            // Do an ajax request
+            $.ajax({
+              url: "resturantTimeLine.php?id=resturantCommentBody"
+            }).done(function(data) { // data what is sent back by the php page
+              $('#restaurantTimeLineBody').html(data); // display data
+            });
+	   });
+
+	   $("#reviewIDB").click(function(){
+            $('#digital_download').html('Downloading...'); // Show "Downloading..."
+            // Do an ajax requestb
+            $.ajax({
+              url: "restaurantComment.php?id=resturantCommentBody"
+            }).done(function(data) { // data what is sent back by the php page
+              $('#restaurantTimeLine').html(data); // display data
+            });
+	   });
+	 });
+</script>
 
 <body>
         
     <?php 
-    // Connect to the database
-    include('scripts/dbconnect.php'); 
+        // declaring for moderation stuff
+        $reviewid = "";
 
-    $id_post = "1"; //the post or the page id
+        if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+            include_once("scripts/moderate_helper.php");     
+        }
+
+        // Connect to the database
+        include('scripts/dbconnect.php'); 
+
+        $id_post = "1"; //the post or the page id
     ?>
 
           <div class="container" id="resturantTimeLineBody">
@@ -60,11 +52,13 @@
             <ul class="timeline">
                 <!-- Start of Review -->
             <?php 
-                $resid = $_SESSION['resid'];
+                // $resid = $_SESSION['resid'];
 
                     //Create query
-                $qry = "SELECT R.title, R.reviewdate, R.member_id, R.description, R.foodimage, R.helpfulnessscore, U.login
-                        FROM " . RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . " as U ON R.member_id = U.member_id WHERE resid='$resid'";
+                $qry = "SELECT R.title, R.flags_count, R.reviewid, R.reviewdate, R.member_id, R.description, 
+                        R.foodimage, R.helpfulnessscore, R.tags, U.login FROM " . 
+                        RES_REVIEWS . " as R INNER JOIN " . USER_TABLE . 
+                        " as U ON R.member_id = U.member_id WHERE resid='$resid' AND R.flags_count < " . REVIEW_FLAGS_LIMIT . " ORDER BY reviewdate DESC LIMIT 10";
 
                 $result=@mysql_query($qry);
 
@@ -75,12 +69,15 @@
 
                 $inverted = False;
                 while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-
                     $image = $row['foodimage'];
                     $review_text = $row['description'];
                     $username = $row['login'];
                     $date = $row['reviewdate'];
                     $helpfulnessscore = $row['helpfulnessscore'];
+                    $tags = $row['tags'];
+                    $reviewid = $row['reviewid'];
+
+                    $tags_arr = explode(',', $tags);
                     
                     if($inverted == False){
                         $side = "";
@@ -103,24 +100,39 @@
                                 </div>
                                 <div class=\"timeline-body\">
                                     <p>" . $review_text . ".</p>
-                                </div>
-                                <div class=\"timeline-regiontags\">
-                                    <span class=\"label label-default\">alice</span>
-                                    <span class=\"label label-primary\">story</span>
-                                    <span class=\"label label-success\">blog</span>
-                                    <span class=\"label label-info\">personal</span>
-                                    <span class=\"label label-warning\">Warning</span>
-                                    <span class=\"label label-danger\">Danger</span>
-                                </div>
-                                <div class=\"timeline-info\">
+                                </div>";
+
+                                if(sizeof($tags_arr) != 0){
+                                    echo "<div class=\"timeline-regiontags\">";
+
+                                    foreach($tags_arr as $tag){
+                                        echo "<a href=\"searchResults.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
+                                    }
+                                    echo "</div>";
+                                }
+                                    
+                                echo
+                                "<div class=\"timeline-info\">
                                     <span class=\"badge\">
                                         Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
-                                    </span>
-                                </div>
+                                    </span> </div>
                                 <div class=\"timeline-footer\">
                                     <a>
-                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>
-                                        <a class=\"pull-right\" id=\"reviewIDB\" href=\"#\">Comment</a>
+                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>";
+                                        
+                                        if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                                          echo "&nbsp;&nbsp;
+                                          <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                                            <i class=\"glyphicon glyphicon-trash\" title=\"Remove review\"> </i>";
+                                        }
+                                        if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                                          echo "</a>&nbsp;
+                                          <a onclick=\"flag_review($reviewid)\" href=\"#\">
+                                              <i class=\"glyphicon glyphicon-flag\" title=\"Flag review\"> </i>
+                                          </a>";
+                                        }
+
+                            echo "<a class=\"pull-right\" id=\"reviewIDB\" href=\"restaurantComment.php?reviewid=$reviewid\">Comment</a>
                                 </div>
                             </div>
                         </li>";
@@ -185,10 +197,7 @@
 
     });
 </script>
-        
 
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.js"></script>
 
 </body>
 </html>

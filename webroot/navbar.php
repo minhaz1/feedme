@@ -3,15 +3,13 @@
     
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
+
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
-
-    <!-- <?php include_once('createRestaurant.php') ?> -->
-
 
     <!------------------------ Start of Navbar ------------------------>
     <div class="navbar navbar-inner navbar-fixed-top" role="navigation">
@@ -37,17 +35,27 @@
                   <li class="divider"></li>
                   <li><a href="#">Popular</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Random</a></li>
+                  <li><a href="restaurant.php?resid=random">Random</a></li>
                   <li class="divider"></li>
                   <!--<li><a href="#Submit" data-toggle="modal" data-target="#createrestaurant">Create a Resturant</a></li>
                   <li class="divider"></li> -->
                   <li><a href="profile.php">Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#Submit" data-toggle="modal" data-target="#myModal2">Create Restaurant</a></li>   
+                
                 </ul>
+            </li>
+            <li>
+                <form method="get" action='searchResults.php' style="padding: 10px 10px 0px 0px !important;">
+                    <input type="text" id="q" name="q" placeholder="Search">
+                    <input type="submit" hidden="true" value="Submit">
+                </form>
             </li>
           </ul>
             
-          <ul class="nav navbar-nav navbar-right">
+        
             
+          <ul class="nav navbar-nav navbar-right">
           <?php
             // if they are not logged in, show login/register
             if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID'])) == '') {
@@ -62,8 +70,43 @@
             }
 
           ?>  
+
           </ul>
        </div><!--/.nav-collapse -->
       </div>
     </div>
     <!------------------------ End of Navbar ------------------------>  
+<!-- Modal For Creating a Restaurant -->
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Tried out a new restaurant? Tell us about it!</h4>
+          </div>
+          <div class="modal-body">
+               <form role="form">
+                  <div class="form-group">
+                    <label for="exampleInputText">Name of place:</label>
+                    <input type="text" class="form-control" id="exampleInputText" placeholder="Enter the name of the restaurant">
+                      <label for="exampleInputText">Address:</label>
+                    <input type="text" class="form-control" id="exampleInputText" placeholder="Enter the address of the restaurant">
+                      <label for="exampleInputText">Phone Number:</label>
+                    <input type="text" class="form-control" id="exampleInputText" placeholder="Enter the phone number of the restaurant">
+                      <label for="exampleInputText">Website Link:</label>
+                    <input type="text" class="form-control" id="exampleInputText" placeholder="Enter the restaurant's website URL">
+                  </div>
+                   <div class="form-group">
+                    <label for="exampleInputText">Enter tags here, sepearated by a space:</label>
+                    <input type="text" class="form-control" id="exampleInputText" placeholder="">
+                  </div>
+                   
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- End Creating restaurant Modal--->

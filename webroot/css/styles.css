@@ -359,3 +359,39 @@
 .timeline > li.timeline-inverted > .timeline-badge{
   left: 28px;
 }
+
+/*----------------------------------------------*/
+    
+    /* center search */
+
+   .global-search {
+    text-align:center;
+    padding:10px;
+  }
+   .global-search * {
+    display:inline-block;
+    margin-bottom:0;
+  }
+
+   .global-search .form-control {
+      width:120px;
+  }
+
+   .global-search a {
+    display:block;
+    padding-top:10px;
+  }
+
+
+
+@media (min-width:150px){
+   .global-search {
+    padding: 20px 0;
+    text-align:center;
+    }
+
+   .global-search .form-control {
+    width:200px;
+   }
+
+}
