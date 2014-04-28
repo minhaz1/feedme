@@ -6,7 +6,7 @@
 	//Start session
 	session_start();
 
-	//Include password lib
+	///Include password lib
 	require_once('password.php');
 
 	//Include database connection details
