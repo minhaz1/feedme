@@ -55,6 +55,9 @@
     $picture = $_SESSION['SESS_PICTURE'];
   }
 
+  // setting it so that the php knows there are reviews on this page
+  $reviewid = "";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,6 +68,12 @@
     <link href="css/styles.css" rel="stylesheet"/>
   </head>
   <body class="makeBlue">
+
+    <?php 
+      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+        include_once("scripts/moderate_helper.php");     
+      }
+    ?>
     
     <?php include_once('navbar.php') ?>
     <br>
@@ -85,7 +94,7 @@
             <?php 
               if($_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){
             ?>
-            <a class="btn btn-large" style="background-color: red !important;" href="#">
+            <a onclick="flag_user('<?php echo $login; ?>')" class="btn btn-large" style="background-color: red !important;" href="#">
                 <i class="glyphicon glyphicon-ban-circle">
                 </i>
             </a>
@@ -114,15 +123,16 @@
 
         <?php 
 
-            $qry = "SELECT R.title, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " 
+            $qry = "SELECT R.title, R.reviewid, R.resid, R.reviewdate, R.description, R.foodimage, R.tags, MR.name FROM " 
                     . RES_REVIEWS . " as R INNER JOIN " . RESTAURANT_TABLE 
-                    . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' ORDER BY reviewdate DESC LIMIT 5";
+                    . " as MR ON R.resid = MR.resid WHERE member_id='$member_id' and flags_count < 3 ORDER BY reviewdate DESC LIMIT 5";
 
             $result=@mysql_query($qry);
 
             if($result){
               while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
                 $resid = $row['resid'];
+                $reviewid = $row['reviewid'];
                 $title = $row['title'];
                 $name = $row['name'];
                 $text = $row['description'];
@@ -152,17 +162,15 @@
 
                 
                 if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-
                   echo "
-                  <span class=\"label label-danger\" style=\"font-color: white !important;\">
-                    <i class=\"glyphicon glyphicon-trash\"> </i>
-                  </span>&nbsp;
-                  <span class=\"label label-warning\">
-                      <i class=\"glyphicon glyphicon-flag\"> </i>
-                  </span>";
+                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                    <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
+                  </a>&nbsp;
+                  <a onclick=\"flag_review($reviewid)\" href=\"#\">
+                      <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
+                  </a>";
                 }
-
-
+                
                     echo "</ul>
                     </div>
                     <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
