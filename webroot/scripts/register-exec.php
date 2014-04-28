@@ -5,7 +5,7 @@
 
 	//Start session
 	session_start();
-
+/
 	///Include password lib
 	require_once('password.php');
 
