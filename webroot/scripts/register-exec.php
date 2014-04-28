@@ -5,8 +5,8 @@
 
 	//Start session
 	session_start();
-/
-	///Include password lib
+
+	//Include password lib
 	require_once('password.php');
 
 	//Include database connection details
@@ -31,23 +31,7 @@
 	$gender = clean($_POST['gender']);
 	$yeararrived = clean($_POST['yeararrived']);
 
-	//check if email has @umbc.edu
-	//Input Validations{
-	if($email.indexOf("@umbc.edu");{
-		$errmsg_arr['email'] = 'The email address entered needs to be a UMBC email address';
-		$errflag = true;
-		}
-		
-		//check if password match
-		if($password != 'cpassword') {
-		$errmsg_arr['password'] = 'Password entered does not match';
-		$errflag = true;
-		}
-		
-		
-		
-		
-	
+	//Input Validations
 
 	// validate first name	
 	if($fname == '') {
