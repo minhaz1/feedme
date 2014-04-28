@@ -110,7 +110,7 @@ $("#reviewForm").submit(); //Submit  the FORM
                     <label for=\"exampleInputText\"><h5>Enter tags here, separated by a space:</h5></label>
                     <input name=\"tags\" id=\"singleFieldTags2\" type=\"hidden\" class=\"form-control\">
                   </div>
-                  <input type=\"hidden\" name=\"resid\" value=\"" . $_SESSION['resid'] . "\">
+                  <input type=\"hidden\" name=\"resid\" value=\"" . $resid . "\">
                   <button type=\"submit\" class=\"btn btn-default\">Submit</button>
                   <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>
 

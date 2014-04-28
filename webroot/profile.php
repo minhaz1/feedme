@@ -41,7 +41,7 @@
       }
   }
   else if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {
-    header("location: index.php");
+    header("location: 404.php");
     exit();
   }
   else{
@@ -82,10 +82,14 @@
         </div>
         <div class="col-sm-9 col-md-9">
           <h1 align="center"><?php echo $firstname . " " . $lastname ?>
+            <?php 
+              if($_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){
+            ?>
             <a class="btn btn-large" style="background-color: red !important;" href="#">
                 <i class="glyphicon glyphicon-ban-circle">
                 </i>
             </a>
+            <?php } ?>
           </h1>
           <br>
           <h5>Username: <?php echo $login ?></h5>
@@ -137,25 +141,29 @@
 
 
                 echo 
-                  "<article class=\"search-result row\">
-                                    <span class=\"label\" style=\"background-color: #3b5998; color: white !important;\">
-                                        <i class=\"glyphicon glyphicon-pencil\"> </i>
-                                    </span>
-                                    
-                                    <span class=\"label label-danger\" style=\"font-color: white !important;\">
-                                        <i class=\"glyphicon glyphicon-trash\"> </i>
-                                    </span>
-                                    
-                                    <span class=\"label label-warning\">
-                                        <i class=\"glyphicon glyphicon-flag\"> </i>
-                                    </span>
-                    <div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
+                  "<article class=\"search-result row\">";
+
+                  echo  "<div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
                     <div class=\"col-xs-12 col-sm-12 col-md-2\">
                       <ul class=\"meta-search\">
                         <li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
                         <li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
-                        $tagstring
-                      </ul>
+                        $tagstring";
+
+                
+                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+
+                  echo "
+                  <span class=\"label label-danger\" style=\"font-color: white !important;\">
+                    <i class=\"glyphicon glyphicon-trash\"> </i>
+                  </span>&nbsp;
+                  <span class=\"label label-warning\">
+                      <i class=\"glyphicon glyphicon-flag\"> </i>
+                  </span>";
+                }
+
+
+                    echo "</ul>
                     </div>
                     <div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
                       <h3><a href=\"restaurant.php?resid=$resid\" title=\"\">$title</a></h3>
