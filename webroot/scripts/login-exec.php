@@ -21,7 +21,7 @@
 	$errflag = false;
 	
 	//Sanitize the POST values
-	$login = clean($_POST['login']);
+	$login = strtolower(clean($_POST['login']));
 	$password = clean($_POST['password']);
 	
 	//Input Validations
