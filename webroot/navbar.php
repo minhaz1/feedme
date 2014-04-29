@@ -100,7 +100,6 @@
                   </div>
                    <div class="form-group">
                     <label for="exampleInputText">Enter tags here, sepearated by a space:</label>
-                    <input name="tags" id="singleFieldTags2" type="hidden" class="form-control">
                   </div>
                    
                   <button type="submit" class="btn btn-default">Submit</button>
