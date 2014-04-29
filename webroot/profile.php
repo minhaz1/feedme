@@ -39,6 +39,7 @@
           $member_id = $member['member_id'];
           $picture = $member['picture'];
           $usertype = $member['usertype'];
+          $usertags = $member['tags'];
         }
       }
   }
@@ -55,6 +56,7 @@
     $year = $_SESSION['SESS_YEAR_ARRIVED'];
     $member_id = $_SESSION['SESS_MEMBER_ID'];
     $picture = $_SESSION['SESS_PICTURE'];
+    $usertags = $_SESSION['SESS_TAGS'];
   }
 
   // setting it so that the php knows there are reviews on this page
@@ -150,9 +152,12 @@
             <br>
           <div align="center">
             <h4>Favorite Food Tags:</h4>
-            <span class="label label-default">Vegan</span> 
-            <span class="label label-primary label-default">Soup</span> 
-            <span class="label label-success">Spiders</span>
+            <?php 
+              $temp = explode(",", $usertags);
+              foreach ($temp as $value) {
+                echo "<span class=\"label label-primary label-default\">$value</span>&nbsp";
+              } 
+            ?>
           </div>
 
         </div>
@@ -239,23 +244,23 @@
         <h4 class="modal-title">Edit Your Profile:</h4>
       </div>
       <div class="modal-body" style="font-size:18px">
-          <label style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
-        <input type="link" class="form-control" id="IMGLink" placeholder="Or place image link here" value="">
-        <label style="color:black">Update Biography:</label>
         <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
+          <label style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
+        <input type="link" class="form-control" name="IMGLink" id="IMGLink" placeholder="Or place image link here" value="<?php echo $picture ?>">
+        <label style="color:black">Update Biography:</label>
         <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
         <label style="color:black">Change Gender:</label>
-          <select id="gender" name="profileGenderId">
-              <option value="0"><?php echo $gender ?></option>
-              <option value="3">Female</option>
-              <option value="2">Male</option>
+          <select id="gender" name="editGender">
+              <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
+              <option value="f">Female</option>
+              <option value="m">Male</option>
           </select>
         <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
-        <input name="tags" id="singleFieldTags1" type="hidden" class="form-control">
+        <input name="tags" id="singleFieldTags1" type="hidden" class="form-control" value="<?php echo $usertags ?>">
 
       <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-             <button type="submit" class="btn btn-default"data-dismiss="modal" >Save changes</button>
+             <button type="submit" class="btn btn-default">Save changes</button>
       </div><!-- /.modal-footer -->
          </form>
      </div>
