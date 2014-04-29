@@ -1,3 +1,5 @@
+<?php include_once('scripts/params.php'); ?>
+
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     
@@ -69,8 +71,12 @@
                   <!--<li><a href="#Submit" data-toggle="modal" data-target="#createrestaurant">Create a Resturant</a></li>
                   <li class="divider"></li> -->
                   <li><a href="profile.php">Profile</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#Submit" data-toggle="modal" data-target="#myModal2">Create Restaurant</a></li>   
+                  <?php 
+                    if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                      echo "<li class=\"divider\"></li>";
+                      echo "<li><a href=\"#Submit\" data-toggle=\"modal\" data-target=\"#myModal2\">Create Restaurant</a></li>";
+                    }
+                  ?>   
                 
                 </ul>
             </li>
