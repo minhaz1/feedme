@@ -6,6 +6,42 @@
   }
 </style>
 
+<script>
+  function upvote(resid, member_id){
+    var val = document.createElement("input");
+    val.setAttribute("value", 1);
+    processVote(val, resid, member_id);
+  }
+
+  function processVote(val, reviewid, member_id){
+
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', 'scripts/vote.php');
+    form.style.display = 'hidden';
+    
+    var action = document.createElement("input");
+    action.setAttribute("type", "hidden");
+    action.setAttribute("name", "page");
+    action.setAttribute("value", "review");
+
+    var id = document.createElement("input");
+    id.setAttribute("type", "hidden");
+    id.setAttribute("name", "reviewid");
+    id.setAttribute("value", reviewid);
+
+    val.setAttribute("type", "hidden");
+    val.setAttribute("name", "value");
+
+    form.appendChild(action);
+    form.appendChild(id);
+    form.appendChild(val);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+</script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -117,20 +153,25 @@
                                         Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
                                     </span> </div>
                                 <div class=\"timeline-footer\">
-                                    <a>
-                                        <i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>";
-                                        
-                                        if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
-                                          echo "&nbsp;&nbsp;
-                                          <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
-                                            <i class=\"glyphicon glyphicon-trash\" title=\"Remove review\"> </i>";
-                                        }
-                                        if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-                                          echo "</a>&nbsp;
-                                          <a onclick=\"flag_review($reviewid)\" href=\"#\">
-                                              <i class=\"glyphicon glyphicon-flag\" title=\"Flag review\"> </i>
-                                          </a>";
-                                        }
+                                    <a>";
+                                if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){
+                                    echo  "<i onclick=\"upvote($reviewid)\" class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>";
+                                }
+                                else{
+                                    echo "<i class=\"glyphicon glyphicon-thumbs-up\"></i>" . $helpfulnessscore . "</a>";
+                                }
+
+                                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                                  echo "&nbsp;&nbsp;
+                                  <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                                    <i class=\"glyphicon glyphicon-trash\" title=\"Remove review\"> </i>";
+                                }
+                                if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                                  echo "</a>&nbsp;
+                                  <a onclick=\"flag_review($reviewid)\" href=\"#\">
+                                      <i class=\"glyphicon glyphicon-flag\" title=\"Flag review\"> </i>
+                                  </a>";
+                                }
 
                             echo "<a class=\"pull-right\" id=\"reviewIDB\" href=\"restaurantComment.php?reviewid=$reviewid\">Comment</a>
                                 </div>

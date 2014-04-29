@@ -45,6 +45,24 @@
 
 	}
 
+	else if($page == "review"){
+		$reviewid = clean($_POST['reviewid']);
+
+		$qry = "SELECT * FROM " . REVIEW_VOTES . " WHERE member_id=$SESS_MEMBER_ID AND reviewid=$reviewid";
+		$result = mysql_query($qry);
+
+		if($result && mysql_num_rows($result) == 0){
+			$qry = "INSERT INTO " . REVIEW_VOTES . " (reviewid, member_id, value) VALUES($reviewid, $SESS_MEMBER_ID, $value)";
+			$result = mysql_query($qry);
+			
+			if($result){
+				$qry = "UPDATE " . RES_REVIEWS . " SET helpfulnessscore = helpfulnessscore + $value WHERE reviewid ='$reviewid'";
+				$result = mysql_query($qry);
+			}
+		}
+
+	}
+
 
 
 	header("location: " . $_SERVER['HTTP_REFERER']);

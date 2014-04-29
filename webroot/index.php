@@ -15,20 +15,19 @@
   </head>
 
 <script>
-
-  function upvote(resid, member_id){
+  function upvote(resid){
     var val = document.createElement("input");
     val.setAttribute("value", 1);
-    processVote(val, resid, member_id);
+    processVote(val, resid);
   }
 
-  function downvote(resid, member_id){
+  function downvote(resid){
     var val = document.createElement("input");
     val.setAttribute("value", -1);
-    processVote(val, resid, member_id);
+    processVote(val, resid);
   }
 
-  function processVote(val, resid, member_id){
+  function processVote(val, resid){
 
     var form = document.createElement('form');
     form.setAttribute('method', 'post');
@@ -55,7 +54,6 @@
     form.submit();
   }
 
-
 </script>
 
   <body>
@@ -76,7 +74,7 @@
               $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R ORDER BY R.upvotes DESC";
             }
             else{
-              $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R ORDER BY RAND()";
+              $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R";
             }
 
             $result = @mysql_query($qry);
@@ -135,7 +133,7 @@
                         <a><i onclick=\"downvote('$resid')\" class=\"glyphicon glyphicon-thumbs-down\"></i>";
                       }
                       else{
-                        echo "<a><i onclick=\"upvote('$resid')\" class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes";
+                        echo "<a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes";
                       }
                         
                       echo "</a>
