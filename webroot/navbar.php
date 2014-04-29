@@ -23,19 +23,19 @@
       <!-- for uploading an image to imgur -->
       <script src = "js/feedme.js"></script>
 
-<script>
-        $(function(){
-            // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
-            // examples, so it automatically defaults to singleField.
-            $('#singleFieldTags3').tagit({
-                availableTags: adjectives,
-                removeConfirmation: true,
-                readOnly: false,
-                caseSensitive: false
-            });
+      <script>
+              $(function(){
+                  // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
+                  // examples, so it automatically defaults to singleField.
+                  $('#singleFieldTags3').tagit({
+                      availableTags: adjectives,
+                      removeConfirmation: true,
+                      readOnly: false,
+                      caseSensitive: false
+                  });
 
-        });
-</script>
+              });
+      </script>
       <!-- tagging stuff ends -->
 
       <!-- Script for search filter dropdown -->
@@ -85,7 +85,7 @@
                   <li class="divider"></li>
                   <li><a href="#">Food Types</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Popular</a></li>
+                  <li><a href="index.php?q=popular">Popular</a></li>
                   <li class="divider"></li>
                   <li><a href="restaurant.php?resid=random">Random</a></li>
                   <li class="divider"></li>

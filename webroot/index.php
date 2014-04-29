@@ -13,6 +13,51 @@
     <meta name="author" content="">
     <title>FeedMe</title>
   </head>
+
+<script>
+
+  function upvote(resid, member_id){
+    var val = document.createElement("input");
+    val.setAttribute("value", 1);
+    processVote(val, resid, member_id);
+  }
+
+  function downvote(resid, member_id){
+    var val = document.createElement("input");
+    val.setAttribute("value", -1);
+    processVote(val, resid, member_id);
+  }
+
+  function processVote(val, resid, member_id){
+
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', 'scripts/vote.php');
+    form.style.display = 'hidden';
+    
+    var action = document.createElement("input");
+    action.setAttribute("type", "hidden");
+    action.setAttribute("name", "page");
+    action.setAttribute("value", "restaurant");
+
+    var id = document.createElement("input");
+    id.setAttribute("type", "hidden");
+    id.setAttribute("name", "resid");
+    id.setAttribute("value", resid);
+
+    val.setAttribute("type", "hidden");
+    val.setAttribute("name", "value");
+
+    form.appendChild(action);
+    form.appendChild(id);
+    form.appendChild(val);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+
+</script>
+
   <body>
     <?php include('navbar.php') ?>
     <!------------------------ Enters two spaces ------------------------>
@@ -25,10 +70,15 @@
 
       <!--    Begin php script  -->
           <?php 
-
+            $qry = "";
             require('scripts/dbconnect.php');
+            if(isset($_GET['q']) && $_GET['q'] == "popular"){
+              $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R ORDER BY R.upvotes DESC";
+            }
+            else{
+              $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R ORDER BY RAND()";
+            }
 
-            $qry = "SELECT R.resid, R.name, R.image, R.upvotes FROM " . RESTAURANT_TABLE . " as R";
             $result = @mysql_query($qry);
             // Check result
             // This shows the actual query sent to MySQL, and the error. Useful for debugging.
@@ -77,9 +127,18 @@
                 <div class=\"info\">
                   <div class=\"title\" id=\"h7\">
                     <a> <strong>$name</strong> </a>
-                    <div class=\"likebutton pull-right\" id=\"h7\">
-                      <a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
-                      <a><i class=\"glyphicon glyphicon-thumbs-down\"></i></a>
+                      <div class=\"likebutton pull-right\" id=\"h7\">";
+
+                      if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){
+                        // $member_id = $_SESSION['SESS_MEMBER_ID'];
+                        echo "<a><i onclick=\"upvote('$resid')\" class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
+                        <a><i onclick=\"downvote('$resid')\" class=\"glyphicon glyphicon-thumbs-down\"></i>";
+                      }
+                      else{
+                        echo "<a><i onclick=\"upvote('$resid')\" class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes";
+                      }
+                        
+                      echo "</a>
                     </div>
                   </div>
                 </div>
@@ -87,14 +146,14 @@
             </div>"; 
 
               if($i == 3){
-                echo "</div>";
-                echo "</div>";
                 $i = 0;
               }
               $i = $i + 1;   
             }
           ?>
           <!-- end PHP script -->
+        </div>
+      </div>
     </div>
     <!-- /container -->
     <!-- Bootstrap core JavaScript
