@@ -12,8 +12,8 @@
     
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-    <link href="./css/styles.css" rel="stylesheet">
-    <link href="./css/style.css" type="text/css" rel="stylesheet">
+    <!-- <link href="./css/styles.css" rel="stylesheet"> -->
+    <!-- <link href="./css/style.css" type="text/css" rel="stylesheet"> -->
     <link href="./css/example.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
@@ -226,7 +226,7 @@
 </html>
         
 
-<script src="./js/jquery.min.js"></script>
+<!-- <script src="./js/jquery.min.js"></script> -->
 <script src="./js/bootstrap.js"></script>
 
 
