@@ -81,6 +81,7 @@
 				$_SESSION['SESS_YEAR_ARRIVED'] = $member['yeararrived'];
 				$_SESSION['SESS_PICTURE'] = $member['picture'];
 				$_SESSION['SESS_USERTYPE'] = $member['usertype'];
+				$_SESSION['SESS_TAGS'] = $member['tags'];
 				session_write_close();
 				header("location: " . $redirect_url);
 				exit();
