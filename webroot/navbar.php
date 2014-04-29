@@ -35,6 +35,14 @@
 </script>
       <!-- tagging stuff ends -->
 
+      <!-- Script for search filter dropdown -->
+<script>
+function changeText(text) { 
+document.getElementById("search_concept").innerHTML=text; //Change "Filter By" to the selected filter
+document.getElementById("search_concept").searchBy =text; //Change the searchBy attribute to the new selected filter(cannot be seen)
+} 
+</script>
+
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -86,6 +94,16 @@
                     <input type="submit" hidden="true" value="Submit">
                 </form>
             </li>
+              <li class="col-xs-1" style="padding: 12px 10px 0px 0px !important;">
+            <button  type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
+            	<span id="search_concept" searchBy=>Filter by</span> <span class="caret"></span>
+            </button>
+            <ul id="searchFilter" class="dropdown-menu" role="menu" >
+              <li onclick="changeText('Users')"><a>Users</a></li>
+              <li onclick="changeText('Restaurants')"><a>Restaurants</a></li>
+              <li onclick="changeText('Tags')"><a> Tags</a></li>
+            </ul>             
+	       </li>
           </ul>
             
         
