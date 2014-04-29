@@ -119,8 +119,8 @@
     <h1></h1>
     <div class="container well" style="width:85%">
       <div class="row">
-        <div class="col-sm-3 col-md-3">picture
-          <img style="height:100%;width:100%" src=<?php echo "\"$\"" ?> class="img-circle">
+        <div class="col-sm-3 col-md-3">
+          <img style="height:100%;width:100%" src=<?php echo "\"$picture\"" ?> class="img-circle">
           <br>
          <br>
          <?php
