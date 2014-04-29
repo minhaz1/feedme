@@ -733,7 +733,7 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
   left: -12px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1205px) {
     ul.timeline:before {
         left: 40px;
     }
@@ -803,7 +803,7 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
 }
 
 /*----------------------------------------------*/
-@media (max-width: 992px) {
+@media (max-width: 1205px) {
     .navbar-header {
         float: none;
     }
