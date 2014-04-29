@@ -1,0 +1,77 @@
+/*!
+Automatic Image Scaling For High Pixel Density Displays
+Optic Swerve, opticswerve.com
+Documented at http://menacingcloud.com/?c=highPixelDensityDisplays
+Requires jQuery. http://jquery.com
+*/
+
+$(document).ready(function() {
+	processTaggedImages();
+
+});
+
+// Query the device pixel ratio.
+//-------------------------------
+function getDevicePixelRatio() {
+	if(window.devicePixelRatio === undefined) return 1; // No pixel ratio available. Assume 1:1.
+	return window.devicePixelRatio;
+
+}
+
+// Scale all images, independent of pixel ratio
+//----------------------------------------------
+function forceProcessImages() {
+	var images = $('img');
+
+	// Scale each image's width to 50%. Height will follow.
+	for(var i = 0; i < images.length; i++) {
+		images.eq(i).width(images.eq(i).width() / 2);
+
+	}
+
+}
+
+// Scale tagged images, independent of pixel ratio
+//-------------------------------------------------
+function forceProcessTaggedImages() {
+	var images = $('img.highRes'); // Only images with class 'highRes'
+
+	// Scale each image's width to 50%. Height will follow.
+	for(var i = 0; i < images.length; i++) {
+		images.eq(i).width(images.eq(i).width() / 2);
+
+	}
+
+}
+
+// Process all document images
+//-----------------------------
+function processImages() {
+	if(getDevicePixelRatio() > 1) {
+		var images = $('img');
+
+		// Scale each image's width to 50%. Height will follow.
+		for(var i = 0; i < images.length; i++) {
+			images.eq(i).width(images.eq(i).width() / 2);
+
+		}
+
+	}
+
+}
+
+// Only process tagged document images
+//-------------------------------------
+function processTaggedImages() {
+	if(getDevicePixelRatio() > 1) {
+		var images = $('img.highRes'); // Only images with class 'highRes'
+
+		// Scale each image's width to 50%. Height will follow.
+		for(var i = 0; i < images.length; i++) {
+			images.eq(i).width(images.eq(i).width() / 2);
+
+		}
+
+	}
+
+}
