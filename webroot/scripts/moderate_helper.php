@@ -10,10 +10,9 @@
           if(conf){
             var id = document.createElement("input");
             id.setAttribute("value", username); 
-            moderate("ban_user", id);            
+            moderate("ban_user", id);
+            alert(username + " has been banned.");
           }
-          alert(username + " has been banned.");
-
         }
 
 <?php } ?>
@@ -52,8 +51,8 @@
           var id = document.createElement("input");
           id.setAttribute("value", reviewid); 
           moderate("hide_review", id);
+         alert("The review has been removed."); 
         }
-       alert("The review has been removed."); 
       }
 
 

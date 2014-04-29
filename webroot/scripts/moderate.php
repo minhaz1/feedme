@@ -16,6 +16,8 @@
 	$SESS_USERTYPE = $_SESSION['SESS_USERTYPE'];
 
 	$action = clean($_POST['action']);
+
+	$qry = "";
 	
 	if($SESS_USERTYPE == USERTYPE_ADMIN){
 		if($action == "ban_user"){
@@ -25,7 +27,7 @@
 		}
 		else if($action == "hide_review"){
 			$reviewid = clean($_POST['id']);
-			$qry = "UPDATE " . RES_REVIEWS . " SET flags_count = flags_count " . REVIEW_FLAGS_LIMIT . " WHERE reviewid ='$reviewid'";
+			$qry = "UPDATE " . RES_REVIEWS . " SET flags_count = flags_count + " . REVIEW_FLAGS_LIMIT . " WHERE reviewid ='$reviewid'";
 			$result=mysql_query($qry);
 		}		
 	}
@@ -43,9 +45,6 @@
 		$result=mysql_query($qry);
 	}
 
-
 	header("location: " . $_SERVER['HTTP_REFERER']);
-
-
 
 ?>
