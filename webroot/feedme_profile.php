@@ -168,7 +168,7 @@
                     <?php 
                       $temp = explode(",", $usertags);
                       foreach ($temp as $value) {
-                        echo "<a href=\"search.php?q=$value\"><span class=\"label label-primary label-default\">$value</span></a>&nbsp";
+                        echo "<a href=\"search.php?q=$value\"><span class=\"label label-primary label-default\">$value</span></a>&nbsp ";
                       } 
                     ?>
                   </li>
@@ -272,7 +272,7 @@
                               <ul class=\"meta-search\" style=\"padding: 2px; list-style: none;\">
                                 <li><i class=\"fa fa-calendar\"></i> <span>$date</span></li>
                                 <li><i class=\"fa fa-clock-o\"></i> <span>$time</span></li>
-                                $tagstring\"
+                                $tagstring
                               </ul>
                             </div>
 
