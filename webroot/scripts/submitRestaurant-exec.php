@@ -65,7 +65,8 @@
 	
 	//Check whether the query was successful or not
 	if($result) {
-		header("location: ../index.php");				
+		$lastID = mysql_insert_id();
+		header("location: ../restaurant.php?resid=" . $lastID);				
 		exit();
 	}else {
 		die("Query failed ". $qry);
