@@ -81,10 +81,6 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">FeedMe Quick <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Most Active Communities</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Food Types</a></li>
-                  <li class="divider"></li>
                   <li><a href="index.php?q=popular">Popular</a></li>
                   <li class="divider"></li>
                   <li><a href="restaurant.php?resid=random">Random</a></li>
