@@ -267,7 +267,6 @@
     
     <script src="./js/feedme.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/bootstrap.js"></script>
   <?php unset($_SESSION['ERRMSG_ARR']); ?>
 
 </body>
