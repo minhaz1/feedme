@@ -6,6 +6,47 @@ $results = search_perform(RESTAURANT_TABLE, array('name','address','url','phone'
 $num_results = sizeof($results);
 ?>
 
+<script>
+  function upvote(resid){
+    var val = document.createElement("input");
+    val.setAttribute("value", 1);
+    processVote(val, resid);
+  }
+
+  function downvote(resid){
+    var val = document.createElement("input");
+    val.setAttribute("value", -1);
+    processVote(val, resid);
+  }
+
+  function processVote(val, resid){
+
+    var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', 'scripts/vote.php');
+    form.style.display = 'hidden';
+    
+    var action = document.createElement("input");
+    action.setAttribute("type", "hidden");
+    action.setAttribute("name", "page");
+    action.setAttribute("value", "restaurant");
+
+    var id = document.createElement("input");
+    id.setAttribute("type", "hidden");
+    id.setAttribute("name", "resid");
+    id.setAttribute("value", resid);
+
+    val.setAttribute("type", "hidden");
+    val.setAttribute("name", "value");
+
+    form.appendChild(action);
+    form.appendChild(id);
+    form.appendChild(val);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+</script>
 
 <div class="container">
 <br>
@@ -18,7 +59,7 @@ $num_results = sizeof($results);
 </hgroup>
 
     <div class="container">
-
+    <br>
       <!--    Begin php script  -->
           <?php 
 
@@ -61,10 +102,16 @@ $num_results = sizeof($results);
                 <div class=\"info\">
                   <div class=\"title\" id=\"h7\">
                     <a> <strong>$name</strong> </a>
-                    <div class=\"likebutton pull-right\" id=\"h7\">
-                      <a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
-                      <a><i class=\"glyphicon glyphicon-thumbs-down\"></i></a>
-                    </div>
+                    <div class=\"likebutton pull-right\" id=\"h7\">";
+                      if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){
+                        // $member_id = $_SESSION['SESS_MEMBER_ID'];
+                        echo "<a><i onclick=\"upvote('$resid')\" class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
+                        <a><i onclick=\"downvote('$resid')\" class=\"glyphicon glyphicon-thumbs-down\"></i></a>";
+                      }
+                      else{
+                        echo "<a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes";
+                      }
+                    echo "</div>
                   </div>
                 </div>
               </div>

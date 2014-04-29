@@ -130,14 +130,14 @@
                       if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){
                         // $member_id = $_SESSION['SESS_MEMBER_ID'];
                         echo "<a><i onclick=\"upvote('$resid')\" class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes 
-                        <a><i onclick=\"downvote('$resid')\" class=\"glyphicon glyphicon-thumbs-down\"></i>";
+                        <a><i onclick=\"downvote('$resid')\" class=\"glyphicon glyphicon-thumbs-down\"></i></a>";
                       }
                       else{
                         echo "<a><i class=\"glyphicon glyphicon-thumbs-up\"></i></a> $upvotes";
                       }
                         
-                      echo "</a>
-                    </div>
+                      echo
+                    "</div>
                   </div>
                 </div>
               </div>
