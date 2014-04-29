@@ -164,7 +164,7 @@
             <?php 
               $temp = explode(",", $usertags);
               foreach ($temp as $value) {
-                echo "<span class=\"label label-primary label-default\">$value</span>&nbsp";
+                echo "<a href=\"search.php?q=$value\"><span class=\"label label-primary label-default\">$value</span></a>&nbsp";
               } 
             ?>
           </div>
@@ -202,7 +202,7 @@
                 $tagstring = "";
                 foreach($tags as $tag){
                   if($tag != "")
-                    $tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"searchResults.php?q=$tag\"> $tag</a></span></li>";
+                    $tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"search.php?q=$tag\"> $tag</a></span></li>";
                 }
 
 

@@ -106,7 +106,7 @@
                                     echo "<div class=\"timeline-regiontags\">";
 
                                     foreach($tags_arr as $tag){
-                                        echo "<a href=\"searchResults.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
+                                        echo "<a href=\"search.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
                                     }
                                     echo "</div>";
                                 }

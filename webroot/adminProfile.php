@@ -234,7 +234,7 @@
                 $tagstring = "";
                 foreach($tags as $tag){
                   if($tag != "")
-                    $tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"searchResults.php?q=$tag\"> $tag</a></span></li>";
+                    $tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"search.php?q=$tag\"> $tag</a></span></li>";
                 }
 
 

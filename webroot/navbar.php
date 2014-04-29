@@ -37,10 +37,20 @@
 
       <!-- Script for search filter dropdown -->
 <script>
-function changeText(text) { 
-document.getElementById("search_concept").innerHTML=text; //Change "Filter By" to the selected filter
-document.getElementById("search_concept").searchBy =text; //Change the searchBy attribute to the new selected filter(cannot be seen)
-} 
+  function changeText(text) { 
+    if(text == "Restaurants"){
+      document.getElementById("filter").setAttribute("value", "restaurants");
+    }
+    else if(text == "Reviews"){
+      document.getElementById("filter").setAttribute("value", "reviews"); 
+    }
+    else if(text == "Users"){
+      document.getElementById("filter").setAttribute("value", "users");
+    }
+
+    document.getElementById("search_concept").innerHTML=text; //Change "Filter By" to the selected filter
+    document.getElementById("search_concept").searchBy =text; //Change the searchBy attribute to the new selected filter(cannot be seen)
+  } 
 </script>
 
     <style type="text/css">
@@ -89,19 +99,20 @@ document.getElementById("search_concept").searchBy =text; //Change the searchBy 
                 </ul>
             </li>
             <li>
-                <form method="get" action='searchResults.php' style="padding: 10px 10px 0px 0px !important;">
+                <form method="get" action='search.php' style="padding: 10px 10px 0px 0px !important;">
                     <input type="text" id="q" name="q" placeholder="Search">
+                    <input type="hidden" id="filter" name="filter" value="reviews">
                     <input type="submit" hidden="true" value="Submit">
                 </form>
             </li>
               <li class="col-xs-1" style="padding: 12px 10px 0px 0px !important;">
             <button  type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown">
-            	<span id="search_concept" searchBy=>Filter by</span> <span class="caret"></span>
+            	<span id="search_concept" searchBy="">Reviews</span> <span class="caret"></span>
             </button>
             <ul id="searchFilter" class="dropdown-menu" role="menu" >
-              <li onclick="changeText('Users')"><a>Users</a></li>
+              <li onclick="changeText('Reviews')"><a>Reviews</a></li>
               <li onclick="changeText('Restaurants')"><a>Restaurants</a></li>
-              <li onclick="changeText('Tags')"><a> Tags</a></li>
+              <li onclick="changeText('Users')"><a>Users</a></li>
             </ul>             
 	       </li>
           </ul>
