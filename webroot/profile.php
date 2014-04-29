@@ -14,6 +14,7 @@
   include_once('scripts/helper.php');
 
   $login = "";
+  $editProfile = 0;
 
   if(isset($_GET['userid'])){
 
@@ -40,6 +41,10 @@
           $picture = $member['picture'];
           $usertype = $member['usertype'];
           $usertags = $member['tags'];
+
+          if($_SESSION['SESS_LOGIN'] == $_GET['userid']){
+            $editProfile = 1;
+          }
         }
       }
   }
@@ -57,6 +62,7 @@
     $member_id = $_SESSION['SESS_MEMBER_ID'];
     $picture = $_SESSION['SESS_PICTURE'];
     $usertags = $_SESSION['SESS_TAGS'];
+    $editProfile = 1;
   }
 
   // setting it so that the php knows there are reviews on this page
@@ -113,14 +119,17 @@
     <h1></h1>
     <div class="container well" style="width:85%">
       <div class="row">
-        <div class="col-sm-3 col-md-3">
-          <img style="height:100%;width:100%" src=<?php echo "\"$picture\"" ?> class="img-circle">
+        <div class="col-sm-3 col-md-3">picture
+          <img style="height:100%;width:100%" src=<?php echo "\"$\"" ?> class="img-circle">
           <br>
          <br>
-        <button type="modal" onclick="getDesc()" style="width:100%;font-size:15px" class="btn btn-default" data-toggle="modal" data-target=".pop-up-1">
-          <strong>Edit Profile
-          </strong>
-        </button>
+         <?php
+          if($editProfile == 1){ 
+            echo "<button type=\"modal\" onclick=\"getDesc()\" style=\"width:100%;font-size:15px\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\".pop-up-1\">";
+            echo "<strong>Edit Profile</strong>";
+            echo "</button>";
+          }
+        ?>
         </div>
         <div class="col-sm-9 col-md-9">
           <h1 align="center"><?php echo $firstname . " " . $lastname ?>
@@ -235,7 +244,8 @@
         ?>
       </div>
     </div>
-      
+    
+
 <div class="modal fade pop-up-1">
   <div class="modal-dialog">
     <div class="modal-content">
