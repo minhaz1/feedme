@@ -14,6 +14,8 @@
 
     <!-- The real deal -->
       <script src="./js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+<!-- including a list of food tags for auto completion -->
+<script src="js/foodtags.js"></script>
 
 <script>
         $(function(){

@@ -67,6 +67,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./css/bootstrap.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
+      
       <!-- Stuff for tagging -->
       <link href="./css/jquery.tagit.css" rel="stylesheet" type="text/css">
       <link href="./css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
@@ -77,6 +78,9 @@
 
 <!-- The real deal -->
       <script src="./js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+      <!-- including a list of food tags for auto completion -->
+<script src="js/foodtags.js"></script>
 
 <script>
         $(function(){
