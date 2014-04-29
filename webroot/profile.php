@@ -261,9 +261,8 @@
         <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
         <label style="color:black">Change Gender:</label>
           <select id="gender" name="editGender">
-              <option value="<?php echo $gender ?>"><?php echo $gender ?></option>
-              <option value="f">Female</option>
-              <option value="m">Male</option>
+              <option value="<?php echo $gender ?>"><?php if($gender == 'm'){echo "Male";}else{echo "Female";} ?></option>
+              <option value="f"><?php if($gender == 'm'){echo "Female";}else{echo "Male";} ?></option>
           </select>
         <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
         <input name="tags" id="singleFieldTags1" type="hidden" class="form-control" value="<?php echo $usertags ?>">
