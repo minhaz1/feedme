@@ -72,7 +72,7 @@
                   <li class="divider"></li> -->
                   <li><a href="profile.php">Profile</a></li>
                   <?php 
-                    if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                    if((isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != "") && $_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
                       echo "<li class=\"divider\"></li>";
                       echo "<li><a href=\"#Submit\" data-toggle=\"modal\" data-target=\"#myModal2\">Create Restaurant</a></li>";
                     }
