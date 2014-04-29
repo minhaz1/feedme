@@ -153,7 +153,7 @@
             <h4 class="modal-title" id="myModalLabel">Tried out a new restaurant? Tell us about it!</h4>
           </div>
           <div class="modal-body">
-               <form role="form">
+               <form action="./scripts/submitRestaurant-exec.php" id="resForm" method="post" name="resForm">
                   <div class="form-group">
                     <label for="exampleInputText">Name of place:</label>
                     <input type="text" class="form-control" id="resName" name="resName" placeholder="Enter the name of the restaurant">
@@ -163,12 +163,12 @@
                     <input type="text" class="form-control" id="resPhone" name="resPhone" placeholder="Enter the phone number of the restaurant">
                       <label for="exampleInputText">Website Link:</label>
                     <input type="text" class="form-control" id="resLink" name="resLink" placeholder="Enter the restaurant's website URL">
-                      <label style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
+                      <label style="color:black">Restaurant Photo:</label><input  type="file" onchange="upload(this.files[0])">
                     <input type="link" class="form-control" name="IMGLink" id="IMGLink" placeholder="Or place image link here">
                   </div>
                    <div class="form-group">
                     <label for="exampleInputText">Enter tags here, sepearated by a space:</label>
-                    <input name="tags" id="tags" type="hidden" class="form-control">
+                    <input name="tags" id="singleFieldTags3" type="hidden" class="form-control">
 
                   </div>
                    
