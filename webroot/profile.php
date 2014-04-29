@@ -76,17 +76,17 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8">        </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-  8"></script>
 
-<!-- The real deal -->
+      <!-- The real deal -->
       <script src="./js/tag-it.js" type="text/javascript" charset="utf-8"></script>
 
       <!-- including a list of food tags for auto completion -->
-<script src="js/foodtags.js"></script>
+      <script src="js/foodtags.js"></script>
 
 <script>
         $(function(){
             // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
             // examples, so it automatically defaults to singleField.
-            $('#singleFieldTags2').tagit({
+            $('#singleFieldTags1').tagit({
                 availableTags: adjectives,
                 removeConfirmation: true,
                 readOnly: false,
@@ -251,7 +251,7 @@
               <option value="2">Male</option>
           </select>
         <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
-        <input name="tags" id="singleFieldTags2" type="hidden" class="form-control">
+        <input name="tags" id="singleFieldTags1" type="hidden" class="form-control">
 
       <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -4,34 +4,6 @@
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
 
-    <!-- Stuff for tagging -->
-      <link href="./css/jquery.tagit.css" rel="stylesheet" type="text/css">
-      <link href="./css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-
-
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8">        </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-  8"></script>
-
-    <!-- The real deal -->
-      <script src="./js/tag-it.js" type="text/javascript" charset="utf-8"></script>
-<!-- including a list of food tags for auto completion -->
-<script src="js/foodtags.js"></script>
-
-<script>
-        $(function(){
-            // singleFieldTags2 is an INPUT element, rather than a UL as in the other 
-            // examples, so it automatically defaults to singleField.
-            $('#singleFieldTags2').tagit({
-                availableTags: adjectives,
-                removeConfirmation: true,
-                readOnly: false,
-                caseSensitive: false
-            });
-
-        });
-</script>
-      <!-- tagging stuff ends -->
-
 
     <style type="text/css">
       body {
