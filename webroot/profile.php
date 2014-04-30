@@ -301,9 +301,9 @@
                     <div class="modal-body" style="font-size:18px">
                       <form action="./scripts/profile-exec.php" id="bioForm" method="post" name="bioForm">
                         <label style="color:black">Change profile photo:</label><input  type="file" onchange="upload(this.files[0])">
-                      <input type="link" class="form-control" name="IMGLink" id="IMGLink" placeholder="Or place image link here" value="<?php echo $picture ?>">
+                      <input type="link" class="form-control" name="IMGLink" id="IMGLink" placeholder="Or place image link here" value="<?php echo $picture ?>" required>
                       <label style="color:black">Update Biography:</label>
-                      <textarea id="editBio" name="editBio" rows="4" style="width:97%;"><?php echo $biography ?></textarea>
+                      <textarea id="editBio" name="editBio" rows="4" style="width:97%;" required><?php echo $biography ?></textarea>
                       <label style="color:black">Change Gender:</label>
                         <select id="gender" name="editGender">
                             <option value="<?php echo $gender ?>"><?php if($gender == 'm'){echo "Male";}else{echo "Female";} ?></option>
