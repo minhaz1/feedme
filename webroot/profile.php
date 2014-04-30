@@ -42,7 +42,7 @@
           $usertype = $member['usertype'];
           $usertags = $member['tags'];
 
-          if($_SESSION['SESS_LOGIN'] == $_GET['userid']){
+          if(isset($_SESSION['SESS_LOGIN']) && $_SESSION['SESS_LOGIN'] == $_GET['userid']){
             $editProfile = 1;
           }
         }
@@ -128,7 +128,7 @@
   <body class="makeBlue">
 
     <?php 
-      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+      if(isset($_SESSION['SESS_USERTYPE']) && $_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
         include_once("scripts/moderate_helper.php");     
       }
     ?>
@@ -173,15 +173,18 @@
         </ul>
       </div> 
       
+      <?php if(isset($_SESSION['SESS_USERTYPE']) && $_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){ ?>
         <div class="panel panel-default">
             <div class="panel-heading">Activity</div>
                 <ul class="list-group" style="margin-bottom: 0px !important;">
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Ban User: </strong></span> <i class="fa fa-ban fa-2x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Flag User: </strong></span> <i class="fa fa-flag fa-2x"></i></li>
+                  <?php if($_SESSION['SESS_USERTYPE'] == USERTYPE_ADMIN){ ?>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Ban User: </strong></span> <a onclick="ban_user('<?php echo $login; ?>')" href="#"><i class="fa fa-ban fa-2x"></i></a></li>
+                  <?php } ?>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Flag User: </strong></span> <a onclick="flag_user('<?php echo $login; ?>')" href="#"><i class="fa fa-flag fa-2x"></i></a></li>
                 </ul>
           </div>          
                   
-               
+      <?php } ?>
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
             <div class="panel-body">
@@ -252,13 +255,13 @@
                                 $tagstring
                               </ul>";
 
-                      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                      if(isset($_SESSION['SESS_USERTYPE']) && $_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
                         echo "<a onclick=\"flag_review($reviewid)\" href=\"#\">
                             <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
                         </a>";
                       }
 
-                      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                      if(isset($_SESSION['SESS_USERTYPE']) && $_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
                         echo "
                         <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
                           <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
