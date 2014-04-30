@@ -158,7 +158,7 @@
                   <li class="list-group-item"><center><img title="profile image" class="img-circle img-responsive" src=<?php echo "\"$picture\"" ?>>
             </center></li>
            <li class="list-group-item text-right"><span class="pull-left"><strong>User name</strong></span> <?php echo $login ?></li>
-          <li class="list-group-item text-right"><span class="pull-left"><strong>Gender: </strong></span> <?php echo $gender ?></li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Gender: </strong></span> <?php if($gender == 'm'){echo "Male";}else{echo "Female";} ?></li>
            <li class="list-group-item text-right"><span class="pull-left"><strong>Year Arrived: </strong></span> <?php echo $year ?></li>
           <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> <?php echo $firstname . " " . $lastname ?></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Biography: </strong></span> <?php echo $biography ?></li>
@@ -296,7 +296,7 @@
                       <label style="color:black">Change Gender:</label>
                         <select id="gender" name="editGender">
                             <option value="<?php echo $gender ?>"><?php if($gender == 'm'){echo "Male";}else{echo "Female";} ?></option>
-                            <option value="f"><?php if($gender == 'm'){echo "Female";}else{echo "Male";} ?></option>
+                            <option value="<?php if($gender == 'm'){echo "f";}else{echo "m";} ?>"><?php if($gender == 'm'){echo "Female";}else{echo "Male";} ?></option>
                         </select>
                       <label style="color:black">Change Favorite Tags(Enter your favorite tags, separated by a space):</label>
                       <input name="tags" id="singleFieldTags1" type="hidden" class="form-control" value="<?php echo $usertags ?>">
