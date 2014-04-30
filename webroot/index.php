@@ -109,17 +109,6 @@
                   <!--<div class=\"img-wrap\">-->
                   <div class=\"img-wrap max-width img-index\">
                     <img src=\"$image\" class=\"img-responsive\" alt=\"\">
-                    <!--<div class=\"hover-tags\">
-                      <div class=\"bottom-tags\">
-                        <span>#steak</span>
-                        <span>#burgers</span>
-                        <span>#highly recommended</span>
-                        <span>#cheap prices</span>
-                      </div>
-                    </div> -->
-                    <div class=\"shop-label h6\">
-                      Top Rated
-                    </div>
                   </div>
                 </a>
                 <div class=\"info\">
