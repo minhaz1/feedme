@@ -150,7 +150,7 @@
                                 echo
                                 "<div class=\"timeline-info\">
                                     <span class=\"badge\">
-                                        Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> on " . $date . "
+                                        Posted by <a style=\"color:black\" href=\"profile.php?userid=" . $username . "\">" . $username . " </a> <span class=\"hidden-xs\">on " . $date . "</span>
                                     </span> </div>
                                 <div class=\"timeline-footer\">
                                     <a>";
