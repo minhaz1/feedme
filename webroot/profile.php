@@ -154,7 +154,7 @@
               </div>
 
               <!-- List group -->
-              <ul class="list-group">
+              <ul class="list-group" style="margin-bottom: 0px !important;">
                   <li class="list-group-item"><center><img title="profile image" class="img-circle img-responsive" src=<?php echo "\"$picture\"" ?>>
             </center></li>
            <li class="list-group-item text-right"><span class="pull-left"><strong>User name</strong></span> <?php echo $login ?></li>
@@ -173,6 +173,14 @@
         </ul>
       </div> 
       
+        <div class="panel panel-default">
+            <div class="panel-heading">Activity</div>
+                <ul class="list-group" style="margin-bottom: 0px !important;">
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Ban User: </strong></span> <i class="fa fa-ban fa-2x"></i></li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Flag User: </strong></span> <i class="fa fa-flag fa-2x"></i></li>
+                </ul>
+          </div>          
+                  
                
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
