@@ -143,21 +143,19 @@
           <div class="panel panel-default">
               <!-- Default panel contents -->
               <div class="panel-heading">Profile&nbsp;
+                  <span class="pull-right">
+                      <strong>
+                  <?php
+                    if($editProfile == 1){ 
+                        echo " <a type=\"modal\" onclick=\"getDesc()\" data-toggle=\"modal\" data-target=\".pop-up-1\">Edit</a>";
+                        echo "</strong></span>";
+                    }
+                  ?>
               </div>
 
               <!-- List group -->
               <ul class="list-group">
                   <li class="list-group-item"><center><img title="profile image" class="img-circle img-responsive" src=<?php echo "\"$picture\"" ?>>
-         <?php
-          if($editProfile == 1){ 
-            echo "<button type=\"modal\" onclick=\"getDesc()\" style=\"width:100%;font-size:12px\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\".pop-up-1\">";
-            echo "<strong>Edit Profile</strong>";
-            echo "</button>";
-          }
-        ?>
-
-
-
             </center></li>
            <li class="list-group-item text-right"><span class="pull-left"><strong>User name</strong></span> <?php echo $login ?></li>
           <li class="list-group-item text-right"><span class="pull-left"><strong>Gender: </strong></span> <?php echo $gender ?></li>
