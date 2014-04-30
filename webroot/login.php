@@ -94,4 +94,5 @@ xmlns="http://www.w3.org/1999/xhtml">
 	</div>
 	<?php unset($_SESSION['ERRMSG_ARR']); ?>
 </body>
+<script src="./js/bootstrap.min.js"></script>
 </html>

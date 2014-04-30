@@ -22,7 +22,7 @@
 
 	<body>
 	    <?php 
-	      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+	      if(isset($_SESSION['SESS_USERTYPE']) && $_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
 	        include_once("scripts/moderate_helper.php");     
 	      }
 	    ?>
