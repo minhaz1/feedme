@@ -161,7 +161,7 @@
           <li class="list-group-item text-right"><span class="pull-left"><strong>Gender: </strong></span> <?php if($gender == 'm'){echo "Male";}else{echo "Female";} ?></li>
            <li class="list-group-item text-right"><span class="pull-left"><strong>Year Arrived: </strong></span> <?php echo $year ?></li>
           <li class="list-group-item text-right"><span class="pull-left"><strong>Real name</strong></span> <?php echo $firstname . " " . $lastname ?></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Biography: </strong></span> <?php echo $biography ?></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Biography: </strong></span><?php echo $biography ?>&nbsp;</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Food Tags: </strong></span>
               <?php 
                 $temp = explode(",", $usertags);
