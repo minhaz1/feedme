@@ -15,18 +15,19 @@ $reviewid = "";
         <strong class="text-danger">
             <?php echo $num_results?>
         </strong> results were found for the search for <strong class="text-danger"><?php echo $_GET['q']?></strong></h2>
-</hgroup>
+</hgroup>    
+    <div>
+                <table class="table table-hover">
+                  <tbody>
+                
+                <?php 
 
-    <section class="col-xs-12 col-sm-6 col-md-12">
-	<br>
-		<?php 
-
-		foreach($results as $row){
+            foreach($results as $row){
 			if($row['flags_count'] >= REVIEW_FLAGS_LIMIT){
 				continue;
 			}
 
-			$resid = $row['resid'];
+            $resid = $row['resid'];
 			$reviewid = $row['reviewid'];
 			$text = $row['description'];
 			$title = $row['title'];
@@ -36,45 +37,58 @@ $reviewid = "";
 			$date = $reviewdate[0];
 			$time = DATE("g:i a", STRTOTIME($reviewdate[1]));
 
-			$tagstring = "";
-			foreach($tags as $tag){
-				if($tag != "")
-					$tagstring .= "<li><i class=\"glyphicon glyphicon-tags\"></i> <span><a href=\"search.php?q=$tag\"> $tag</a></span></li>";
-			}
-			
-			echo 
-				"<article class=\"search-result row\">
-					<div class=\"col-xs-12 col-sm-12 col-md-3\"><a href=\"$image\" title=\"$title\" class=\"thumbnail\"><img src=\"$image\" alt=\"$title\" /></a></div>
-					<div class=\"col-xs-12 col-sm-12 col-md-2\">
-						<ul class=\"meta-search\">
-							<li><i class=\"glyphicon glyphicon-calendar\"></i> <span>$date</span></li>
-							<li><i class=\"glyphicon glyphicon-time\"></i> <span>$time</span></li>
-							$tagstring";
 
-            if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
-              echo "<br><a onclick=\"flag_review($reviewid)\" href=\"#\">
-                  <i href=\"#\" class=\"glyphicon glyphicon-flag\" title=\"Remove review\"> </i>
-              </a>";
-            }
+                $tagstring = "";
+                $count = 0;
+                foreach($tags as $tag){
+                  if($tag != "" && $count < 3)
+                    $tagstring .= "<li><i class=\"fa fa-tags\"></i> <span><a href=\"search.php?q=$tag\"> $tag</a></span</li>";
+                    $count = $count + 1;
+                }
 
-            if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
-              echo "
-              <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
-                <i href=\"#\" class=\"glyphicon glyphicon-trash\" title=\"Flag review\"> </i>
-              </a>&nbsp;";
-            }
+                  echo"<tr><td>
+                        <div class=\"search-result row\">
+                            <div class=\"col-xs-4 col-sm-4 col-md-4\">
+                                <a href=\"$image\" title=\"$title\" class=\"thumbnail\">
+                                <img src=\"$image\" alt=\"$title\" />
+                                </a>
+                            </div>
+                            <div class=\"col-sm-4 col-md-2 hidden-xs\" style=\"padding: 0px; border-right:0px;\">
+                              <ul class=\"meta-search\" style=\"padding: 2px; list-style: none;\">
+                                <li><i class=\"fa fa-calendar\"></i> <span>$date</span></li>
+                                <li><i class=\"fa fa-clock-o\"></i> <span>$time</span></li>
+                                $tagstring
+                              </ul>";
 
-			echo "</ul>
-					</div>
-					<div class=\"col-xs-12 col-sm-12 col-md-7 excerpet\">
-						<h3><a href=\"restaurant.php?resid=$resid\" title=\"\">$title</a></h3>
-						<p>$text</p>
-					</div>
-					<span class=\"clearfix borda\"></span>
-				</article>";
+                      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_MOD){
+                        echo "<a onclick=\"flag_review($reviewid)\" href=\"#\">
+                            <i href=\"#\" class=\"glyphicon glyphicon-flag\"> </i>
+                        </a>";
+                      }
 
-		}
+                      if($_SESSION['SESS_USERTYPE'] >= USERTYPE_ADMIN){
+                        echo "
+                        <a onclick=\"hide_review($reviewid)\" href=\"#\" style=\"font-color: white !important;\">
+                          <i href=\"#\" class=\"glyphicon glyphicon-trash\"> </i>
+                        </a>&nbsp;";
+                      }
 
-	?>
-	</section>
+                       echo "</div><div class=\"col-xs-8 col-sm-4 col-md-6\" style=\"padding-left: 0px;\">
+                            <h3 style=\"padding-top: 0px; margin-top:0px;\">
+                              <a href=\"restaurant.php?resid=6\" title=\"\">
+                                  $title
+                              </a>
+                            </h3>
+                            <p class=\"hidden-xs hidden-sm\">$text</p>
+                          </div>
+                            
+                        </div>
+                    </td>
+                  </tr>";
+
+}?>
+                       
+                  </tbody>
+                </table>
+              </div>
 </div>
