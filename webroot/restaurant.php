@@ -105,9 +105,9 @@
     <?php include_once('submitReview.php') ?>
 
     <!------------------------ Start Resturant Header ------------------------>
-    <div class="container">
+    <div class="container" >
           
-        <div class="container">
+        <div class="container" style="max-width: 950px !important;">
 	       <div class="row well">
                
             <div class="col-md-12">
@@ -133,12 +133,6 @@
                       </a>
                   </li>
                     
-                  <li>
-                      <a href="#Rating" data-toggle="tab">
-                          <i class="fa fa-file-text-o"></i> 
-                          Rating
-                      </a>
-                  </li>
                   <li>
                       <a href="#Submit" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-file-text-o"></i> 
@@ -202,49 +196,6 @@
                         </div>
                     </a>
                   </div>
-
-
-                 <div class="tab-pane" id="Rating">
-                    <span type="button" data-toggle="collapse" data-target="#a1">
-                        <div class="btn-toolbar well well-sm resturant-sub" 
-                             role="toolbar"  style="margin:0px;">
-                            <div id="a1" class="btn-group col-md-12">
-                                
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6 col-lg-6 text-center">
-                                        <h1 class="rating-num">4.0</h1>
-                                        <div class="rating">
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                        </div>
-                                        <div>
-                                            <span class="glyphicon glyphicon-user"></span>1,050,008 total
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 col-lg-6">
-                                        <div class="row rating-desc">
-                                            <div class="col-xs-3 col-md-3 text-right">
-                                                <span class="glyphicon glyphicon-star"></span>5
-                                            </div>
-                                            <div class="col-xs-8 col-md-9">
-                                                <div class="progress progress-striped">
-                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                                        <span class="sr-only">80%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <!-- end row -->
-                                    </div>
-                                </div>
-                    
-                            </div>
-                        </div>
-                    </span>
-                 </div>
 
                 </div>
 
