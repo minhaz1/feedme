@@ -107,7 +107,7 @@
     <!------------------------ Start Resturant Header ------------------------>
     <div class="container" >
           
-        <div class="container" style="max-width: 950px !important;">
+        <div class="container" style="max-width: 950px !important; padding: 0px !important;">
 	       <div class="row well">
                
             <div class="col-md-12">
