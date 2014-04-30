@@ -113,7 +113,7 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./font-awesome-4.0.3/css/font-awesome.css">
     <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    
     <script type="text/javascript">
         $(document).ready(function(){ 
             $("#myTab a").click(function(e){
@@ -328,7 +328,7 @@
     </div><!--/row-->
     
 <script src = "js/feedme.js"></script>
-    <script src = "js/bootstrap.js"></script>
+<script src = "js/bootstrap.min.js"></script>
 
 </body>
 </html>
