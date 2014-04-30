@@ -21,7 +21,7 @@
                 <h2 style="font-size:70px;color:black">
                     404 Not Found</h2><br><br>
                 <h2 class="error-details" style="font-size:30px;color:black">
-                    Sorry, Seymour has eaten the developer of the page you are requesting.
+                    Sorry, AUDREY 2 has eaten the developer of the page you are requesting.
                 </h2>  
                 
                 <div class="container">

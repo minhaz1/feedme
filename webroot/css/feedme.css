@@ -48,7 +48,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .board-preview .tiles{height:54px;} #tvSpotModal>div{height:658px;}
 .board-preview .img-wrap{height:210px;} .ugi .img-wrap{height:217px;}  .usr>div{padding:5px;} 
 .board-preview .tiles{height:32px;}
-.board-preview .img-wrap{height:256px;}
+.board-preview .img-wrap{height:256px !important;}
 .board-preview {width:270px;}
 .board-preview .tiles{height:55px;}
 
@@ -499,10 +499,15 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
+div#resturantTimeLineBody{
+ max-width: 950px !important;
+}
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;
   position: relative;
+  max-width: max-width: 950px !important;
 }
 .timeline:before {
   top: 0;
@@ -542,7 +547,7 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
   float: left;
   border: 1px solid #d4d4d4;
   /*border-radius: 2px;*/
-  /*padding: 20px;*/
+  padding:10px;
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
@@ -733,9 +738,10 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
   left: -12px;
 }
 
-@media (max-width: 1205px) {
+@media (max-width: 768px) {
     ul.timeline:before {
         left: 40px;
+        max-width: 20% !important;
     }
 
     ul.timeline > li {
@@ -775,15 +781,20 @@ textarea.clean:focus,input[type="text"].clean:focus,input[type="password"].clean
             right: auto;
         }
     
-.timeline > li.timeline-inverted{
-  float: left; 
-  clear: left;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
+    .timeline > li.timeline-inverted{
+      float: left; 
+      clear: left;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
 
-.timeline > li.timeline-inverted > .timeline-badge{
-  left: 28px;
+    .timeline > li.timeline-inverted > .timeline-badge{
+      left: 28px;
+    }
+    
+    div#resturantTimeLineBody{
+        max-width: 80% !important;
+    }
 }
 
 /*---------------------------------*/
