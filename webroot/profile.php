@@ -147,7 +147,7 @@
                       <strong>
                   <?php
                     if($editProfile == 1){ 
-                        echo " <a type=\"modal\" onclick=\"getDesc()\" data-toggle=\"modal\" data-target=\".pop-up-1\">Edit</a>";
+                        echo " <a href=\"#\" type=\"modal\" onclick=\"getDesc()\" data-toggle=\"modal\" data-target=\".pop-up-1\">Edit</a>";
                         echo "</strong></span>";
                     }
                   ?>
