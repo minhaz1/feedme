@@ -12,8 +12,7 @@
     
     <!-- FeedME CSS -->
     <link href="./css/feedme.css" rel="stylesheet" type="text/css">
-    <!-- <link href="./css/styles.css" rel="stylesheet"> -->
-    <!-- <link href="./css/style.css" type="text/css" rel="stylesheet"> -->
+    <link href="./css/feedme_subcomment.css" rel="stylesheet">
     <link href="./css/example.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
@@ -83,48 +82,53 @@
      
             ?>
 
-            <div class="com">
-                  <div class="new-com-post">
+     <div class="container" style="padding-top: 20px; max-width: 500px !important;">
+        <div class="row">
+            <div class="panel panel-default widget bom">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <h3 class="panel-title">
+                        Recent Comments</h3>
+                    
                     <a href="<?php echo "restaurant.php?resid=$resid"?>">
-                        <button type="button" class="btn btn-primary" href="">Return
+                        <button type="button" class="label label-info btn btn-primary" href="">Return
                         </button>
                       </a>
-                  </div>
+                </div>
                 
-                  <div class="timeline-panel">
-                    <div class="timeline-heading">
-                      <img class="img-responsive" style="width: 100% !important;" src="<?php echo $image ?>" />
-
-                    </div>
-                    <div class="timeline-body">
-                      <p><br><?php echo $review_text ?></b></p>
-
-                    </div>
-
-                    <div class="timeline-regiontags">
+                <div class="panel-heading">
+                    <img class="img-responsive" style="width: 100% !important;" src="<?php echo $image ?>" />
+                </div>
+                
+                <div class="panel-body" style="background-color: white !important; padding: 20px !important;">
+                    <?php echo $review_text ?>
+                </div>
+                
+                <div class="panel-body timeline-regiontags" style="background-color:#f4f4f4 !important; padding: 20px !important;">
                     <?php 
 
                         if(sizeof($tags_arr) != 0){
                             foreach($tags_arr as $tag){
-                                echo "<a href=\"search.php?q=$tag\"><span class=\"label label-info\">$tag</span></a> ";
+                                echo "<a href=\"search.php?q=$tag\"><span class=\"label label-info pull-left\" style=\"margin:2px !important;\">$tag</span></a> ";
                             }
                         }
                     ?>
-                    </div>
-                      
-                    <div class="timeline-info">
-                        <span class="badge">Posted by 
+                    
+                    <br>
+                    <br>
+                    
+                    <span class="badge">Posted by 
                             <a style="color:black" href="profile.php?userid=<?php echo $username ?>"><?php echo $username ?> 
                             </a> <?php echo $date ?>
-                        </span>
-                    </div>
-                      
-                   <div class="timeline-footer">
-                       <hr>
+                    </span>
+                </div>
+
+                <div class="panel-body">
                         <?php 
                         require('scripts/dbconnect.php');
+                        
+                        $sql = mysql_query("SELECT C.comment, C.date, C.member_id, C.login, U.picture FROM comments as C INNER JOIN users AS U ON C.member_id = U.member_id WHERE reviewid='$reviewid'") or die(mysql_error());
 
-                        $sql = mysql_query("SELECT C.comment, C.date, C.member_id, C.login, U.picture FROM comments as C INNER JOIN users AS U ON C.member_id = U.member_id WHERE reviewid='$reviewid'") or die(mysql_error());;
 
                         while($affcom = mysql_fetch_assoc($sql)){ 
                             $comment = $affcom['comment'];
@@ -135,39 +139,53 @@
                             $picture = $affcom['picture'];
                             $date = $reviewdate[0];
                             $time = DATE("g:i a", STRTOTIME($reviewdate[1]));
-                        ?>
-                            <div class="cmt-cnt new-com-org-review">
-                                <a href="profile.php?userid=<?php echo $login ?>"><img src="<?php echo $picture ?>" /></a>
-                                <div class="thecom">
-                                    <a href="profile.php?userid=<?php echo $login ?>"><h5><?php echo $login ?></h5></a><span data-utime="1371248446" class="com-dt">&nbsp;<?php echo $time . " on " . $date; ?></span>
-                                    <br/>
-                                    <p><?php echo $comment; ?></p>
+                        ?>                        
+
+                            
+                        
+                            
+                            <div class="row" style="padding: 15px !important;">
+                                <div class="col-xs-2 col-md-2">
+                                    <a href="profile.php?userid=<?php echo $login ?>"><img src="<?php echo $picture ?>" class="img-circle img-responsive" alt="" /></a></div>
+                                <div class="col-xs-10 col-md-10">
+                                    <div>               
+                                        <div class="mic-info">
+                                            By: <a href="profile.php?userid=<?php echo $login ?>"><?php echo $login ?></a> at &nbsp;<?php echo $time . " on " . $date; ?>
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        <?php echo $comment; ?>
+                                    </div>
                                 </div>
-                            </div><!-- end "cmt-cnt" -->
+                            </div>
+                    
+                            <hr style="width: 90% !important; margin: 10px !important;">
                         <?php } ?>
                         
-                        <?php if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){ ?>
-                        <div class="new-com-org-review">
-                            <div class="new-com-bt comment-post">
-                                <span>Write a comment ...</span>
+                        
+                        <?php if(isset($_SESSION['SESS_MEMBER_ID']) && $_SESSION['SESS_MEMBER_ID'] != ""){ ?>                        
+                            <div style="padding: 20px !important;">
+                                    <div class="new-com-bt comment-post">
+                                        <span>Write a comment ...</span>
+                                    </div>
+                                    
+                                    <div class="new-com-cnt">
+                                        <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
+                                        <br><br>
+                                        <div class="bt-add-com">Post comment</div>
+                                        <div class="bt-cancel-com">Cancel</div>
+                                    </div>
                             </div>
-                            <div class="new-com-cnt">
-                    <!--             <input type="text" id="name-com" name="name-com" value="" placeholder="Your name" />
-                                <input type="text" id="mail-com" name="mail-com" value="" placeholder="Your e-mail adress" /> -->
-                                <textarea name="comment" id="comment" class="comment" placeholder="Write a comment ..."></textarea>
-                                <br><br>
-                                <div class="bt-add-com">Post comment</div>
-                                <div class="bt-cancel-com">Cancel</div>
-                            </div>
-                        </div>    
-
+                        
                         <div class="clear"></div>
                         <?php } ?>
-                    </div>
+
                   </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+
 
 <script type="text/javascript">
    $(function(){ 
