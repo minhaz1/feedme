@@ -48,7 +48,7 @@ hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; 
 .board-preview .tiles{height:54px;} #tvSpotModal>div{height:658px;}
 .board-preview .img-wrap{height:210px;} .ugi .img-wrap{height:217px;}  .usr>div{padding:5px;} 
 .board-preview .tiles{height:32px;}
-.board-preview .img-wrap{height:256px;}
+.board-preview .img-wrap{height:256px !important;}
 .board-preview {width:270px;}
 .board-preview .tiles{height:55px;}
 
