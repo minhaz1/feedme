@@ -159,8 +159,8 @@
                     <input type="text" class="form-control" id="resPhone" name="resPhone" placeholder="Enter the phone number of the restaurant" required>
                       <label for="exampleInputText">Website Link:</label>
                     <input type="text" class="form-control" id="resLink" name="resLink" placeholder="Enter the restaurant's website URL" required>
-                      <label style="color:black">Restaurant Photo:</label><input  type="file" onchange="upload(this.files[0])">
-                    <input type="link" class="form-control" name="IMGLink" id="IMGLink" placeholder="Or place image link here" required>
+                      <label style="color:black">Restaurant Photo:</label><input  type="file" onchange="uploadnav(this.files[0])">
+                    <input type="link" class="form-control" name="IMGLink" id="IMGLinknav" placeholder="Or place image link here" required>
                   </div>
                    <div class="form-group">
                     <label for="exampleInputText">Enter tags here, sepearated by a space:</label>

@@ -128,6 +128,40 @@ function upload(file) {
     xhr.send(fd);
 }
 
+//upload button code for the navbar
+function uploadnav(file) {
+
+    /* Is the file an image? */
+    if (!file || !file.type.match(/image.*/)) return;
+
+    /* It is! */
+    document.body.className = "uploading";
+
+    /* build a FormData object*/
+    var fd = new FormData(); //https://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
+    fd.append("image", file); // Append the file
+    fd.append("key", "6528448c258cff474ca9701c5bab6927"); // Get your own key http://api.imgur.com/
+    var xhr = new XMLHttpRequest(); // Create the XHR
+    xhr.open("POST", "http://api.imgur.com/2/upload.json"); // Boooom!
+    xhr.onload = function() {
+        // Big win!
+        
+        
+        
+        var link = JSON.parse(xhr.responseText).upload.links.imgur_page;
+        document.querySelector("#IMGLinknav").value = link + ".jpg";
+        document.querySelector("#IMGLinknav").innerHTML = link + ".jpg";
+        
+        
+        
+        document.body.className = "uploaded";
+    }
+        //No error handling
+    xhr.send(fd);
+}
+
+
+
 
 
 
