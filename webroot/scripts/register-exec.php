@@ -170,8 +170,8 @@
 		exit();
 	}
 
-	// temp default biography for everyone
-	$biography = "Don't eat me!";
+//	// temp default biography for everyone
+//	$biography = "Don't eat me!";
 
 	// email confirmation hash value
 	$confirmation = md5($login . $email);
@@ -182,7 +182,7 @@
 	//encrypt password before storing
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 
-	$qry = "INSERT INTO " . USER_TABLE . " (firstname, lastname, login, email, password, gender, yeararrived, confirmation, biography) VALUES('$fname','$lname','$login', '$email' ,'$hash','$gender','$yeararrived','$confirmation','$biography')";
+	$qry = "INSERT INTO " . USER_TABLE . " (firstname, lastname, login, email, password, gender, yeararrived, confirmation) VALUES('$fname','$lname','$login', '$email' ,'$hash','$gender','$yeararrived','$confirmation')";
 	$result = @mysql_query($qry);
 	
 	//Check whether the query was successful or not
