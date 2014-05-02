@@ -103,7 +103,7 @@
 		$errmsg_arr['gender'] = 'Gender missing';
 		$errflag = true;
 	}
-	else if($gender != 'female' && $gender != 'male'){
+	else if($gender != 'f' && $gender != 'm'){
 		
 		if($gender == '0'){
 			$errmsg_arr['gender'] = "Please select a gender";

@@ -105,11 +105,11 @@ xmlns="http://www.w3.org/1999/xhtml">
 									Select your gender
 								</option>
 
-								<option value="female">
+								<option value="f">
 									Female
 								</option>
 
-								<option value="male">
+								<option value="m">
 									Male
 								</option>
 							</select>
