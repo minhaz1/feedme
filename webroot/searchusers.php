@@ -15,7 +15,7 @@ $num_results = sizeof($results);
             <?php echo $num_results?>
         </strong> results were found for the search for <strong class="text-danger"><?php echo $_GET['q']?></strong></h2>
 </hgroup>
-
+<br>
 <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
 
