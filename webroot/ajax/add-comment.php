@@ -30,6 +30,24 @@ if($_POST['act'] == 'add-com'):
     	$time = DATE("g:i a", STRTOTIME($comment_date[1]));
 ?>
 
+<div class="row" style="padding: 15px !important;">
+     <div class="col-xs-2 col-md-2">
+          <a href="profile.php?userid=<?php echo $login ?>"><img src="<?php echo $picture ?>" class="img-circle img-responsive" alt="" /></a></div>
+     	       <div class="col-xs-10 col-md-10">
+                    <div>
+              	          <div class="mic-info">
+			       By: <a href="profile.php?userid=<?php echo $login ?>"><?php echo $login ?></a> at &nbsp;<?php echo $time . " on " . $date; ?>
+                          </div>
+                    </div>
+		    <div class="comment-text">
+       		    	 <?php echo $comment; ?>
+                    </div>
+               </div>
+     </div>
+     <hr style="width: 90% !important; margin: 10px !important;">
+</div>
+
+<!-- old stuff
     <div class="cmt-cnt">
     	<img src="<?php echo $picture ?>" alt="" />
 		<div class="thecom">
@@ -38,6 +56,6 @@ if($_POST['act'] == 'add-com'):
 	       	<p><?php echo $comment; ?></p>
 	    </div>
 	</div>
-
+-->
 	<?php } ?>
 <?php endif; ?>

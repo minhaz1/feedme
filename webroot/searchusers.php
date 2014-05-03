@@ -1,7 +1,7 @@
 <?php 
 // easily reusable to search any table. just pass in the table name
 // and an array of the columns you watch to search
-$results = search_perform(USER_TABLE, array('email','firstname','lastname','login'), $_GET['q']);
+$results = search_perform(USER_TABLE, array('email','firstname','lastname','login','tags'), $_GET['q']);
 $num_results = sizeof($results);
 ?>
 
