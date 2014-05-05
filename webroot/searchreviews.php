@@ -75,7 +75,7 @@ $reviewid = "";
 
                        echo "</div><div class=\"col-xs-8 col-sm-4 col-md-6\" style=\"padding-left: 0px;\">
                             <h3 style=\"padding-top: 0px; margin-top:0px;\">
-                              <a href=\"restaurant.php?resid=6\" title=\"\">
+                              <a href=\"restaurant.php?resid=$resid\" title=\"\">
                                   $title
                               </a>
                             </h3>
