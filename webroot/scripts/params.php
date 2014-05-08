@@ -1,8 +1,8 @@
 <?php
-    define('DB_HOST', 'www.minhazm.com');
-    define('DB_USER', 'team1');
-    define('DB_PASSWORD', 'team1');
-    define('DB_DATABASE', 'feedme');
+    define('DB_HOST', 'HOST');
+    define('DB_USER', 'USER');
+    define('DB_PASSWORD', 'PASSWORD');
+    define('DB_DATABASE', 'FEEDME');
 	define('USER_TABLE', 'users');
 	define('RES_REVIEWS', 'restaurant_review');
 	define('RESTAURANT_TABLE', 'mstr_restaurant');
