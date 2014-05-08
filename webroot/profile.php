@@ -46,6 +46,10 @@
             $editProfile = 1;
           }
         }
+		else{
+			header("location: 404.php");
+			exit(); 
+		}
       }
   }
   else if(!isset($_SESSION['SESS_MEMBER_ID']) || (trim($_SESSION['SESS_MEMBER_ID']) == '')) {

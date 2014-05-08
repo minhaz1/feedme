@@ -1,4 +1,5 @@
 <?php
+	session_start();
 
 	include('scripts/dbconnect.php');
 	include_once('scripts/helper.php');
@@ -19,7 +20,10 @@
 			$member_id = $member['member_id'];
 			$qry = "UPDATE " . USER_TABLE . " SET confirmation = '0' WHERE " . USER_TABLE . ".member_id ='$member_id'";
 			$result = mysql_query($qry);
-			header("location: " . "index.php");
+			$errmsg_arr = Array();
+			$errmsg_arr['login'] = "Thank you for confirming!"; 
+			$_SESSION['ERRMSG_ARR'] = $errmsg_arr; 
+			header("location: " . "login.php");
 			exit();
 		}
 	}

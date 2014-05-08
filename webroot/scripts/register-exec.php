@@ -187,8 +187,11 @@
 	
 	//Check whether the query was successful or not
 	if($result) {
-		if($EMAIL_FLAG) 
+		if($EMAIL_FLAG){ 
 			sendEmail($email, "Please confirm your email.", $message);
+			$errmsg_arr['login'] = "Please confirm your email.";
+			$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
+		}
 		header("location: ../login.php");				
 		exit();
 	}else {
